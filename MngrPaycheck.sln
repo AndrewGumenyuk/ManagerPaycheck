@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Tests", "MngrP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Logics", "MngrPaycheck.Logics\MngrPaycheck.Logics.csproj", "{91BBDB86-FF70-4F1F-9801-586986232DA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDB", "..\..\..\AddintialInformation\TestDB\TestDB.csproj", "{F6BA7641-757C-4DCC-89B7-77B99212F04D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,16 +85,6 @@ Global
 		{91BBDB86-FF70-4F1F-9801-586986232DA0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{91BBDB86-FF70-4F1F-9801-586986232DA0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{91BBDB86-FF70-4F1F-9801-586986232DA0}.Release|x86.ActiveCfg = Release|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{F6BA7641-757C-4DCC-89B7-77B99212F04D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
