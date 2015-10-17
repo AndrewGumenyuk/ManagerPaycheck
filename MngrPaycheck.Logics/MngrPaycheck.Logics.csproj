@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91BBDB86-FF70-4F1F-9801-586986232DA0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MngrPaycheck.Logics</RootNamespace>
+    <AssemblyName>MngrPaycheck.Logics</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LogicsType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="State\Abstract\IState.cs" />
+    <Compile Include="State\Concrete\AddedProductState.cs" />
+    <Compile Include="State\Concrete\AddedProductParametrState.cs" />
+    <Compile Include="State\Concrete\AddedProductParametrValueState.cs" />
+    <Compile Include="State\Concrete\AddedProductTypeState.cs" />
+    <Compile Include="State\LogicsState.cs" />
+    <Compile Include="Strategy\Abstract\BaseStrategy.cs" />
+    <Compile Include="Strategy\Concrete\PaymentTypeStrategy.cs" />
+    <Compile Include="Strategy\Concrete\ProductTypeStrategy.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MngrPaycheck.Common\MngrPaycheck.Common.csproj">
+      <Project>{7E0E4BEA-94CC-45EC-8FB8-E57203B933B2}</Project>
+      <Name>MngrPaycheck.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MngrPaycheck.DAL\MngrPaycheck.DAL.csproj">
+      <Project>{81E08870-6071-4E68-8B12-5B295BC7FFAF}</Project>
+      <Name>MngrPaycheck.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MngrPaycheck.Entity\MngrPaycheck.Entity.csproj">
+      <Project>{3FEAC9D1-FD99-4B63-9B35-0F04B6BA70D8}</Project>
+      <Name>MngrPaycheck.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
