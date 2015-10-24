@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="DAL\Infrastructure\ICashierRepository.cs" />
     <Compile Include="DAL\Infrastructure\IMngPaycheckContext.cs" />
     <Compile Include="DAL\Infrastructure\IPaymentTypeRepository.cs" />
@@ -61,7 +64,6 @@
     <Compile Include="DAL\Infrastructure\IPurchaseRepository.cs" />
     <Compile Include="DAL\Infrastructure\IRepository.cs" />
     <Compile Include="DAL\Infrastructure\ISupermarketRepository.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

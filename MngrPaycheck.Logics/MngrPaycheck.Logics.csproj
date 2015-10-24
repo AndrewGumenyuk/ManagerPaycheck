@@ -44,8 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="LogicsType.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="State\Abstract\IState.cs" />
     <Compile Include="State\Concrete\AddedProductState.cs" />
     <Compile Include="State\Concrete\AddedProductParametrState.cs" />
