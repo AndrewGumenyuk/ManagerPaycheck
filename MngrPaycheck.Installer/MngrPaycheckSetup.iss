@@ -30,7 +30,7 @@
 #define use_sql2005express
 #define use_sql2008express
 
-#define BasicName 'MngrPaycheck'
+#define BasicName ExtractFileName('D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck\bin\Debug\MngrPaycheck')
 #define ExePath   'D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck\bin\Debug' + BasicName + '.exe'
 
 #define ApplicationVersion GetFileVersion('D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck\bin\Debug\MngrPaycheck.exe')
