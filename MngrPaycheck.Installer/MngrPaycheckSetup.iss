@@ -30,8 +30,11 @@
 #define use_sql2005express
 #define use_sql2008express
 
-#define MyAppName "MngrPaycheck"
-#define MyAppVersion "0.0.1.0"
+#define BasicName 'MngrPaycheck'
+#define ExePath   'D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck\bin\Debug' + BasicName + '.exe'
+
+#define ApplicationVersion GetFileVersion('D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck\bin\Debug\MngrPaycheck.exe')
+
 #define MyAppPublisher "My Company, Inc."
 #define MyAppURL "http://www.MngrPaycheck.com/"
 #define MyAppExeName "MngrPaycheck.exe"
@@ -40,21 +43,21 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{E47B3D08-18D6-4786-A501-0A5DC84BADA1}
-AppName={#MyAppName}
-AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
+AppId={{E47B3D08-18D6-8986-A501-0A9DC87BADB9}
+AppName={#BasicName}
+AppVerName={#BasicName} {#ApplicationVersion}
+VersionInfoVersion={#ApplicationVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\{#MyAppName}
-DefaultGroupName={#MyAppName}
+DefaultDirName={pf}\{#BasicName}{#ApplicationVersion}
+DefaultGroupName={#BasicName}
 OutputDir=D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck.Installer
 OutputBaseFilename=MngrPaycheck
-SetupIconFile=C:\Users\Андрей\Desktop\case.ico
 Compression=lzma
 SolidCompression=yes
+
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
@@ -76,11 +79,11 @@ Source: "D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheck
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{group}\{#BasicName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{commondesktop}\{#BasicName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(BasicName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 
 [Code]
