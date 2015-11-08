@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91BBDB86-FF70-4F1F-9801-586986232DA0}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{627ECBCA-B9E4-49FB-B043-5312A6BE16F7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MngrPaycheck.Logics</RootNamespace>
-    <AssemblyName>MngrPaycheck.Logics</AssemblyName>
+    <RootNamespace>TestDB</RootNamespace>
+    <AssemblyName>TestDB</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>92d8383f</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,10 +33,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,20 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="AbstractFactory\Class1.cs" />
-    <Compile Include="LogicsType.cs" />
-    <Compile Include="State\Abstract\IState.cs" />
-    <Compile Include="State\Concrete\AddedProductState.cs" />
-    <Compile Include="State\Concrete\AddedProductParametrState.cs" />
-    <Compile Include="State\Concrete\AddedProductParametrValueState.cs" />
-    <Compile Include="State\Concrete\AddedProductTypeState.cs" />
-    <Compile Include="State\LogicsState.cs" />
-    <Compile Include="Strategy\Abstract\BaseStrategy.cs" />
-    <Compile Include="Strategy\Concrete\PaymentTypeStrategy.cs" />
-    <Compile Include="Strategy\Concrete\ProductTypeStrategy.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MngrPaycheck.Common\MngrPaycheck.Common.csproj">
@@ -72,9 +70,13 @@
       <Project>{3FEAC9D1-FD99-4B63-9B35-0F04B6BA70D8}</Project>
       <Name>MngrPaycheck.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MngrPaycheck.Logics\MngrPaycheck.Logics.csproj">
+      <Project>{91BBDB86-FF70-4F1F-9801-586986232DA0}</Project>
+      <Name>MngrPaycheck.Logics</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
