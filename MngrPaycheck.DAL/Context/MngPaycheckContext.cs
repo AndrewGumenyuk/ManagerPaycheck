@@ -13,7 +13,9 @@ namespace MngrPaycheck.DAL.Context
     public class MngPaycheckContext: DbContext, IMngPaycheckContext, IDisposable
     {
         public MngPaycheckContext()
-            : base("MngrPaycheckDB"){}
+            : base("MngrPaycheckTestDB"){}
+
+        public static readonly Lazy<MngPaycheckContext> _instance = new Lazy<MngPaycheckContext>(() => new MngPaycheckContext());
 
         public IDbSet<Cashier> Cashiers { get; set; }
         public IDbSet<PaymentType> PaymentTypes { get; set; }
@@ -32,6 +34,11 @@ namespace MngrPaycheck.DAL.Context
         public IDbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             return base.Set<TEntity>();
+        }
+
+        public static MngPaycheckContext Instance
+        {
+            get { return _instance.Value; }
         }
     }
 }

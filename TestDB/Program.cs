@@ -21,9 +21,9 @@ namespace TestDB
             Program pr = new Program();
             //pr.FillDB();
             //pr.testState();
+            Console.ReadKey();
+            //IProductRepository _purchaseRepository = new IProductRepository(new MngPaycheckContext());
 
-          //IProductRepository _purchaseRepository = new IProductRepository(new MngPaycheckContext());
-           
         }
 
         public void testState()

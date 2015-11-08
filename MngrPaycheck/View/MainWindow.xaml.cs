@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MngrPaycheck.ProductServiceReference;
+using Product.WcfService;
+
 
 namespace MngrPaycheck
 {
@@ -20,9 +23,17 @@ namespace MngrPaycheck
     /// </summary>
     public partial class MainWindow : Window
     {
+        ProductService loClient = new ProductService();
         public MainWindow()
         {
             InitializeComponent();
+
+            var a = loClient.Product().GetAll();
+
+            foreach (var item in a)
+            {
+                MessageBox.Show(item.Name.ToString());
+            }
         }
     }
 }

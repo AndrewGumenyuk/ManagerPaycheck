@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using MngrPaycheck.Common.DAL.Infrastructure;
 
 namespace MngrPaycheck.DAL.Repositories.Abstract
 {
+    [DataContract]
     public class GenericRepository<T>: IRepository<T> where T : class
     {
 
