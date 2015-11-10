@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -29,11 +30,20 @@ namespace MngrPaycheck.Entity
         public Guid? SupermarketID { get; set; }
         public Guid PaymentTypeID { get; set; }
 
-
         #region properties
         public virtual PaymentType PaymentType { get; set; }
         public virtual Supermarket Supermarket { get; set; }
         public virtual ICollection<Product> Products { get; set; } 
         #endregion
+
+        public Purchase DeepCopy()
+        {
+            //var purchase = ShallowCopy();
+            var purchase = new Purchase()
+            {
+                Favorite = Favorite
+            };
+            return purchase;
+        }
     }
 }

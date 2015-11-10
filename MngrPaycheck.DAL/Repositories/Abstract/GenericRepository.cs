@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,11 @@ namespace MngrPaycheck.DAL.Repositories.Abstract
         public virtual T Add(T entity)
         {
             return Context.Set<T>().Add(entity);
+        }
+
+        public virtual void Update(T entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual T Delete(T entity)

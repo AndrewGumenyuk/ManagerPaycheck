@@ -14,7 +14,7 @@ namespace MngrPaycheck.DAL.Context
     {
         public MngPaycheckContext()
             : base("MngrPaycheckDB"){}
-
+        public static readonly Lazy<MngPaycheckContext> _instance = new Lazy<MngPaycheckContext>(() => new MngPaycheckContext());
         public IDbSet<Cashier> Cashiers { get; set; }
         public IDbSet<PaymentType> PaymentTypes { get; set; }
         public IDbSet<Product> Products { get; set; }
@@ -33,5 +33,25 @@ namespace MngrPaycheck.DAL.Context
         {
             return base.Set<TEntity>();
         }
+
+        public MngPaycheckContext ShallowCopy()
+        {
+            return (MngPaycheckContext) MemberwiseClone();
+        }
+
+        public MngPaycheckContext DeepCopy()
+        {
+            var context = ShallowCopy();
+            foreach (var p in Purchases)
+            {
+                context.Purchases.Add(p.DeepCopy());
+            }
+            return context;
+        }
+
+        public static MngPaycheckContext Instance
+       {
+           get { return _instance.Value; }
+       }
     }
 }

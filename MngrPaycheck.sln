@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck", "MngrPaycheck\MngrPaycheck.csproj", "{C1159F62-0814-4C31-82FC-598A83852119}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.User", "MngrPaycheck\MngrPaycheck.User.csproj", "{C1159F62-0814-4C31-82FC-598A83852119}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Common", "MngrPaycheck.Common\MngrPaycheck.Common.csproj", "{7E0E4BEA-94CC-45EC-8FB8-E57203B933B2}"
 EndProject
