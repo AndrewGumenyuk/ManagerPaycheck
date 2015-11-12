@@ -30,10 +30,10 @@
 #define use_sql2005express
 #define use_sql2008express
 
-#define BasicName ExtractFileName('D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck\bin\Debug\MngrPaycheck')
-#define ExePath   'D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck\bin\Debug' + BasicName + '.exe'
+#define BasicName ExtractFileName('ManagerPaycheck\MngrPaycheck\bin\Debug\MngrPaycheck')
+#define ExePath   'ManagerPaycheck\MngrPaycheck\bin\Debug' + BasicName + '.exe'
 
-#define ApplicationVersion GetFileVersion('D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck\bin\Debug\MngrPaycheck.exe')
+#define ApplicationVersion GetFileVersion('ManagerPaycheck\MngrPaycheck\bin\Debug\MngrPaycheck.exe')
 
 #define MyAppPublisher "My Company, Inc."
 #define MyAppURL "http://www.MngrPaycheck.com/"
@@ -43,7 +43,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{E47B3D08-18D6-8986-A501-0A9DC87BADB9}
+AppId={{E47B3D08-18D6-9986-A501-0A9DC99BADB9}
 AppName={#BasicName}
 AppVerName={#BasicName} {#ApplicationVersion}
 VersionInfoVersion={#ApplicationVersion}
@@ -53,7 +53,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#BasicName}{#ApplicationVersion}
 DefaultGroupName={#BasicName}
-OutputDir=D:\Андрій\КПІ\IIIII семестр\STP\ManagerPaycheck\Project\ManagerPaycheckT\ManagerPaycheck\MngrPaycheck.Installer
+OutputDir=ManagerPaycheck\MngrPaycheck.Installer
 OutputBaseFilename=MngrPaycheck
 Compression=lzma
 SolidCompression=yes
