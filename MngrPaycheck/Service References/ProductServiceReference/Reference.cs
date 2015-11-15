@@ -9,133 +9,52 @@
 //------------------------------------------------------------------------------
 
 namespace MngrPaycheck.ProductServiceReference {
-    using System.Runtime.Serialization;
-    using System;
     
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GenericRepositoryOfProducth4m9Mq_Sw", Namespace="http://schemas.datacontract.org/2004/07/MngrPaycheck.DAL.Repositories.Abstract")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MngrPaycheck.ProductServiceReference.ProductRepository))]
-    public partial class GenericRepositoryOfProducth4m9Mq_Sw : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceReference.IService1")]
+    public interface IService1 {
         
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProducts", ReplyAction="http://tempuri.org/IService1/GetProductsResponse")]
+        string GetProducts();
         
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ProductRepository", Namespace="http://schemas.datacontract.org/2004/07/MngrPaycheck.DAL.Repositories.Abstract")]
-    [System.SerializableAttribute()]
-    public partial class ProductRepository : MngrPaycheck.ProductServiceReference.GenericRepositoryOfProducth4m9Mq_Sw {
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProducts", ReplyAction="http://tempuri.org/IService1/GetProductsResponse")]
+        System.Threading.Tasks.Task<string> GetProductsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceReference.IProductService")]
-    public interface IProductService {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DoWork", ReplyAction="http://tempuri.org/IProductService/DoWorkResponse")]
-        int DoWork(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DoWork", ReplyAction="http://tempuri.org/IProductService/DoWorkResponse")]
-        System.Threading.Tasks.Task<int> DoWorkAsync(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DoWork2", ReplyAction="http://tempuri.org/IProductService/DoWork2Response")]
-        int DoWork2(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DoWork2", ReplyAction="http://tempuri.org/IProductService/DoWork2Response")]
-        System.Threading.Tasks.Task<int> DoWork2Async(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Product", ReplyAction="http://tempuri.org/IProductService/ProductResponse")]
-        MngrPaycheck.ProductServiceReference.ProductRepository Product();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Product", ReplyAction="http://tempuri.org/IProductService/ProductResponse")]
-        System.Threading.Tasks.Task<MngrPaycheck.ProductServiceReference.ProductRepository> ProductAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DoWork3", ReplyAction="http://tempuri.org/IProductService/DoWork3Response")]
-        int DoWork3(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DoWork3", ReplyAction="http://tempuri.org/IProductService/DoWork3Response")]
-        System.Threading.Tasks.Task<int> DoWork3Async(int a, int b);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IProductServiceChannel : MngrPaycheck.ProductServiceReference.IProductService, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : MngrPaycheck.ProductServiceReference.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ProductServiceClient : System.ServiceModel.ClientBase<MngrPaycheck.ProductServiceReference.IProductService>, MngrPaycheck.ProductServiceReference.IProductService {
+    public partial class Service1Client : System.ServiceModel.ClientBase<MngrPaycheck.ProductServiceReference.IService1>, MngrPaycheck.ProductServiceReference.IService1 {
         
-        public ProductServiceClient() {
+        public Service1Client() {
         }
         
-        public ProductServiceClient(string endpointConfigurationName) : 
+        public Service1Client(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ProductServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public Service1Client(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ProductServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ProductServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public int DoWork(int a, int b) {
-            return base.Channel.DoWork(a, b);
+        public string GetProducts() {
+            return base.Channel.GetProducts();
         }
         
-        public System.Threading.Tasks.Task<int> DoWorkAsync(int a, int b) {
-            return base.Channel.DoWorkAsync(a, b);
-        }
-        
-        public int DoWork2(int a, int b) {
-            return base.Channel.DoWork2(a, b);
-        }
-        
-        public System.Threading.Tasks.Task<int> DoWork2Async(int a, int b) {
-            return base.Channel.DoWork2Async(a, b);
-        }
-        
-        public MngrPaycheck.ProductServiceReference.ProductRepository Product() {
-            return base.Channel.Product();
-        }
-        
-        public System.Threading.Tasks.Task<MngrPaycheck.ProductServiceReference.ProductRepository> ProductAsync() {
-            return base.Channel.ProductAsync();
-        }
-        
-        public int DoWork3(int a, int b) {
-            return base.Channel.DoWork3(a, b);
-        }
-        
-        public System.Threading.Tasks.Task<int> DoWork3Async(int a, int b) {
-            return base.Channel.DoWork3Async(a, b);
+        public System.Threading.Tasks.Task<string> GetProductsAsync() {
+            return base.Channel.GetProductsAsync();
         }
     }
 }

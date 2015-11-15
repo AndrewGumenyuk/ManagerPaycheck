@@ -13,7 +13,7 @@ namespace MngrPaycheck.DAL.Context
     public class MngPaycheckContext: DbContext, IMngPaycheckContext, IDisposable
     {
         public MngPaycheckContext()
-            : base("MngrPaycheckTestDB"){}
+            : base("MngrPaycheckTestFill2DB"){}
 
         public static readonly Lazy<MngPaycheckContext> _instance = new Lazy<MngPaycheckContext>(() => new MngPaycheckContext());
 

@@ -49,11 +49,16 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1-beta2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -87,6 +92,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services Logics\ProductSeviceLogics.cs" />
+    <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -111,7 +118,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="MngrPaycheck.Entity.Product.datasource" />
     <None Include="packages.config" />
+    <None Include="ProductService.WrapperProduct.datasource" />
     <None Include="Properties\Nortal.Utilities.AssemblyVersioning.MsBuildTask.props" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -119,25 +128,18 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Rules.ruleset" />
-    <None Include="Service References\ProductServiceReference\MngrPaycheck.ProductServiceReference.ProductRepository.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ProductServiceReference\ProductService.wsdl" />
-    <None Include="Service References\ProductServiceReference\ProductService.xsd">
+    <None Include="Service References\ProductServiceReference\Service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProductServiceReference\ProductService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductServiceReference\ProductService2.xsd">
+    <None Include="Service References\ProductServiceReference\Service1.wsdl" />
+    <None Include="Service References\ProductServiceReference\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Pictures\Settings.png" />
@@ -161,24 +163,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ProductServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductServiceReference\ProductService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MngrPaycheck.Common\MngrPaycheck.Common.csproj">
       <Project>{7E0E4BEA-94CC-45EC-8FB8-E57203B933B2}</Project>
       <Name>MngrPaycheck.Common</Name>
@@ -191,10 +175,28 @@
       <Project>{3FEAC9D1-FD99-4B63-9B35-0F04B6BA70D8}</Project>
       <Name>MngrPaycheck.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Product.WcfService\Product.WcfService.csproj">
-      <Project>{E5F843CB-3ECD-4B71-9B79-25C80557DE1D}</Project>
-      <Name>Product.WcfService</Name>
+    <ProjectReference Include="..\ProductService\ProductService.csproj">
+      <Project>{D557C6AB-C89F-47C6-9098-3A3357D6C277}</Project>
+      <Name>ProductService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ProductServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceReference\Service.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />

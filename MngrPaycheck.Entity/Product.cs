@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace MngrPaycheck.Entity
 {
     [DataContract]
+    [KnownType(typeof(ProductType))]
+    [Serializable]
     public class Product
     {
         public Product()
@@ -20,29 +22,42 @@ namespace MngrPaycheck.Entity
         }
 
         [Required][Key]
-        public Guid Id { get; private set; }
+        [DataMember]
+        public Guid Id { get; set; }
 
         [Required]
+        [DataMember]
         public string Name { get; set; }
 
         [Required]
+        [DataMember]
         public float Cost { get; set; }
 
         [Required]
+        [DataMember]
         public int Units { get; set; }
 
         [Required]
+        [DataMember]
         public string Description { get; set; }
 
+        [DataMember]
         public string Characteristicks { get; set; }
 
+        [DataMember]
         public Guid? ProductTypeID { get; set; }
 
         #region  properties
-        
+
         public virtual ProductType ProductType { get; set; }
+
+        [DataMember]
         public virtual ICollection<ProductParametrValue> ProductParametrValues { get; set; }
+
+        [DataMember]
         public virtual ICollection<Supermarket> Supermarkets { get; set; }
+
+        [DataMember]
         public virtual ICollection<Purchase> Purchases { get; set; } 
         #endregion
 
