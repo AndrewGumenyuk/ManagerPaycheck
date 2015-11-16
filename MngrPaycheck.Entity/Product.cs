@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MngrPaycheck.Entity
 {
     [DataContract]
-    [KnownType(typeof(ProductType))]
+    [KnownType(typeof(Product))]
     [Serializable]
     public class Product
     {
@@ -48,7 +48,7 @@ namespace MngrPaycheck.Entity
         public Guid? ProductTypeID { get; set; }
 
         #region  properties
-
+        [DataMember]
         public virtual ProductType ProductType { get; set; }
 
         [DataMember]

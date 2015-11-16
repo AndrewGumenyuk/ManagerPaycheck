@@ -19,7 +19,6 @@ using MngrPaycheck.ProductServiceReference;
 using MngrPaycheck.Services_Logics;
 using MngrPaycheck.ViewModel;
 using Newtonsoft.Json;
-using ProductService;
 
 
 namespace MngrPaycheck

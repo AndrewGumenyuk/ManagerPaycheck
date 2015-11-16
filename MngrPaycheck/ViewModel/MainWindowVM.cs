@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MngrPaycheck.Entity;
 using MngrPaycheck.ProductServiceReference;
 using MngrPaycheck.Services_Logics;
-using ProductService;
 
 namespace MngrPaycheck.ViewModel
 {

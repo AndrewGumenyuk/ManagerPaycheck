@@ -12,40 +12,40 @@ namespace MngrPaycheck.ProductServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceReference.IService1")]
-    public interface IService1 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceReference.IProductRepositoryService")]
+    public interface IProductRepositoryService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProducts", ReplyAction="http://tempuri.org/IService1/GetProductsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/GetProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/GetProductsResponse")]
         string GetProducts();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProducts", ReplyAction="http://tempuri.org/IService1/GetProductsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/GetProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/GetProductsResponse")]
         System.Threading.Tasks.Task<string> GetProductsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : MngrPaycheck.ProductServiceReference.IService1, System.ServiceModel.IClientChannel {
+    public interface IProductRepositoryServiceChannel : MngrPaycheck.ProductServiceReference.IProductRepositoryService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<MngrPaycheck.ProductServiceReference.IService1>, MngrPaycheck.ProductServiceReference.IService1 {
+    public partial class ProductRepositoryServiceClient : System.ServiceModel.ClientBase<MngrPaycheck.ProductServiceReference.IProductRepositoryService>, MngrPaycheck.ProductServiceReference.IProductRepositoryService {
         
-        public Service1Client() {
+        public ProductRepositoryServiceClient() {
         }
         
-        public Service1Client(string endpointConfigurationName) : 
+        public ProductRepositoryServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public Service1Client(string endpointConfigurationName, string remoteAddress) : 
+        public ProductRepositoryServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ProductRepositoryServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ProductRepositoryServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

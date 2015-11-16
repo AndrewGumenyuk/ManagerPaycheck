@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 using MngrPaycheck.Entity;
 using MngrPaycheck.ProductServiceReference;
 using Newtonsoft.Json;
-using ProductService;
 
 namespace MngrPaycheck.Services_Logics
 {
     public class ProductSeviceLogics
     {
-        ProductServiceReference.Service1Client _service1Client = new Service1Client();
+        ProductRepositoryServiceClient _service1Client = new ProductRepositoryServiceClient();
 
-        private WrapperProduct obj;
+        private WrapperProductUser obj;
 
         public ProductSeviceLogics()
         {
-            obj = JsonConvert.DeserializeObject<WrapperProduct>(_service1Client.GetProducts());
+            obj = JsonConvert.DeserializeObject<WrapperProductUser>(_service1Client.GetProducts());
         }
 
         public List<Product> Products()

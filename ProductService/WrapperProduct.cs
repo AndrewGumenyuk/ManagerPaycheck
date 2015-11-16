@@ -14,6 +14,7 @@ namespace ProductService
     public class WrapperProduct
     {
         public List<Product> CollectionProducts { get; set; }
+
         private ProductRepository _productRepository;
 
         public WrapperProduct()
