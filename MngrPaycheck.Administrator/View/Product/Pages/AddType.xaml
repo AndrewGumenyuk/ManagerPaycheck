@@ -1,0 +1,59 @@
+﻿<Page x:Class="MngrPaycheck.Administrator.View.Product.Pages.AddType"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="700"
+	Title="AddType">
+
+    <Grid Background="#FF58BEEE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="2" FontFamily="AR BERKLEY" FontSize="48" HorizontalAlignment="Center" Background="Transparent" Foreground="#FFEE4A4A" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="2"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform> Add type to product
+        </Label>
+        <ListView Name="UserGrid" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Products}"  Margin="10,10,10,10" FontFamily="Georgia" FontSize="14" FontWeight="Thin">
+            <ListView.View>
+                <GridView x:Name="grdTest">
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
+                    <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"  Width="100" />
+                    <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}" Width="120" />
+                    <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType}" Width="120" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <TextBox   Name="txtAddType" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Cost}" Grid.Row="2"   Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="5,5,5,5"/>
+            <Button Content="Add" Grid.Row="3" Grid.Column="0" Name="btnAdd" Command="{Binding Path=AddCommand}" Margin="5,5,5,5"/>
+            <Button Content="Update" Grid.Row="4" Grid.Column="0" Name="btnUpdate" Command="{Binding Path=UpdateCommad}" Margin="5,5,5,5"/>
+
+        </Grid>
+    </Grid>
+</Page>

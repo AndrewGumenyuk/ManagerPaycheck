@@ -1,0 +1,37 @@
+﻿<Page x:Class="MngrPaycheck.Administrator.View.Product.Pages.Top"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="50" d:DesignWidth="600"
+	Title="Top">
+
+    <Grid Background="#FF58BEEE">
+        <StackPanel VerticalAlignment="Top">
+            <Menu Width="Auto" Height="23" VerticalAlignment="Center" FontSize="13">
+                <MenuItem Header="_File">
+                    <MenuItem x:Name="AppExit" Header="E_xit" HorizontalAlignment="Left" Width="140">
+                       <MenuItem.Icon>
+                           <Image Source="../../../Content/Images/Exit.png"></Image>
+                       </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Tools">
+                    <MenuItem x:Name="Options" Header="_Options" HorizontalAlignment="Left" Width="140">
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/options.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem x:Name="About" Header="_About" HorizontalAlignment="Left" Width="140">
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/About.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+    </Grid>
+</Page>
