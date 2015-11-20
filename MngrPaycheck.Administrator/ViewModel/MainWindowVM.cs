@@ -15,7 +15,7 @@ namespace MngrPaycheck.Administrator.ViewModel
         
         public MainWindowVM()
         {
-            ClickCommand = new RelayCommand(arg => ViewFrmEditing());
+           // ClickCommand = new RelayCommand(arg => ViewFrmEditing());
         }
 
 

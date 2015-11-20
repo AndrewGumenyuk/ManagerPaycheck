@@ -7,9 +7,10 @@
       d:DesignHeight="500" d:DesignWidth="700"
 	Title="AddType">
 
-    <Grid Background="#FF58BEEE">
+    <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.6*"></RowDefinition>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="1.5*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -19,17 +20,31 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.ColumnSpan="2" FontFamily="AR BERKLEY" FontSize="48" HorizontalAlignment="Center" Background="Transparent" Foreground="#FFEE4A4A" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="2"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform> Add type to product
-        </Label>
-        <ListView Name="UserGrid" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Products}"  Margin="10,10,10,10" FontFamily="Georgia" FontSize="14" FontWeight="Thin">
+        <Label FontSize="12"  Grid.Row="0" Grid.ColumnSpan="2" Background="#FFE2E2E2" FontFamily="Candara" FontStyle="Italic" Foreground="#FF595959">Panel of menu</Label>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0,2,0,0" Background="#EEf5f9">
+            <ToolBar HorizontalAlignment="Left">
+                <Menu  FontSize="13" FontFamily="arial" Background="#EEf5f9" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Margin="0" Width="25" >
+                    <MenuItem.Icon>
+                        <Image Source="../../../Content/Images/Exit.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                    <MenuItem Width="25">
+                    <MenuItem.Icon>
+                        <Image Source="../../../Content/Images/options.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                    <MenuItem Width="25">
+                    <MenuItem.Icon>
+                        <Image Source="../../../Content/Images/About.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
+            </ToolBar>
+        </Border>
+
+
+        <!--<ListView Name="UserGrid" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Products}"  Margin="10,10,10,10" FontFamily="Arial" FontSize="13"  >
             <ListView.View>
                 <GridView x:Name="grdTest">
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
@@ -38,22 +53,23 @@
                     <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType}" Width="120" />
                 </GridView>
             </ListView.View>
-        </ListView>
+        </ListView>-->
 
-        <Grid Grid.Row="1" Grid.Column="0">
+        <!--<Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
-
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
+
+            
             <TextBox   Name="txtAddType" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Cost}" Grid.Row="2"   Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="5,5,5,5"/>
-            <Button Content="Add" Grid.Row="3" Grid.Column="0" Name="btnAdd" Command="{Binding Path=AddCommand}" Margin="5,5,5,5"/>
+            <Button Content="Add" Grid.Row="3" Grid.Column="0" Name="btnAdd" Command="{Binding Path=AddCommand}" Margin="5,5,5,5" FontFamily="Arial" FontWeight="13"/>
             <Button Content="Update" Grid.Row="4" Grid.Column="0" Name="btnUpdate" Command="{Binding Path=UpdateCommad}" Margin="5,5,5,5"/>
 
-        </Grid>
+        </Grid>-->
     </Grid>
 </Page>

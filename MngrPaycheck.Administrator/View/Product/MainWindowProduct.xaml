@@ -1,18 +1,18 @@
 ﻿<Window x:Class="MngrPaycheck.Administrator.View.Product.MainWindowProduct"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindowProduct" Height="700" Width="1100">
+        Title="MainWindowProduct" Height="600" Width="1100">
     <Grid Background="Ivory">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition Height="17*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+        <Grid Grid.Row="0" Grid.ColumnSpan="3">
             <DockPanel>
                 <Frame x:Name="Top1" />
             </DockPanel>
@@ -22,11 +22,15 @@
                 <Frame x:Name="LSidebar"/>
             </DockPanel>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="1">
+        <GridSplitter Background="White"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Width="3"/>
+
+        <Border Grid.Row="1" Grid.Column="1"  BorderBrush="#FFA6A5A5"  BorderThickness="2,2,2,2">
+        <Grid Margin="2,2,2,2">
             <DockPanel>
                 <Frame x:Name="Pages"/>
             </DockPanel>
         </Grid>
+           </Border>
         
     </Grid>
 </Window>

@@ -71,7 +71,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Product\Pages\LeftSidebar.xaml">
+    <Page Include="View\Product\Pages\LSidebar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,8 +109,8 @@
     <Compile Include="View\Product\Pages\AddType.xaml.cs">
       <DependentUpon>AddType.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Product\Pages\LeftSidebar.xaml.cs">
-      <DependentUpon>LeftSidebar.xaml</DependentUpon>
+    <Compile Include="View\Product\Pages\LSidebar.xaml.cs">
+      <DependentUpon>LSidebar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Product\Pages\Top.xaml.cs">
       <DependentUpon>Top.xaml</DependentUpon>

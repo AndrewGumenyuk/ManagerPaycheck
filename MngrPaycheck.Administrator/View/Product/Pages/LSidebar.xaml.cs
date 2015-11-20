@@ -17,16 +17,13 @@ using MngrPaycheck.Administrator.ViewModel.Product.VMPages;
 namespace MngrPaycheck.Administrator.View.Product.Pages
 {
     /// <summary>
-    /// Interaction logic for LeftSidebar.xaml
+    /// Interaction logic for LSidebar.xaml
     /// </summary>
-    public partial class LeftSidebar : Page
+    public partial class LSidebar : Page
     {
-        private LeftSidebarVM _vm;
-        public LeftSidebar()
+        public LSidebar()
         {
             InitializeComponent();
-            this._vm = new LeftSidebarVM();
-            this.DataContext = _vm;
         }
     }
 }

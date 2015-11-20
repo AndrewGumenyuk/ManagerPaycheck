@@ -21,15 +21,15 @@
         <Setter Property="Label.FontWeight" Value="Regular"/>
     </Style>
 
-    <Style x:Key="SimpleListBoxItem" TargetType="ListBoxItem">
+    <Style x:Key="SimpleListBoxItem" TargetType="MenuItem">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="ListBoxItem">
+                <ControlTemplate TargetType="MenuItem">
                     <Border Name="Border" Padding="2" SnapsToDevicePixels="true">
                         <ContentPresenter/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="true">
+                        <Trigger Property="IsPressed" Value="true">
                             <Setter TargetName="Border" Property="Background" Value="Red"/>
                             <Setter Property="Foreground" Value="White"/>
                         </Trigger>
