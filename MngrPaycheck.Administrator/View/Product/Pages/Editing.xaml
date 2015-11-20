@@ -1,34 +1,75 @@
 ﻿<Page x:Class="MngrPaycheck.Administrator.View.FrmEditing"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Editing" Height="600" Width="820">
-    <Grid Background="Ivory">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
-        </Grid.RowDefinitions>
-        
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="700"
+	Title="Editing">
 
-        <!--string name;
-        float cost;
-        int units;
-        string description;
-        string characteristicks;-->
-        
-       <Grid Grid.Row="0">
-           <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"></RowDefinition>
-                <RowDefinition Height="0.5*"></RowDefinition>
-                <RowDefinition Height="0.5*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-            </Grid.RowDefinitions>
-           <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                <ColumnDefinition Width="0.7*"></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="7.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label FontSize="12"  Grid.Row="0" Grid.ColumnSpan="2" Background="#FFE2E2E2" FontFamily="Candara" FontStyle="Italic" Foreground="#FF595959" VerticalAlignment="Center">Add type to products</Label>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0,2,0,0" Background="#EEf5f9">
+            <ToolBar HorizontalAlignment="Left">
+                <Menu  FontSize="13" FontFamily="arial" Background="#EEf5f9" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <MenuItem Margin="0" Width="25" >
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/Exit.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Width="25">
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/options.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Width="25">
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/About.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </Menu>
+            </ToolBar>
+        </Border>
+
+        <Border Grid.Row="3" Grid.ColumnSpan="2" BorderThickness="3,3,3,3" Background="#EEf5f9">
+            <ListView Name="UserGrid" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Products}"  Margin="10,10,10,10" FontFamily="Arial" FontSize="12"  >
+                <ListView.View>
+                    <GridView x:Name="grdTest">
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"  Width="100" />
+                        <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}" Width="100" />
+                        <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType}" Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Background="#EEf5f9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                <ColumnDefinition Width="2.7*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="1.2*"></RowDefinition>
+            </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" Content="Name: " Style="{StaticResource SidebarLblEditing}"/>
             <Label Grid.Row="1" Grid.Column="0" Content="Cost: " Style="{StaticResource SidebarLblEditing}"/>
@@ -41,19 +82,21 @@
             <TextBox   Name="txtUnits" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Units}" Grid.Row="2" Grid.Column="1" Style="{StaticResource SidebarTxtBoxEditing}"/>
             <TextBox   Name="txtDescription" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Description}" Grid.RowSpan="3" Grid.Column="3" Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="10,10,10,10"/>
             <TextBox   Name="txtCharacteristicks" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Characteristicks}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="5,5,5,5"/>
+        </Grid>
+    </Grid>
+
+    <!--<Label Grid.Row="0" Grid.Column="0" Content="Name: " Style="{StaticResource SidebarLblEditing}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Cost: " Style="{StaticResource SidebarLblEditing}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Units: " Style="{StaticResource SidebarLblEditing}"/>
+            <Label Grid.Row="1" Grid.Column="2" Content="Description: " Style="{StaticResource SidebarLblEditing}" Margin="10,0,0,0"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Characts: " Style="{StaticResource SidebarLblEditing}"/>
+
+            <TextBox   Name="txtName" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Name}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtCost" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Cost}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtUnits" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Units}" Grid.Row="2" Grid.Column="1" Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtDescription" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Description}" Grid.RowSpan="3" Grid.Column="3" Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="10,10,10,10"/>
+            <TextBox   Name="txtCharacteristicks" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Characteristicks}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="5,5,5,5"/>
 
             <Button Content="Update" Grid.Row="4" Grid.Column="1" Name="btnUpdate" Command="{Binding Path=UpdateCommad}" Margin="20,20,20,20" />
-            <Button Content="Update" Grid.Row="4" Grid.Column="2" Margin="20,20,20,20" Name="btnUpdate2" Command="{Binding ClickCommand}"  />
-        </Grid>
-
-        <ListView Name="UserGrid" Grid.Row="1" ItemsSource="{Binding Products}"  Margin="20,20,20,20" FontFamily="Georgia" FontSize="14" FontWeight="Thin">
-            <ListView.View>
-                <GridView x:Name="grdTest">
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="50"/>
-                    <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"  Width="80" />
-                    <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}" Width="100" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </Grid>
+            <Button Content="Update" Grid.Row="4" Grid.Column="2" Margin="20,20,20,20" Name="btnUpdate2" Command="{Binding ClickCommand}"  />-->
 </Page>

@@ -21,9 +21,13 @@ namespace MngrPaycheck.Administrator.View.Product.Pages
     /// </summary>
     public partial class LSidebar : Page
     {
+        private LeftSidebarVM _vm;
         public LSidebar()
         {
             InitializeComponent();
+
+            _vm = new LeftSidebarVM();
+            this.DataContext = _vm;
         }
     }
 }

@@ -43,19 +43,16 @@
         </Setter>
     </Style>
 
-    
     <Style x:Key="SidebarLblEditing" TargetType="Label">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="FontFamily" Value="Georgia"/>
-        <Setter Property="FontSize" Value="14"></Setter>
-        <Setter Property="FontWeight" Value="ExtraBlack"></Setter>
-        
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="12"></Setter>        
     </Style>
 
     <Style x:Key="SidebarTxtBoxEditing" TargetType="TextBox">
         <Setter Property="FontFamily" Value="Arial"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
     </Style>
 </ResourceDictionary>

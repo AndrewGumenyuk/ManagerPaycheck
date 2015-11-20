@@ -25,8 +25,8 @@ namespace MngrPaycheck.Administrator.View.Product
             InitializeComponent();
             Top1.Navigate(new Top());
             LSidebar.Navigate(new LSidebar());
-            //Pages.Navigate(new FrmEditing());
-            Pages.Navigate(new AddType());
+            Pages.Navigate(new FrmEditing());
+            //Pages.Navigate(new AddType());
         }
     }
 }

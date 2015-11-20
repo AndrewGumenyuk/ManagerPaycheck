@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using MngrPaycheck.Administrator.View;
 using MngrPaycheck.Administrator.View.Product;
@@ -12,15 +13,22 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMPages
 {
     public class LeftSidebarVM
     {
-        LSidebar leftSidebar = new LSidebar();
+        
         public LeftSidebarVM()
         {
-            //ClickCommand = new RelayCommand(arg => ViewPageEditing());
-            //ClickCallMenu = new RelayCommand(arg => OpenRadialMenu());
+            ClickGoToAddProduct = new RelayCommand(ViewFrmEditing);
         }
 
-        public ICommand ClickCommand { get; set; }
-        public ICommand ClickCallMenu { get; set; }
+        private void ViewFrmEditing()
+        {
+            //Pages.Navigate(new FrmEditing());
+            MainWindowProduct _mainWindowProduct = new MainWindowProduct();
+            //_mainWindowProduct.Pages.Navigate(new FrmEditing());
+           _mainWindowProduct.Pages.Navigate(new AddType());
+        }
+
+        public ICommand ClickGoToAddProduct { get; set; }
+
 
     }
 }

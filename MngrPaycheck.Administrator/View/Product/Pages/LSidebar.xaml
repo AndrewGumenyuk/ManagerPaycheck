@@ -24,7 +24,7 @@
         <Border Grid.Row="0" Grid.RowSpan="4" Background="#FFA7A7B6" BorderBrush="#FFA6A5A5"  BorderThickness="0,2,0,0">
             <Menu  FontSize="13" Grid.Row="0" Grid.RowSpan="3" FontFamily="arial" Margin="2,2,2,2" >
                 <Label FontSize="10" FontFamily="Candara" FontStyle="Italic" Foreground="#FF595959">Main panel</Label>
-                <MenuItem Header="_Add a product" >
+                <MenuItem Header="_Add a product" Command="{Binding ClickGoToAddProduct}">
                     <MenuItem.Icon>
                         <Image Source="../../../Content/Images/Exit.png"></Image>
                     </MenuItem.Icon>
