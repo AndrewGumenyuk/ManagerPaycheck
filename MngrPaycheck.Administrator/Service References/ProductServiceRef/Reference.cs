@@ -20,6 +20,24 @@ namespace MngrPaycheck.Administrator.ProductServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/GetProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/GetProductsResponse")]
         System.Threading.Tasks.Task<string> GetProductsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/AddProduct", ReplyAction="http://tempuri.org/IProductRepositoryService/AddProductResponse")]
+        void AddProduct(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/AddProduct", ReplyAction="http://tempuri.org/IProductRepositoryService/AddProductResponse")]
+        System.Threading.Tasks.Task AddProductAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/DeleteProduct", ReplyAction="http://tempuri.org/IProductRepositoryService/DeleteProductResponse")]
+        void DeleteProduct(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/DeleteProduct", ReplyAction="http://tempuri.org/IProductRepositoryService/DeleteProductResponse")]
+        System.Threading.Tasks.Task DeleteProductAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/UpdateProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/UpdateProductsResponse")]
+        void UpdateProducts(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/UpdateProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/UpdateProductsResponse")]
+        System.Threading.Tasks.Task UpdateProductsAsync(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +73,30 @@ namespace MngrPaycheck.Administrator.ProductServiceRef {
         
         public System.Threading.Tasks.Task<string> GetProductsAsync() {
             return base.Channel.GetProductsAsync();
+        }
+        
+        public void AddProduct(string json) {
+            base.Channel.AddProduct(json);
+        }
+        
+        public System.Threading.Tasks.Task AddProductAsync(string json) {
+            return base.Channel.AddProductAsync(json);
+        }
+        
+        public void DeleteProduct(string json) {
+            base.Channel.DeleteProduct(json);
+        }
+        
+        public System.Threading.Tasks.Task DeleteProductAsync(string json) {
+            return base.Channel.DeleteProductAsync(json);
+        }
+        
+        public void UpdateProducts(string json) {
+            base.Channel.UpdateProducts(json);
+        }
+        
+        public System.Threading.Tasks.Task UpdateProductsAsync(string json) {
+            return base.Channel.UpdateProductsAsync(json);
         }
     }
 }

@@ -9,11 +9,19 @@ using MngrPaycheck.Entity;
 
 namespace ProductService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IProductRepositoryService
     {
         [OperationContract]
         string GetProducts();
+
+        [OperationContract]
+        void AddProduct(string json);
+
+        [OperationContract]
+        void DeleteProduct(string json);
+
+        [OperationContract]
+        void UpdateProducts(string json);
     }
 }

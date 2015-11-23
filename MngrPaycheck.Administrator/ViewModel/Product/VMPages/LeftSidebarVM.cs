@@ -16,7 +16,6 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMPages
         
         public LeftSidebarVM()
         {
-            ClickGoToAddProduct = new RelayCommand(ViewFrmEditing);
         }
 
         private void ViewFrmEditing()
@@ -28,7 +27,5 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMPages
         }
 
         public ICommand ClickGoToAddProduct { get; set; }
-
-
     }
 }

@@ -8,6 +8,7 @@ using MngrPaycheck.DAL.Context;
 using MngrPaycheck.DAL.Repositories;
 using MngrPaycheck.DAL.Repositories.Abstract;
 using MngrPaycheck.Entity;
+using Newtonsoft.Json;
 
 namespace ProductService
 {
@@ -21,6 +22,11 @@ namespace ProductService
         {
             _productRepository = new ProductRepository(MngPaycheckContext.Instance);
             CollectionProducts = (List<Product>) _productRepository.GetAll();
+        }
+
+        public Product DeserializeProduct(string json)
+        {
+            return JsonConvert.DeserializeObject<Product>(json);
         }
     }
 }

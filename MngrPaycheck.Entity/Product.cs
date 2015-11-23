@@ -27,7 +27,7 @@ namespace MngrPaycheck.Entity
         private ICollection<ProductParametrValue> productParametrValues;
         private ICollection<Supermarket> supermarkets;
         private ICollection<Purchase> purchases;
-        
+
 
         public Product()
         {

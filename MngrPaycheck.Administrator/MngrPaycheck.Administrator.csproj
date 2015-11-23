@@ -67,7 +67,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Product\Pages\AddParameter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Product\Pages\AddType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product\Pages\AddValueToParameter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,6 +106,7 @@
     </Compile>
     <Compile Include="Services Logics\ProductServiceLogics.cs" />
     <Compile Include="Services Logics\WrapperProductAdministrator.cs" />
+    <Compile Include="ViewModel\Commands\ViewModelBase.cs" />
     <Compile Include="ViewModel\Product\VMPages\LeftSidebarVM.cs" />
     <Compile Include="ViewModel\Product\VMPages\TopVM.cs" />
     <Compile Include="ViewModel\Product\VMProducts\EditiingProductVM.cs" />
@@ -106,8 +115,14 @@
     <Compile Include="View\Product\MainWindowProduct.xaml.cs">
       <DependentUpon>MainWindowProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Product\Pages\AddParameter.xaml.cs">
+      <DependentUpon>AddParameter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Product\Pages\AddType.xaml.cs">
       <DependentUpon>AddType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\Pages\AddValueToParameter.xaml.cs">
+      <DependentUpon>AddValueToParameter.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Product\Pages\LSidebar.xaml.cs">
       <DependentUpon>LSidebar.xaml</DependentUpon>
@@ -197,12 +212,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="update8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="update8%281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Content\Images\Exit.png" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +219,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\Images\About.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\Update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\Delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -19,21 +19,39 @@ using Newtonsoft.Json;
 
 namespace ProductService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class ProductRepositoryService : IProductRepositoryService
     {
+        private ProductRepository _productRepository = new ProductRepository(MngPaycheckContext.Instance);
+        WrapperProduct wrapperProduct = new WrapperProduct();
         public string GetProducts()
         {
             var settings = new JsonSerializerSettings()
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects,
             };
-
-            WrapperProduct wrapperProduct = new WrapperProduct();
+            
             string json = JsonConvert.SerializeObject(wrapperProduct, settings);
 
             return json;
+        }
+
+        public void AddProduct(string json)
+        {
+            _productRepository.Add(wrapperProduct.DeserializeProduct(json));
+            _productRepository.Save();
+        }
+
+        public void DeleteProduct(string json)
+        {
+            _productRepository.Delete(_productRepository.GetById(wrapperProduct.DeserializeProduct(json).Id));
+            _productRepository.Save();
+        }
+
+        public void UpdateProducts(string json)
+        {
+            _productRepository.Delete(_productRepository.GetById(wrapperProduct.DeserializeProduct(json).Id));
+            _productRepository.Add(wrapperProduct.DeserializeProduct(json));
+            _productRepository.Save();
         }
     }
 }

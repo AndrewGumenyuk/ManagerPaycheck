@@ -1,77 +1,139 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.AccessControl;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using MngrPaycheck.Administrator.Services_Logics;
 using MngrPaycheck.Administrator.View;
+using MngrPaycheck.Administrator.ViewModel.Commands;
 using MngrPaycheck.Entity;
+using Newtonsoft.Json;
 
 namespace MngrPaycheck.Administrator.ViewModel
 {
-    public class EditiingProductVM
+    public class EditiingProductVM:  ViewModelBase
     {
         private ProductSeviceLogics _productSeviceLogics;
-        private IList<Entity.Product> ListProducts;
+        private ObservableCollection<Entity.Product> _products;
+        public Entity.Product _product;
 
         public EditiingProductVM()
         {
             _productSeviceLogics = new ProductSeviceLogics();
-            ListProducts = _productSeviceLogics.Products();
-
-            //ClickCommand = new RelayCommand(arg => ViewFrmEditing());
-
+            Products = _productSeviceLogics.Products();
+            Product = new Entity.Product();
         }
-        public IList<Entity.Product> Products
+
+        public ObservableCollection<Entity.Product> Products
         {
-            get { return ListProducts; }
-            set { ListProducts = value; }
+            get { return _products; }
+            set { _products = value;
+                OnPropertyChanged("Products"); }
         }
 
-        public ICommand ClickCommand { get; set; }
+        public Entity.Product Product
+        {
+            get { return _product; }
+            set
+                { _product = value;
+               NotifyPropertyChanged("Product"); }
+        }
 
-        //private void ViewFrmEditing()
-        //{
-        //    FrmEditing frmEditing = new FrmEditing();
-        //    frmEditing.Show();
-        //}
+        private Entity.Product _selectedBook;
+        public Entity.Product SelectedProduct
+        {
+            get { return _selectedBook; }
+            set
+            {
+                try
+                {
+                    Product = new Entity.Product();//To retrieve data from textboxes
+                    Product.Id = value.Id;
+                    Product.Name = value.Name;
+                    Product.Characteristicks = value.Characteristicks;
+                    Product.Cost = value.Cost;
+                    Product.Description = value.Description;
+                    Product.Units = value.Units;
+                }
+                catch (Exception){}
 
+                _selectedBook = value;
+                OnPropertyChanged("SelectedProduct");
+            }
+        }
 
-        private ICommand mUpdater;
+        private void AddNewBook(object arg)
+        {
+            Products.Add(Product);
+            _productSeviceLogics.AddProduct(_productSeviceLogics.SerializeProduct(Product));         
+            Product = new Entity.Product();//In order to reset the selected product
+        }
 
-        public ICommand UpdateCommand
+        private void RemoveBook(object args)
+        {
+            _productSeviceLogics.DeleteProduct(_productSeviceLogics.SerializeProduct(_selectedBook));
+            Products.Remove(_selectedBook);
+        }
+
+        private void UpdateProduct(object args)
+        {
+            int i = 0;
+            foreach (var item in Products)
+            {
+                if (item.Id==Product.Id)
+                {
+                    i++;
+                }
+            }
+            _productSeviceLogics.UpdateProducts(_productSeviceLogics.SerializeProduct(Product));
+            Products[i] = Product;
+        }
+
+        #region Commands
+        private RelayCommand _addBookCommand;
+        public RelayCommand AddBookCommand
         {
             get
             {
-                if (mUpdater == null)
-                    mUpdater = new Updater();
-                return mUpdater;
-            }
-            set
-            {
-                mUpdater = value;
+                return _addBookCommand ?? (_addBookCommand = new RelayCommand(AddNewBook));
             }
         }
 
-        private class Updater : ICommand
+
+        private RelayCommand _removeBookCommand;
+        public RelayCommand RemoveBookCommand
         {
-            #region ICommand Members
-
-            public bool CanExecute(object parameter)
+            get
             {
-                return true;
+                return _removeBookCommand ?? (_removeBookCommand = new RelayCommand(RemoveBook));
             }
-
-            public event EventHandler CanExecuteChanged;
-
-            public void Execute(object parameter)
-            {
-
-            }
-
-            #endregion
         }
+
+        private RelayCommand _updateProductCommand;
+
+        public RelayCommand UpdateProductCommand
+        {
+            get { return _updateProductCommand ?? (_updateProductCommand = new RelayCommand(UpdateProduct)); }
+        }
+        #endregion
+
+
+        #region Events
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region Private Methods
+        private void OnPropertyChanged(string propertyChanged)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyChanged));
+        }
+        #endregion
     }
 }

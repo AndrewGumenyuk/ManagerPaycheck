@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,43 +10,61 @@ namespace MngrPaycheck.Administrator.ViewModel
 {
     public class RelayCommand : ICommand
     {
+            #region Fields
 
-        private Action action;
+            readonly Action<object> _execute;
+            readonly Predicate<object> _canExecute;
 
-        private Func<bool> condition;
+            #endregion // Fields
 
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            #region Constructors
+
+            /// <summary>
+            /// Creates a new command that can always execute.
+            /// </summary>
+            /// <param name="execute">The execution logic.</param>
+            public RelayCommand(Action<object> execute)
+                : this(execute, null)
+            {
+            }
+
+            /// <summary>
+            /// Creates a new command.
+            /// </summary>
+            /// <param name="execute">The execution logic.</param>
+            /// <param name="canExecute">The execution status logic.</param>
+            public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+            {
+                if (execute == null)
+                    throw new ArgumentNullException("execute");
+
+                _execute = execute;
+                _canExecute = canExecute;
+            }
+
+            #endregion // Constructors
+
+            #region ICommand Members
+
+            [DebuggerStepThrough]
+            public bool CanExecute(object parameters)
+            {
+                return _canExecute == null ? true : _canExecute(parameters);
+            }
+
+            public event EventHandler CanExecuteChanged
+            {
+                add { CommandManager.RequerySuggested += value; }
+                remove { CommandManager.RequerySuggested -= value; }
+            }
+
+            public void Execute(object parameters)
+            {
+                _execute(parameters);
+            }
+
+            #endregion // ICommand Members
+
+
         }
-
-        public RelayCommand(Action action)
-        {
-            this.action = action;
-            this.condition = () => true;
-        }
-
-        public RelayCommand(Action action, bool condition)
-        {
-            this.action = action;
-            this.condition = () => condition;
-        }
-
-        public RelayCommand(Action action, Func<bool> condition)
-        {
-            this.action = action;
-            this.condition = condition;
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return condition.Invoke();
-        }
-
-        public void Execute(object parameter)
-        {
-            action.Invoke();
-        }
-    }
 }

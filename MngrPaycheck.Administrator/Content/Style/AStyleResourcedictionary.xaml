@@ -49,10 +49,68 @@
         <Setter Property="FontFamily" Value="Arial"/>
         <Setter Property="FontSize" Value="12"></Setter>        
     </Style>
+    
+    <Style x:Key="SidebarLblEditingAll" TargetType="Label" BasedOn="{StaticResource SidebarLblEditing}">
+        <Setter Property="Margin" Value="10,0,0,0"/>
+    </Style>
 
     <Style x:Key="SidebarTxtBoxEditing" TargetType="TextBox">
         <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="MaxHeight" Value="30"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Visible"></Setter>
+    </Style>
+
+    <Style x:Key="FullSidebarTxtBoxEditing" BasedOn="{StaticResource SidebarTxtBoxEditing}" TargetType="TextBox">
+        <Setter Property="MaxHeight" Value="70"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+    </Style>
+
+    <Style x:Key="ListViewAll" TargetType="ListView">
+        <Setter Property="Margin" Value="10,10,10,10"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style x:Key="TopMenu" TargetType="Menu">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Background" Value="#EEf5f9"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
+    <Style x:Key="ToolBar" TargetType="ToolBar">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="Border" TargetType="Border">
+        <Setter Property="BorderThickness" Value="0,2,0,0"/>
+        <Setter Property="Background" Value="#EEf5f9"/>
+    </Style>
+
+    <Style x:Key="TopSign" TargetType="Label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Background" Value="#FFE2E2E2"/>
+        <Setter Property="FontFamily" Value="Candara"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="Foreground" Value="#FF595959"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    
+    <Style x:Key="GridPage" TargetType="Grid">
+        <Setter Property="Background" Value="White"></Setter>
+    </Style>
+
+    <Style x:Key="BorderListView" TargetType="Border">
+        <Setter Property="BorderThickness" Value="3,3,3,3"/>
+        <Setter Property="Background" Value="#EEf5f9"/>
+    </Style>
+    
+    <Style x:Key="TopGrid" TargetType="Grid">
+        <Setter Property="Background" Value="#EEf5f9"/>
     </Style>
 </ResourceDictionary>

@@ -7,11 +7,11 @@
       d:DesignHeight="500" d:DesignWidth="700"
 	Title="Editing">
 
-    <Grid Background="White">
+    <Grid Style="{StaticResource GridPage}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.6*"></RowDefinition>
             <RowDefinition Height="0.6*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="3.3*"></RowDefinition>
             <RowDefinition Height="7.5*"/>
         </Grid.RowDefinitions>
 
@@ -20,47 +20,48 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Label FontSize="12"  Grid.Row="0" Grid.ColumnSpan="2" Background="#FFE2E2E2" FontFamily="Candara" FontStyle="Italic" Foreground="#FF595959" VerticalAlignment="Center">Add type to products</Label>
-        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0,2,0,0" Background="#EEf5f9">
-            <ToolBar HorizontalAlignment="Left">
-                <Menu  FontSize="13" FontFamily="arial" Background="#EEf5f9" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <MenuItem Margin="0" Width="25" >
+        <Label Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TopSign}">Add type to products</Label>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Border}">
+            <ToolBar Style="{StaticResource ToolBar}">
+                <Menu Style="{StaticResource TopMenu}">
+                    <MenuItem Width="25" Command="{Binding AddBookCommand}" >
                         <MenuItem.Icon>
-                            <Image Source="../../../Content/Images/Exit.png"></Image>
+                            <Image Source="../../../Content/Images/Add.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Width="25">
+                    <MenuItem Width="25" Command="{Binding Path=UpdateProductCommand}">
                         <MenuItem.Icon>
-                            <Image Source="../../../Content/Images/options.png"></Image>
+                            <Image Source="../../../Content/Images/Update.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Width="25">
+                    <MenuItem Width="25" Command="{Binding RemoveBookCommand}">
                         <MenuItem.Icon>
-                            <Image Source="../../../Content/Images/About.png"></Image>
+                            <Image Source="../../../Content/Images/Delete.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
                 </Menu>
             </ToolBar>
         </Border>
 
-        <Border Grid.Row="3" Grid.ColumnSpan="2" BorderThickness="3,3,3,3" Background="#EEf5f9">
-            <ListView Name="UserGrid" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Products}"  Margin="10,10,10,10" FontFamily="Arial" FontSize="12"  >
+        <Border Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource BorderListView}">
+            <ListView Name="UserGrid" ItemsSource="{Binding Products, Mode=TwoWay}" SelectedItem="{Binding SelectedProduct}" Style="{StaticResource ListViewAll}">
                 <ListView.View>
                     <GridView x:Name="grdTest">
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
-                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"  Width="100" />
-                        <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}" Width="100" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost, Mode=TwoWay}"  Width="100" />
+                        <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units, Mode=TwoWay}" Width="100" />
                         <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType}" Width="100" />
                     </GridView>
                 </ListView.View>
             </ListView>
         </Border>
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="2" Background="#EEf5f9">
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource TopGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.3*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
                 <ColumnDefinition Width="2.7*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
@@ -74,29 +75,14 @@
             <Label Grid.Row="0" Grid.Column="0" Content="Name: " Style="{StaticResource SidebarLblEditing}"/>
             <Label Grid.Row="1" Grid.Column="0" Content="Cost: " Style="{StaticResource SidebarLblEditing}"/>
             <Label Grid.Row="2" Grid.Column="0" Content="Units: " Style="{StaticResource SidebarLblEditing}"/>
-            <Label Grid.Row="1" Grid.Column="2" Content="Description: " Style="{StaticResource SidebarLblEditing}" Margin="10,0,0,0"/>
-            <Label Grid.Row="3" Grid.Column="0" Content="Characts: " Style="{StaticResource SidebarLblEditing}"/>
+            <Label Grid.Row="1" Grid.Column="2" Content="Description: " Style="{StaticResource SidebarLblEditingAll}"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Chs: " Style="{StaticResource SidebarLblEditing}"/>
 
-            <TextBox   Name="txtName" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Name}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
-            <TextBox   Name="txtCost" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Cost}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
-            <TextBox   Name="txtUnits" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Units}" Grid.Row="2" Grid.Column="1" Style="{StaticResource SidebarTxtBoxEditing}"/>
-            <TextBox   Name="txtDescription" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Description}" Grid.RowSpan="3" Grid.Column="3" Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="10,10,10,10"/>
-            <TextBox   Name="txtCharacteristicks" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Characteristicks}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="5,5,5,5"/>
+            <TextBox   Name="txtName"  Text="{Binding Product.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="0" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtCost" Text="{Binding Product.Cost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtUnits" Text="{Binding Product.Units, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtDescription" Text="{Binding Product.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="3" Grid.Column="3" Style="{StaticResource FullSidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtCharacteristicks" Text="{Binding Product.Characteristicks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource SidebarTxtBoxEditing}" />
         </Grid>
     </Grid>
-
-    <!--<Label Grid.Row="0" Grid.Column="0" Content="Name: " Style="{StaticResource SidebarLblEditing}"/>
-            <Label Grid.Row="1" Grid.Column="0" Content="Cost: " Style="{StaticResource SidebarLblEditing}"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="Units: " Style="{StaticResource SidebarLblEditing}"/>
-            <Label Grid.Row="1" Grid.Column="2" Content="Description: " Style="{StaticResource SidebarLblEditing}" Margin="10,0,0,0"/>
-            <Label Grid.Row="3" Grid.Column="0" Content="Characts: " Style="{StaticResource SidebarLblEditing}"/>
-
-            <TextBox   Name="txtName" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Name}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
-            <TextBox   Name="txtCost" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Cost}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
-            <TextBox   Name="txtUnits" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Units}" Grid.Row="2" Grid.Column="1" Style="{StaticResource SidebarTxtBoxEditing}"/>
-            <TextBox   Name="txtDescription" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Description}" Grid.RowSpan="3" Grid.Column="3" Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="10,10,10,10"/>
-            <TextBox   Name="txtCharacteristicks" Text="{Binding ElementName=UserGrid,Path=SelectedItem.Characteristicks}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource SidebarTxtBoxEditing}" VerticalAlignment="Stretch" Margin="5,5,5,5"/>
-
-            <Button Content="Update" Grid.Row="4" Grid.Column="1" Name="btnUpdate" Command="{Binding Path=UpdateCommad}" Margin="20,20,20,20" />
-            <Button Content="Update" Grid.Row="4" Grid.Column="2" Margin="20,20,20,20" Name="btnUpdate2" Command="{Binding ClickCommand}"  />-->
 </Page>
