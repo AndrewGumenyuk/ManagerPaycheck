@@ -16,6 +16,7 @@ namespace MngrPaycheck.DAL.Repositories
         {
         }
 
+        //formal structure Protype
         public object Clone()
         {
             var clone = new PurchaseRepository(MngPaycheckContext.Instance.ShallowCopy());

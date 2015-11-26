@@ -38,7 +38,7 @@ namespace MngrPaycheck.Logics.WorkingPurchases
             return (new Memento((PurchaseRepository)_purchaseRepository.Clone()));
         }
 
-        public void SedMemento(Memento memento)
+        public void SetMemento(Memento memento)
         {
             Console.WriteLine("restoring....");
             State = memento.State;

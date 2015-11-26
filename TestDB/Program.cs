@@ -28,7 +28,6 @@ namespace TestDB
             Console.ReadKey();
         }
        
-
         public void Mem(PurchaseRepository pr)
         {
             PurchaseOffice purchaseOffice = new PurchaseOffice();
@@ -46,9 +45,7 @@ namespace TestDB
             PurchasesHistory c = new PurchasesHistory();
             c.Memento = purchaseOffice.CreateMemento();
 
-            var purchs = pr.GetAll();
-
-            foreach (var item in purchs)
+            foreach (var item in pr.GetAll())
             {
                 if (item.SumPurchase==1214)
                 {
@@ -57,14 +54,15 @@ namespace TestDB
             }
             
             // Restore saved state
-            purchaseOffice.SedMemento(c.Memento);
+            purchaseOffice.SetMemento(c.Memento);
 
             Console.WriteLine("STATE !!!");
+            //purchaseOffice.SetMemento(c.Memento);
+
             foreach (var item in c.Memento.StateList)
             {
                 Console.WriteLine(item.Favorite);
             }
-
         }
 
 

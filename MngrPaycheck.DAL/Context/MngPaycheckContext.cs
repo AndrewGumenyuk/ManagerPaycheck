@@ -39,16 +39,6 @@ namespace MngrPaycheck.DAL.Context
             return (MngPaycheckContext) MemberwiseClone();
         }
 
-        public MngPaycheckContext DeepCopy()
-        {
-            var context = ShallowCopy();
-            foreach (var p in Purchases)
-            {
-                context.Purchases.Add(p.DeepCopy());
-            }
-            return context;
-        }
-
         public static MngPaycheckContext Instance
        {
            get { return _instance.Value; }
