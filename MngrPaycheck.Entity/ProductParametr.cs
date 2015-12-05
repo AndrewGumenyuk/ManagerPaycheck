@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 namespace MngrPaycheck.Entity
 {
 
-    [DataContract(IsReference = true)]
+    [DataContract]
+    [KnownType(typeof(ProductParametr))]
+    [Serializable]
     public class ProductParametr
     {
         public ProductParametr()

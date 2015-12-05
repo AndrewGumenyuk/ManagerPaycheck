@@ -125,14 +125,14 @@ namespace MngrPaycheck.Administrator.ViewModel
 
 
         #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler ProductPropertyChanged;
         #endregion
 
         #region Private Methods
         private void OnPropertyChanged(string propertyChanged)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyChanged));
+            if (ProductPropertyChanged != null)
+                ProductPropertyChanged(this, new PropertyChangedEventArgs(propertyChanged));
         }
         #endregion
     }

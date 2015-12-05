@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProductTypeRepositoryService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3595/ProductTypeRepositoryService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3595/ProductTypeRepositoryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProductTypeRepositoryService_GetProductTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductTypes" />
+  </wsdl:message>
+  <wsdl:message name="IProductTypeRepositoryService_GetProductTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductTypeRepositoryService_AddProductType_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductType" />
+  </wsdl:message>
+  <wsdl:message name="IProductTypeRepositoryService_AddProductType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductTypeRepositoryService_DeleteProductType_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductType" />
+  </wsdl:message>
+  <wsdl:message name="IProductTypeRepositoryService_DeleteProductType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductTypeRepositoryService_UpdateProductTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductTypes" />
+  </wsdl:message>
+  <wsdl:message name="IProductTypeRepositoryService_UpdateProductTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductTypesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IProductTypeRepositoryService">
+    <wsdl:operation name="GetProductTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductTypeRepositoryService/GetProductTypes" message="tns:IProductTypeRepositoryService_GetProductTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductTypeRepositoryService/GetProductTypesResponse" message="tns:IProductTypeRepositoryService_GetProductTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductTypeRepositoryService/AddProductType" message="tns:IProductTypeRepositoryService_AddProductType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductTypeRepositoryService/AddProductTypeResponse" message="tns:IProductTypeRepositoryService_AddProductType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProductType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductTypeRepositoryService/DeleteProductType" message="tns:IProductTypeRepositoryService_DeleteProductType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductTypeRepositoryService/DeleteProductTypeResponse" message="tns:IProductTypeRepositoryService_DeleteProductType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductTypeRepositoryService/UpdateProductTypes" message="tns:IProductTypeRepositoryService_UpdateProductTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductTypeRepositoryService/UpdateProductTypesResponse" message="tns:IProductTypeRepositoryService_UpdateProductTypes_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IProductTypeRepositoryService" type="tns:IProductTypeRepositoryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProductTypes">
+      <soap:operation soapAction="http://tempuri.org/IProductTypeRepositoryService/GetProductTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductType">
+      <soap:operation soapAction="http://tempuri.org/IProductTypeRepositoryService/AddProductType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProductType">
+      <soap:operation soapAction="http://tempuri.org/IProductTypeRepositoryService/DeleteProductType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductTypes">
+      <soap:operation soapAction="http://tempuri.org/IProductTypeRepositoryService/UpdateProductTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductTypeRepositoryService">
+    <wsdl:port name="BasicHttpBinding_IProductTypeRepositoryService" binding="tns:BasicHttpBinding_IProductTypeRepositoryService">
+      <soap:address location="http://localhost:3595/ProductTypeRepositoryService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

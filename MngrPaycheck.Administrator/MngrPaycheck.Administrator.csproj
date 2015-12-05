@@ -35,8 +35,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.8.0.1-beta2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -104,11 +104,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ProductTypeServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Services Logics\ProductServiceLogics.cs" />
-    <Compile Include="Services Logics\WrapperProductAdministrator.cs" />
+    <Compile Include="Services Logics\ProductTypeServiceLogics.cs" />
+    <Compile Include="Services Logics\WrapperProduct.cs" />
+    <Compile Include="Services Logics\WrapperProductType.cs" />
     <Compile Include="ViewModel\Commands\ViewModelBase.cs" />
     <Compile Include="ViewModel\Product\VMPages\LeftSidebarVM.cs" />
     <Compile Include="ViewModel\Product\VMPages\TopVM.cs" />
+    <Compile Include="ViewModel\Product\VMProducts\AddTypeVM.cs" />
     <Compile Include="ViewModel\Product\VMProducts\EditiingProductVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\Commands\RelayCommand.cs" />
@@ -156,6 +164,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,6 +175,13 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ProductServiceRef\ProductRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService.wsdl" />
+    <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -185,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ProductServiceRef\" />
+    <WCFMetadataStorage Include="Service References\ProductTypeServiceRef\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ProductServiceRef\ProductRepositoryService.disco" />
@@ -228,6 +245,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\Images\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductTypeServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductTypeServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductTypeServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

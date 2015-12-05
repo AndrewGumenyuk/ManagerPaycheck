@@ -8,12 +8,12 @@ using MngrPaycheck.Entity;
 
 namespace MngrPaycheck.Administrator.Services_Logics
 {
-   public class WrapperProductAdministrator
+    public class WrapperProductType
     {
-          public ObservableCollection<Product> CollectionProducts { get; set; }
-       public WrapperProductAdministrator()
+       public ObservableCollection<ProductType> CollectionProductTypes { get; set; }
+       public WrapperProductType()
         {
-            this.CollectionProducts = new ObservableCollection<Product>();
+            this.CollectionProductTypes = new ObservableCollection<ProductType>();
         }
     }
 }

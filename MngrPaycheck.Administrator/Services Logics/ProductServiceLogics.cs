@@ -12,16 +12,16 @@ namespace MngrPaycheck.Administrator.Services_Logics
 {
     public class ProductSeviceLogics
     {
-        ProductRepositoryServiceClient _service1Client = new ProductRepositoryServiceClient();
-
-        private WrapperProductAdministrator obj;
+        private ProductRepositoryServiceClient _service1Client;
+        private WrapperProduct obj;
 
         public ProductSeviceLogics()
         {
-            obj = JsonConvert.DeserializeObject<WrapperProductAdministrator>(_service1Client.GetProducts());
+            this._service1Client = new ProductRepositoryServiceClient();
+            obj = JsonConvert.DeserializeObject<WrapperProduct>(_service1Client.GetProducts());
         }
 
-        public ObservableCollection<Entity.Product> Products()
+        public ObservableCollection<Product> Products()
         {
             return obj.CollectionProducts;
         }
@@ -41,7 +41,7 @@ namespace MngrPaycheck.Administrator.Services_Logics
             _service1Client.UpdateProducts(json);
         }
 
-        public string SerializeProduct(Product product)
+        public string SerializeProduct(object product)
         {
             var settings = new JsonSerializerSettings()
             {

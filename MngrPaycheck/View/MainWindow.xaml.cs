@@ -18,7 +18,6 @@ using MngrPaycheck.Entity;
 using MngrPaycheck.ProductServiceReference;
 using MngrPaycheck.Services_Logics;
 using MngrPaycheck.ViewModel;
-using Newtonsoft.Json;
 
 
 namespace MngrPaycheck

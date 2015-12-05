@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using MngrPaycheck.Common.DAL.Infrastructure;
+using System.Data.Entity;
 
 namespace MngrPaycheck.DAL.Repositories.Abstract
 {
@@ -47,6 +49,11 @@ namespace MngrPaycheck.DAL.Repositories.Abstract
         public virtual void Save()
         {
             Context.SaveChanges();
+        }
+
+        public virtual void Update(T entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

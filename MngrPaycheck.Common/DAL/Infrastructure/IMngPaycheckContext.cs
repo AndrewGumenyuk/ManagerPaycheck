@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace MngrPaycheck.Common.DAL.Infrastructure
         IDbSet<Purchase> Purchases { get; set; }
         IDbSet<Supermarket> Supermarkets { get; set; }
         IDbSet<TEntity> Set<TEntity>() where TEntity : class;      // It's done, because native implementation returns DbSet
+        DbEntityEntry Entry(object entity);
         int SaveChanges();
     }
 }
