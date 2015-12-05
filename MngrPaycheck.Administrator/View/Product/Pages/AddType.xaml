@@ -28,12 +28,12 @@
                             <Image Source="../../../Content/Images/Add.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Width="25" Command="{Binding Path=UpdateProductCommand}">
+                    <MenuItem Width="25" Command="{Binding Path=UpdateProductTypeCommand}">
                         <MenuItem.Icon>
                             <Image Source="../../../Content/Images/Update.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Width="25" Command="{Binding RemoveBookCommand}">
+                    <MenuItem Width="25" Command="{Binding DeleteProductTypeCommand}">
                         <MenuItem.Icon>
                             <Image Source="../../../Content/Images/Delete.png"></Image>
                         </MenuItem.Icon>

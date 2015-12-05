@@ -25,7 +25,7 @@
         <Border Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Border}">
             <ToolBar Style="{StaticResource ToolBar}">
                 <Menu Style="{StaticResource TopMenu}">
-                    <MenuItem Width="25" Command="{Binding AddBookCommand}" >
+                    <MenuItem Width="25" Command="{Binding AddProductCommand}" >
                         <MenuItem.Icon>
                             <Image Source="../../../Content/Images/Add.png"></Image>
                         </MenuItem.Icon>
@@ -35,7 +35,7 @@
                             <Image Source="../../../Content/Images/Update.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Width="25" Command="{Binding RemoveBookCommand}">
+                    <MenuItem Width="25" Command="{Binding DeleteProductCommand}">
                         <MenuItem.Icon>
                             <Image Source="../../../Content/Images/Delete.png"></Image>
                         </MenuItem.Icon>

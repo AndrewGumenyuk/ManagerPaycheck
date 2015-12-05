@@ -56,10 +56,8 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         public Entity.Product _selectedProduct;
         public Entity.Product SelectedProduct // It Is selected product in listview
         {
-            get
-                { return _selectedProduct; }
-            set
-                { ProductType = value.ProductType;
+            get { return _selectedProduct; }
+            set { ProductType = value.ProductType;
                 _selectedProduct = value;
                 NotifyPropertyChanged("SelectedProduct"); }
         }
@@ -68,32 +66,54 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         public ObservableCollection<Entity.Product> Products
         {
             get { return _Products; }
-            set
-                {_Products = value;
+            set {_Products = value;
                 OnPropertyChanged("Products"); }
         }
+
+       void AddProductType(object arg)
+       {
+            if (SelectedProduct.ProductType == null)
+            {
+                   Products.Where(prod => prod.Id == SelectedProduct.Id)
+                        .Single().ProductType = ProductType;
+                   ProductType.Products.Add(SelectedProduct);//Is selected product in listview
+                   _productTypeServiceLogics.AddProductType(_productTypeServiceLogics.SerializeProduct(ProductType));
+            }
+       }
+        
+        void DeleteProductType(object arg)
+        {
+            _productTypeServiceLogics.DeleteProduct(_productTypeServiceLogics.SerializeProduct(ProductType));
+            Products.Where(prod => prod.Id == SelectedProduct.Id)
+                .Single().ProductType = null;
+        }
+       
+        void UpdateProductType(object arg)
+        {
+            Products.Where(prod => prod.Id == SelectedProduct.Id)
+                .Single().ProductType = ProductType;
+            _productTypeServiceLogics.UpdateProductTypes(_productTypeServiceLogics.SerializeProduct(ProductType));
+        }
+
 
         private RelayCommand _addProductTypeCommand;
         public RelayCommand AddProductTypeCommand
         {
-            get
-            {
-                return _addProductTypeCommand ?? (_addProductTypeCommand = new RelayCommand(AddProductType));
-            }
+            get { return _addProductTypeCommand ?? (_addProductTypeCommand = new RelayCommand(AddProductType)); }
         }
 
-        void AddProductType(object arg)
-       {
-           foreach (var item in Products)
-           {
-               if (item.Id == SelectedProduct.Id && SelectedProduct.ProductType==null )
-               {
-                   item.ProductType = ProductType;
-                   ProductType.Products.Add(SelectedProduct);//Is selected product in listview
-                   _productTypeServiceLogics.AddProductType(_productTypeServiceLogics.SerializeProduct(ProductType));
-               }
-           }
-       }
+        private RelayCommand _deleteProductTypeCommand;
+        public RelayCommand DeleteProductTypeCommand
+        {
+            get { return _deleteProductTypeCommand ?? (_deleteProductTypeCommand = new RelayCommand(DeleteProductType)); }
+        }
+
+        private RelayCommand _updateProductTypeCommand;
+        public RelayCommand UpdateProductTypeCommand
+        {
+            get { return _updateProductTypeCommand ?? (_updateProductTypeCommand = new RelayCommand(UpdateProductType)); }
+        }
+
 
        #region Events
        public event PropertyChangedEventHandler ProductPropertyChanged;

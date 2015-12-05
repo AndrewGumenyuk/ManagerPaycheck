@@ -45,10 +45,10 @@ namespace MngrPaycheck.Administrator.ViewModel
                NotifyPropertyChanged("Product"); }
         }
 
-        private Entity.Product _selectedBook;
+        private Entity.Product _selectedProduct;
         public Entity.Product SelectedProduct
         {
-            get { return _selectedBook; }
+            get { return _selectedProduct; }
             set
             {
                 try
@@ -63,22 +63,22 @@ namespace MngrPaycheck.Administrator.ViewModel
                 }
                 catch (Exception){}
 
-                _selectedBook = value;
+                _selectedProduct = value;
                 OnPropertyChanged("SelectedProduct");
             }
         }
 
-        private void AddNewBook(object arg)
+        private void AddProduct(object arg)
         {
             Products.Add(Product);
             _productSeviceLogics.AddProduct(_productSeviceLogics.SerializeProduct(Product));         
             Product = new Entity.Product();//In order to reset the selected product
         }
 
-        private void RemoveBook(object args)
+        private void DeleteProduct(object args)
         {
-            _productSeviceLogics.DeleteProduct(_productSeviceLogics.SerializeProduct(_selectedBook));
-            Products.Remove(_selectedBook);
+            _productSeviceLogics.DeleteProduct(_productSeviceLogics.SerializeProduct(_selectedProduct));
+            Products.Remove(_selectedProduct);
         }
 
         private void UpdateProduct(object args)
@@ -96,23 +96,17 @@ namespace MngrPaycheck.Administrator.ViewModel
         }
 
         #region Commands
-        private RelayCommand _addBookCommand;
-        public RelayCommand AddBookCommand
+        private RelayCommand _addProductCommand;
+        public RelayCommand AddProductCommand
         {
-            get
-            {
-                return _addBookCommand ?? (_addBookCommand = new RelayCommand(AddNewBook));
-            }
+            get { return _addProductCommand ?? (_addProductCommand = new RelayCommand(AddProduct)); }
         }
 
 
-        private RelayCommand _removeBookCommand;
-        public RelayCommand RemoveBookCommand
+        private RelayCommand _deleteProductCommand;
+        public RelayCommand DeleteProductCommand
         {
-            get
-            {
-                return _removeBookCommand ?? (_removeBookCommand = new RelayCommand(RemoveBook));
-            }
+            get { return _deleteProductCommand ?? (_deleteProductCommand = new RelayCommand(DeleteProduct)); }
         }
 
         private RelayCommand _updateProductCommand;
