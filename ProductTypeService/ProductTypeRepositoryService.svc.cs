@@ -57,6 +57,8 @@ namespace ProductTypeService
                     ReplacementProducts(prTypesProduct);
                 }
             }
+
+            DeleteEmptyProductType();
             _productTypeRepository.Save();
             _productRepository.Save();
         }
@@ -78,15 +80,39 @@ namespace ProductTypeService
 
         public void DeleteProductType(string json)
         {
-            _productTypeRepository.Delete(_productTypeRepository.GetById(wrapperTypeProduct.DeserializeProduct(json).Id));
+            ProductType productType = wrapperTypeProduct.DeserializeProduct(json);
+           _productRepository.GetAll().Where(prod => prod.ProductType.Id == productType.Id)
+               .Single().ProductType=null;
+
+            DeleteEmptyProductType();
             _productTypeRepository.Save();
         }
 
         public void UpdateProductTypes(string json)
         {
-            _productTypeRepository.Delete(_productTypeRepository.GetById(wrapperTypeProduct.DeserializeProduct(json).Id));
-            _productTypeRepository.Add(wrapperTypeProduct.DeserializeProduct(json));
+            ProductType prType = wrapperTypeProduct.DeserializeProduct(json);
+
+            _productTypeRepository.GetAll()
+                .Where(it => it.Id == prType.Id)
+                .Single().Name = prType.Name;
+
+            DeleteEmptyProductType();
             _productTypeRepository.Save();
+        }
+
+        /// <summary>
+        /// when changed that product don't have type and 
+        /// after thar type don't have products we delete this type
+        /// </summary>
+        public void DeleteEmptyProductType()
+        {
+            foreach (var item in _productTypeRepository.GetAll())
+            {
+                if (item.Products == null)
+                {
+                    _productTypeRepository.Delete(item);
+                }
+            }
         }
     }
 }
