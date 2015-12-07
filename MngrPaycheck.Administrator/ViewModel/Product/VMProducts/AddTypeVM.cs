@@ -22,14 +22,24 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 
         private ObservableCollection<Entity.Product> _products;
 
+        private Service productTypeService;
+        private Service prodService;
+
         public AddTypeVM()
         {
-            _productSeviceLogics = new ProductSeviceLogics();
-            _productTypeServiceLogics = new ProductTypeServiceLogics();
-
-            Products = _productSeviceLogics.Products();
             SelectedProduct = new Entity.Product();
             SelectedProduct.ProductType = new ProductType();
+
+            ManagerServiceMediator mediator = new ManagerServiceMediator();
+            productTypeService = new ProductTypeServiceLogics(mediator);
+            prodService = new ProductSeviceLogics(mediator);
+
+            mediator.ProductType = productTypeService;
+            mediator.Product = prodService;
+
+
+            _productSeviceLogics = new ProductSeviceLogics(mediator);
+            Products = _productSeviceLogics.Products();
         }
 
         public ProductType _productType;
@@ -70,29 +80,31 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
                 OnPropertyChanged("Products"); }
         }
 
-       void AddProductType(object arg)
+       public void AddProductType(object arg)
        {
             if (SelectedProduct.ProductType == null)
             {
                    Products.Where(prod => prod.Id == SelectedProduct.Id)
                         .Single().ProductType = ProductType;
                    ProductType.Products.Add(SelectedProduct);//Is selected product in listview
-                   _productTypeServiceLogics.AddProductType(_productTypeServiceLogics.SerializeProduct(ProductType));
+                   productTypeService.Add(productTypeService.Serialize(ProductType));
             }
        }
         
-        void DeleteProductType(object arg)
+        public void DeleteProductType(object arg)
         {
-            _productTypeServiceLogics.DeleteProduct(_productTypeServiceLogics.SerializeProduct(ProductType));
+            productTypeService.Delete(productTypeService.Serialize(ProductType));
             Products.Where(prod => prod.Id == SelectedProduct.Id)
                 .Single().ProductType = null;
         }
        
-        void UpdateProductType(object arg)
+        public void UpdateProductType(object arg)
         {
             Products.Where(prod => prod.Id == SelectedProduct.Id)
                 .Single().ProductType = ProductType;
-            _productTypeServiceLogics.UpdateProductTypes(_productTypeServiceLogics.SerializeProduct(ProductType));
+
+            productTypeService.Update(productTypeService.Serialize(ProductType));
+
         }
 
 

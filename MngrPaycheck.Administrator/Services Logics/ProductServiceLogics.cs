@@ -10,12 +10,12 @@ using Newtonsoft.Json;
 
 namespace MngrPaycheck.Administrator.Services_Logics
 {
-    public class ProductSeviceLogics
+    public class ProductSeviceLogics: Service
     {
         private ProductRepositoryServiceClient _service1Client;
         private WrapperProduct obj;
 
-        public ProductSeviceLogics()
+        public ProductSeviceLogics(ServiceMediator mediator) : base(mediator)
         {
             this._service1Client = new ProductRepositoryServiceClient();
             obj = JsonConvert.DeserializeObject<WrapperProduct>(_service1Client.GetProducts());
@@ -26,28 +26,28 @@ namespace MngrPaycheck.Administrator.Services_Logics
             return obj.CollectionProducts;
         }
 
-        public void AddProduct(string json)
+        public override void Add(string json)
         {
             _service1Client.AddProduct(json);
         }
 
-        public void DeleteProduct(string json)
+        public override void Delete(string json)
         {
             _service1Client.DeleteProduct(json);
         }
 
-        public void UpdateProducts(string json)
+        public override void Update(string json)
         {
             _service1Client.UpdateProducts(json);
         }
 
-        public string SerializeProduct(object product)
+        public override string Serialize(object entity)
         {
             var settings = new JsonSerializerSettings()
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects,
             };
-            return JsonConvert.SerializeObject(product, settings);
+            return JsonConvert.SerializeObject(entity, settings);
         }
     }
 }

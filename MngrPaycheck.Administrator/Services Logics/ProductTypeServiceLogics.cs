@@ -11,38 +11,39 @@ using Newtonsoft.Json;
 
 namespace MngrPaycheck.Administrator.Services_Logics
 {
-    public class ProductTypeServiceLogics
+    public class ProductTypeServiceLogics: Service
     {
         private ProductTypeRepositoryServiceClient _serviceProductTypeClient;
         private WrapperProductType obj;
 
-        public ProductTypeServiceLogics()
+        public ProductTypeServiceLogics(ServiceMediator mediator) : base(mediator)
         {
             this._serviceProductTypeClient = new ProductTypeRepositoryServiceClient();
             obj = JsonConvert.DeserializeObject<WrapperProductType>(_serviceProductTypeClient.GetProductTypes());
+
         }
-        
-        public ObservableCollection<ProductType> ProductTypes()
+
+        public ObservableCollection<ProductType> Products()
         {
             return obj.CollectionProductTypes;
         }
 
-        public void AddProductType(string json)
+        public override void Add(string json)
         {
             _serviceProductTypeClient.AddProductType(json);
         }
 
-        public void DeleteProduct(string json)
+        public override void Delete(string json)
         {
             _serviceProductTypeClient.DeleteProductType(json);
         }
 
-        public void UpdateProductTypes(string json)
+        public override void Update(string json)
         {
             _serviceProductTypeClient.UpdateProductTypes(json);
         }
 
-        public string SerializeProduct(object entity)
+        public override string Serialize(object entity)
         {
             var settings = new JsonSerializerSettings()
             {

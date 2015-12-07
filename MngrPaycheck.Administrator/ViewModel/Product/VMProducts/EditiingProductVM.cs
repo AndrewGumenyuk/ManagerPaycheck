@@ -25,7 +25,7 @@ namespace MngrPaycheck.Administrator.ViewModel
 
         public EditiingProductVM()
         {
-            _productSeviceLogics = new ProductSeviceLogics();
+            //_productSeviceLogics = new ProductSeviceLogics();
             Products = _productSeviceLogics.Products();
             Product = new Entity.Product();
         }
@@ -71,13 +71,13 @@ namespace MngrPaycheck.Administrator.ViewModel
         private void AddProduct(object arg)
         {
             Products.Add(Product);
-            _productSeviceLogics.AddProduct(_productSeviceLogics.SerializeProduct(Product));         
+            _productSeviceLogics.Add(_productSeviceLogics.Serialize(Product));         
             Product = new Entity.Product();//In order to reset the selected product
         }
 
         private void DeleteProduct(object args)
         {
-            _productSeviceLogics.DeleteProduct(_productSeviceLogics.SerializeProduct(_selectedProduct));
+            _productSeviceLogics.Delete(_productSeviceLogics.Serialize(_selectedProduct));
             Products.Remove(_selectedProduct);
         }
 
@@ -91,7 +91,7 @@ namespace MngrPaycheck.Administrator.ViewModel
                     i++;
                 }
             }
-            _productSeviceLogics.UpdateProducts(_productSeviceLogics.SerializeProduct(Product));
+            _productSeviceLogics.Update(_productSeviceLogics.Serialize(Product));
             Products[i] = Product;
         }
 
