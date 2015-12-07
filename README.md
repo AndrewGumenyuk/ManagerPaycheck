@@ -1,4 +1,6 @@
 #MngrPaycheck
+
+[![Join the chat at https://gitter.im/AndrewGumenyuk/ManagerPaycheck](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AndrewGumenyuk/ManagerPaycheck?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 _Manager paycheck in supermarket_
 
 ----------------
