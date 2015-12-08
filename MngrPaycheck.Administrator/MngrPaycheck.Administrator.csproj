@@ -109,11 +109,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services Logics\ManagerServiceMediator.cs" />
+    <Compile Include="Services Logics\MediatorServices\ManagerServiceMediator.cs" />
     <Compile Include="Services Logics\ProductServiceLogics.cs" />
     <Compile Include="Services Logics\ProductTypeServiceLogics.cs" />
-    <Compile Include="Services Logics\Service.cs" />
-    <Compile Include="Services Logics\ServiceMediator.cs" />
+    <Compile Include="Services Logics\MediatorServices\Service.cs" />
+    <Compile Include="Services Logics\MediatorServices\ServiceMediator.cs" />
     <Compile Include="Services Logics\WrapperProduct.cs" />
     <Compile Include="Services Logics\WrapperProductType.cs" />
     <Compile Include="ViewModel\Commands\ViewModelBase.cs" />
