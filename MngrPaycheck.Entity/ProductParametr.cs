@@ -35,8 +35,6 @@ namespace MngrPaycheck.Entity
         [DataMember]
         public virtual ProductType ProductType { get; set; }
 
-        [DataMember]
-        public virtual ProductParametrValue ProductParametrValue { get; set; }
         #endregion
     }
 }

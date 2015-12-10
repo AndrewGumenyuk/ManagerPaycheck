@@ -25,7 +25,8 @@ namespace MngrPaycheck.Administrator.ViewModel
 
         public EditiingProductVM()
         {
-            //_productSeviceLogics = new ProductSeviceLogics();
+            ServiceMediator mediator = new ManagerServiceMediator();
+            _productSeviceLogics = new ProductSeviceLogics(mediator);
             Products = _productSeviceLogics.Products();
             Product = new Entity.Product();
         }

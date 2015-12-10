@@ -19,8 +19,9 @@ namespace TestDB
         static void Main(string[] args)
         {
             Program pr = new Program();
-            //pr.FillDB();
+            pr.FillDB();
             //pr.testState();
+            Console.WriteLine("OK !");
             Console.ReadKey();
             //IProductRepository _purchaseRepository = new IProductRepository(new MngPaycheckContext());
 
@@ -49,22 +50,22 @@ namespace TestDB
             logicsState.AddProduct(product);
             logicsState.AddProductType(productType);
 
-            ProductParametrValue productParametrValue = new ProductParametrValue()
-            {
-                Value = "value",
-                Product = product
-            };
+            //ProductParametrValue productParametrValue = new ProductParametrValue()
+            //{
+            //    Value = "value",
+            //    Product = product
+            //};
 
-            ProductParametr productParametr = new ProductParametr()
-            {
-                Name = "RAM",
-                ProductParametrValue = productParametrValue
-            };
+            //ProductParametr productParametr = new ProductParametr()
+            //{
+            //    Name = "RAM",
+            //    ProductParametrValue = productParametrValue
+            //};
 
-            logicsState.AddProductParametrValue(productParametr, productParametrValue);
-            List<ProductParametr> ListOfProductParametr = new List<ProductParametr>() { productParametr };
-            logicsState.AddProductParametr(ListOfProductParametr);
-            logicsState.AddProductParametrValue(productParametr, productParametrValue);
+            //logicsState.AddProductParametrValue(productParametr, productParametrValue);
+            //List<ProductParametr> ListOfProductParametr = new List<ProductParametr>() { productParametr };
+            //logicsState.AddProductParametr(ListOfProductParametr);
+            //logicsState.AddProductParametrValue(productParametr, productParametrValue);
         }
 
         public void FillDB()
@@ -86,10 +87,23 @@ namespace TestDB
                     Name = "Laptop",
                 };
 
+
+                ProductParametr productParametr = new ProductParametr()
+                {
+                    Name = "Ram",
+                    ProductType = prodType
+                };
+
+                ProductParametrValue productParametrValue = new ProductParametrValue(productParametr, prod);//productParametr, "5Gb");
+                
+
                 prod.ProductType = prodType;
 
                 db.Products.Add(prod);
                 db.ProductTypes.Add(prodType);
+                db.ProductParametrs.Add(productParametr);
+                db.ProductParametrValues.Add(productParametrValue);
+
                 db.SaveChanges();
 
 
