@@ -51,7 +51,7 @@
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100"/>
                         <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost, Mode=TwoWay}"  Width="100" />
                         <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units, Mode=TwoWay}" Width="100" />
-                        <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType}" Width="100" />
+                        <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType.Name}" Width="100" />
                     </GridView>
                 </ListView.View>
             </ListView>
