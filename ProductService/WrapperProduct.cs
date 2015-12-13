@@ -20,7 +20,7 @@ namespace ProductService
 
         public WrapperProduct()
         {
-            _productRepository = new ProductRepository(MngPaycheckContext.Instance);
+            _productRepository = new ProductRepository(new MngPaycheckContext());
             CollectionProducts = (List<Product>) _productRepository.GetAll();
         }
 

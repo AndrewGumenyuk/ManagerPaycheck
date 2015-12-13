@@ -21,7 +21,7 @@ namespace ProductService
 {
     public class ProductRepositoryService : IProductRepositoryService
     {
-        private ProductRepository _productRepository = new ProductRepository(MngPaycheckContext.Instance);
+        private ProductRepository _productRepository = new ProductRepository(new MngPaycheckContext());
         WrapperProduct wrapperProduct = new WrapperProduct();
         public string GetProducts()
         {

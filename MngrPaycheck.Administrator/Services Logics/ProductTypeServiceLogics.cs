@@ -20,7 +20,6 @@ namespace MngrPaycheck.Administrator.Services_Logics
         {
             this._serviceProductTypeClient = new ProductTypeRepositoryServiceClient();
             obj = JsonConvert.DeserializeObject<WrapperProductType>(_serviceProductTypeClient.GetProductTypes());
-
         }
 
         public ObservableCollection<ProductType> Products()

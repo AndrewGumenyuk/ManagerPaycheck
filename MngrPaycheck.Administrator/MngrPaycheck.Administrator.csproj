@@ -271,9 +271,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Content\Images\forward.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Content\Images\forwardG.png" />
   </ItemGroup>
   <ItemGroup>
