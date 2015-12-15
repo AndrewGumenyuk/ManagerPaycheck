@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MngrPaycheck.Administrator.ViewModel.Product.VMProducts;
 
 namespace MngrPaycheck.Administrator.View.Product.Pages
 {
@@ -20,9 +21,13 @@ namespace MngrPaycheck.Administrator.View.Product.Pages
     /// </summary>
     public partial class AddParameter : Page
     {
+        private AddProductParametrVM _vm;
         public AddParameter()
         {
             InitializeComponent();
+
+            _vm = new AddProductParametrVM();
+            this.DataContext = _vm;
         }
     }
 }

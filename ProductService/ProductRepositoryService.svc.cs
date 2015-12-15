@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,7 +12,9 @@ using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
+using MngrPaycheck.Common.DAL.Infrastructure;
 using MngrPaycheck.DAL.Context;
+using MngrPaycheck.DAL.Repositories;
 using MngrPaycheck.DAL.Repositories.Abstract;
 using MngrPaycheck.Entity;
 using Newtonsoft.Json;
@@ -21,7 +23,12 @@ namespace ProductService
 {
     public class ProductRepositoryService : IProductRepositoryService
     {
-        private ProductRepository _productRepository = new ProductRepository(new MngPaycheckContext());
+        private IProductRepository _productRepository;
+        public ProductRepositoryService()
+        {
+            _productRepository = new ProductRepository(new MngPaycheckContext());
+        }
+
         WrapperProduct wrapperProduct = new WrapperProduct();
         public string GetProducts()
         {

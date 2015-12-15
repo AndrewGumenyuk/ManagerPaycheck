@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="MVVMCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\MVVMCommon.dll</HintPath>
@@ -46,6 +43,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -106,6 +104,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service References\ProductParametrServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ProductServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,15 +120,18 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Services Logics\MediatorServices\ManagerServiceMediator.cs" />
+    <Compile Include="Services Logics\ProductParametrServiceLogics.cs" />
     <Compile Include="Services Logics\ProductServiceLogics.cs" />
     <Compile Include="Services Logics\ProductTypeServiceLogics.cs" />
     <Compile Include="Services Logics\MediatorServices\Service.cs" />
     <Compile Include="Services Logics\MediatorServices\ServiceMediator.cs" />
-    <Compile Include="Services Logics\WrapperProduct.cs" />
-    <Compile Include="Services Logics\WrapperProductType.cs" />
+    <Compile Include="Services Logics\Wrapper\WrapperProduct.cs" />
+    <Compile Include="Services Logics\Wrapper\WrapperProductParametr.cs" />
+    <Compile Include="Services Logics\Wrapper\WrapperProductType.cs" />
     <Compile Include="ViewModel\Commands\ViewModelBase.cs" />
     <Compile Include="ViewModel\Product\VMPages\LeftSidebarVM.cs" />
     <Compile Include="ViewModel\Product\VMPages\TopVM.cs" />
+    <Compile Include="ViewModel\Product\VMProducts\AddProductParametrVM.cs" />
     <Compile Include="ViewModel\Product\VMProducts\AddTypeVM.cs" />
     <Compile Include="ViewModel\Product\VMProducts\EditiingProductVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
@@ -180,6 +186,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.wsdl" />
+    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductServiceRef\ProductRepositoryService.wsdl" />
     <None Include="Service References\ProductServiceRef\ProductRepositoryService.xsd">
       <SubType>Designer</SubType>
@@ -210,6 +223,7 @@
     <Resource Include="Content\Images\System.png" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ProductParametrServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductTypeServiceRef\" />
   </ItemGroup>
@@ -275,6 +289,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\Images\backF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParametrServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParametrServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParametrServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
