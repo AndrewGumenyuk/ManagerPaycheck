@@ -4,4 +4,4 @@ using System.Reflection;
 // Check ~/_tools/Nortal.Utilities.AssemblyVersioning.props file for other available algorithms and supported attributes.
 
 // Generated based on assembly version: 1.0.0.0
-[assembly: AssemblyInformationalVersion(@"1.0.0-Debug-20151214-2102")] // algorithm: NugetSemanticVersionGenerator
+[assembly: AssemblyInformationalVersion(@"1.0.0-Debug-20151215-0047")] // algorithm: NugetSemanticVersionGenerator

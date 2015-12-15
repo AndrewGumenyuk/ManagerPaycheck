@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductTypeService", "Produ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductParameterService", "ProductParameterService\ProductParameterService.csproj", "{FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheckServicesHost", "MngrPaycheckServicesHost\MngrPaycheckServicesHost.csproj", "{A56993E4-88A4-49C8-9497-21F7579294D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -158,6 +160,16 @@ Global
 		{FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D}.Release|x86.ActiveCfg = Release|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A56993E4-88A4-49C8-9497-21F7579294D1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
