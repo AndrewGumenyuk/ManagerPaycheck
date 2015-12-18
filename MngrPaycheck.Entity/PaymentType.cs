@@ -24,7 +24,6 @@ namespace MngrPaycheck.Entity
         [DataMember]
         public string Name { get; set; }
 
-
         #region properties
         [DataMember]
         public virtual ICollection<Purchase> Purchases { get; set; } 

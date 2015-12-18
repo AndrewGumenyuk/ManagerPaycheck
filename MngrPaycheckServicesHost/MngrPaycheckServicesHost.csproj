@@ -42,9 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs">
-      <Link>SharedAssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,6 +51,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MngrPaycheck.DAL\MngrPaycheck.DAL.csproj">
+      <Project>{81E08870-6071-4E68-8B12-5B295BC7FFAF}</Project>
+      <Name>MngrPaycheck.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProductParameterService\ProductParameterService.csproj">
       <Project>{FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D}</Project>
       <Name>ProductParameterService</Name>

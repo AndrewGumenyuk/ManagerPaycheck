@@ -16,7 +16,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 {
     public class AddProductParametrVM : ViewModelBase
     {
-        private ProductSeviceLogics _productSeviceLogics;
+        private ProductServiceLogics _productSeviceLogics;
         private ObservableCollection<Entity.Product> _products;
         private Service productParameterService;
 
@@ -30,7 +30,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             productParameterService = new ProductParametrServiceLogics(mediator);
             mediator.ProductParametr = productParameterService;
 
-            _productSeviceLogics = new ProductSeviceLogics(mediator);
+            _productSeviceLogics = new ProductServiceLogics(mediator);
             Products = _productSeviceLogics.Products();    
             ProductParametrs = new ObservableCollection<ProductParametr>(Products.Select(a => a.ProductType).ToList().FirstOrDefault().ProductParametrs.ToList());
         }
@@ -72,7 +72,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
                     _selectedProductParameter.ProductType = SelectedProduct.ProductType;
                     _selectedProductParameter.ProductTypeID = (Guid)SelectedProduct.ProductTypeID;
                 }
-                catch (Exception) { }
+                catch (Exception) {}
                 NotifyPropertyChanged("SelectedProductParameter");
             }
         }

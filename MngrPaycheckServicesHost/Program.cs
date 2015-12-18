@@ -32,7 +32,6 @@ namespace MngrPaycheckServicesHost
                 host.Open();
                 Console.WriteLine("Starting | " + host.Description.Name + " | " + DateTime.Now);
             }
-
             Console.ReadLine();
         }
     }

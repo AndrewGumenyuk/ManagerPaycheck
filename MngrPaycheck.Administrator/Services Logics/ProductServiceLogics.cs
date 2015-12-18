@@ -10,12 +10,13 @@ using Newtonsoft.Json;
 
 namespace MngrPaycheck.Administrator.Services_Logics
 {
-    public class ProductSeviceLogics: Service
+    public class ProductServiceLogics: Service
     {
         private ProductRepositoryServiceClient _service1Client;
         private WrapperProduct obj;
 
-        public ProductSeviceLogics(ServiceMediator mediator) : base(mediator)
+        public ProductServiceLogics(ServiceMediator mediator)
+            : base(mediator)
         {
             this._service1Client = new ProductRepositoryServiceClient();
             obj = JsonConvert.DeserializeObject<WrapperProduct>(_service1Client.GetProducts());

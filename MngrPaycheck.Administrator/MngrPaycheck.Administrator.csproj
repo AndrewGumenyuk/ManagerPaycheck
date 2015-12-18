@@ -104,6 +104,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service References\ProductParameterValueServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ProductParametrServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,11 +126,13 @@
     </Compile>
     <Compile Include="Services Logics\MediatorServices\ManagerServiceMediator.cs" />
     <Compile Include="Services Logics\ProductParametrServiceLogics.cs" />
+    <Compile Include="Services Logics\ProductParametrValueServiceLogics.cs" />
     <Compile Include="Services Logics\ProductServiceLogics.cs" />
     <Compile Include="Services Logics\ProductTypeServiceLogics.cs" />
     <Compile Include="Services Logics\MediatorServices\Service.cs" />
     <Compile Include="Services Logics\MediatorServices\ServiceMediator.cs" />
     <Compile Include="Services Logics\Wrapper\WrapperProduct.cs" />
+    <Compile Include="Services Logics\Wrapper\WrapperProductParameterValue.cs" />
     <Compile Include="Services Logics\Wrapper\WrapperProductParametr.cs" />
     <Compile Include="Services Logics\Wrapper\WrapperProductType.cs" />
     <Compile Include="ViewModel\Commands\ViewModelBase.cs" />
@@ -133,6 +140,7 @@
     <Compile Include="ViewModel\Product\VMPages\TopVM.cs" />
     <Compile Include="ViewModel\Product\VMProducts\AddProductParametrVM.cs" />
     <Compile Include="ViewModel\Product\VMProducts\AddTypeVM.cs" />
+    <Compile Include="ViewModel\Product\VMProducts\AddValueToParametrVM.cs" />
     <Compile Include="ViewModel\Product\VMProducts\EditiingProductVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\Commands\RelayCommand.cs" />
@@ -186,6 +194,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ProductParameterValueServiceRef\ProductParameterValueRepository.wsdl" />
+    <None Include="Service References\ProductParameterValueServiceRef\ProductParameterValueRepository.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductParameterValueServiceRef\ProductParameterValueRepository1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.wsdl" />
     <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.xsd">
       <SubType>Designer</SubType>
@@ -225,6 +240,7 @@
     <Resource Include="Content\Images\System.png" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ProductParameterValueServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductParametrServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductTypeServiceRef\" />
@@ -303,6 +319,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ProductParametrServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterValueServiceRef\ProductParameterValueRepository.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterValueServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterValueServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterValueServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

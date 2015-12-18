@@ -19,14 +19,14 @@ namespace MngrPaycheck.Administrator.ViewModel
 {
     public class EditiingProductVM:  ViewModelBase
     {
-        private ProductSeviceLogics _productSeviceLogics;
+        private ProductServiceLogics _productSeviceLogics;
         private ObservableCollection<Entity.Product> _products;
         public Entity.Product _product;
 
         public EditiingProductVM()
         {
             ServiceMediator mediator = new ManagerServiceMediator();
-            _productSeviceLogics = new ProductSeviceLogics(mediator);
+            _productSeviceLogics = new ProductServiceLogics(mediator);
             Products = _productSeviceLogics.Products();
             Product = new Entity.Product();
         }

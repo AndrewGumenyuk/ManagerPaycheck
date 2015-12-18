@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,27 +15,54 @@ namespace MngrPaycheck.Entity
     [Serializable]
     public class ProductParametrValue
     {
-        [Key]
-        public Guid ProductID { get; set; }
+        private Guid productId;
+        private Guid productParameterId;
+        private string value;
+        private Product product;
+        private ProductParametr productParametr;
 
-        public Guid ProductParameterID { get; set; }
+        [Key, Column(Order = 0), ForeignKey("Product"), Required] [DataMember]
+        public Guid ProductID {
+            get { return productId; }
+            set { productId = value;
+                OnPropertyChanged("ProductID"); } }
+
+        [Key, Column(Order = 1), ForeignKey("ProductParametr"), Required] [DataMember]
+        public Guid ProductParameterID { 
+            get { return productParameterId; }
+            set { productParameterId = value;
+                OnPropertyChanged("ProductParameterID"); } }
+
+        #region properties
+        [DataMember]
+        public virtual Product Product { 
+            get { return product; }
+            set { product = value;
+                OnPropertyChanged("Product");} }
 
         [DataMember]
-        public string Value { get; set; }
+        public virtual ProductParametr ProductParametr { 
+            get { return productParametr; }
+            set { productParametr = value;
+                OnPropertyChanged("ProductParametr");} }
 
-        protected ProductParametrValue(){}
+        [DataMember]
+        public string Value { 
+            get { return value; }
+            set { this.value = value;
+                OnPropertyChanged("Value");} }
+        #endregion
+
+        public ProductParametrValue(){}
 
         protected ProductParametrValue(ProductParametr parameter)
         {
-            ProductID = Guid.NewGuid();
-            this.ProductParameterID = parameter.Id;
+            ProductParametr = parameter;
         }
 
         public ProductParametrValue(ProductParametr parameter, Product product) : this(parameter)
         {
-            ProductID = product.Id;
             Product = product;
-            Value = parameter.Name;
         }
 
         public ProductParametrValue(ProductParametr parameter, string value)
@@ -48,11 +76,17 @@ namespace MngrPaycheck.Entity
         {
             Value = value;
         }
+        
+        #region INotifyPropertyChanged Members
 
-
-        #region properties
-        public virtual Product Product { get; set; }
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
         #endregion
     }
 }

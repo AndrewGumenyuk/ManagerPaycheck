@@ -17,10 +17,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 {
     public class AddTypeVM:  ViewModelBase
     {
-        private ProductSeviceLogics _productSeviceLogics;
-        private ProductTypeServiceLogics _productTypeServiceLogics;
-
-        private ObservableCollection<Entity.Product> _products;
+        private ProductServiceLogics _productSeviceLogics;
 
         private Service productTypeService;
         private Service prodService;
@@ -32,13 +29,13 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 
             ManagerServiceMediator mediator = new ManagerServiceMediator();
             productTypeService = new ProductTypeServiceLogics(mediator);
-            prodService = new ProductSeviceLogics(mediator);
+            prodService = new ProductServiceLogics(mediator);
 
             mediator.ProductType = productTypeService;
             mediator.Product = prodService;
 
 
-            _productSeviceLogics = new ProductSeviceLogics(mediator);
+            _productSeviceLogics = new ProductServiceLogics(mediator);
             Products = _productSeviceLogics.Products();
         }
 

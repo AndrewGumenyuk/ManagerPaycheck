@@ -94,7 +94,7 @@ namespace TestDB
                     ProductType = prodType
                 };
 
-                ProductParametrValue productParametrValue = new ProductParametrValue(productParametr, prod);//productParametr, "5Gb");
+                ProductParametrValue productParametrValue = new ProductParametrValue(productParametr, prod, "5 GB");//productParametr, "5Gb");
                 
 
                 prod.ProductType = prodType;
@@ -102,6 +102,7 @@ namespace TestDB
                 db.Products.Add(prod);
                 db.ProductTypes.Add(prodType);
                 db.ProductParametrs.Add(productParametr);
+   
                 db.ProductParametrValues.Add(productParametrValue);
 
                 db.SaveChanges();
