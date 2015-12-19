@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace ProductParameterService
 {
-    public class ProductParameterRepositoryService : IProductParameterRepositoryService
+    public class ProductParameterRepositoryService //: IProductParameterRepositoryService
     {
         private ProductParametrRepository _productParametrRepository;
         private ProductTypeRepository _productTypeRepository;

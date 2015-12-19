@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.Text;
+using MngrPaycheck.Accessors.Abstract;
 
-namespace ProductParameterService
+namespace AbstractWorkingServices
 {
     [ServiceContract]
-    public interface IProductParameterRepositoryService
+    public interface IProductParameterRepositoryService: IBaseService
     {
         [OperationContract]
         string GetProductParameters();
