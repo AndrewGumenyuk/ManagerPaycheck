@@ -13,8 +13,10 @@ namespace MngrPaycheck.DAL.Context
     public class MngPaycheckContext: DbContext, IMngPaycheckContext, IDisposable
     {
         public MngPaycheckContext()
-            : base("MngrPaycheckDB"){}
+            : base("MngrPaycheckTestFillTestDB58"){}
+
         public static readonly Lazy<MngPaycheckContext> _instance = new Lazy<MngPaycheckContext>(() => new MngPaycheckContext());
+
         public IDbSet<Cashier> Cashiers { get; set; }
         public IDbSet<PaymentType> PaymentTypes { get; set; }
         public IDbSet<Product> Products { get; set; }
@@ -27,6 +29,11 @@ namespace MngrPaycheck.DAL.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<ProductParametrValue>().HasKey(e => e.ProductParameterID);
+            modelBuilder.Entity<ProductParametr>()
+                .HasOptional(s => s.ProductParametrValue)
+                .WithRequired(ad => ad.ProductParametr);
+
         }
 
         public IDbSet<TEntity> Set<TEntity>() where TEntity : class
@@ -34,14 +41,13 @@ namespace MngrPaycheck.DAL.Context
             return base.Set<TEntity>();
         }
 
+        public static MngPaycheckContext Instance
+        {
+            get { return _instance.Value; }
+        }
         public MngPaycheckContext ShallowCopy()
         {
             return (MngPaycheckContext) MemberwiseClone();
         }
-
-        public static MngPaycheckContext Instance
-       {
-           get { return _instance.Value; }
-       }
     }
 }

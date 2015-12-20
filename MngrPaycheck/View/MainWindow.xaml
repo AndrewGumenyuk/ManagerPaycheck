@@ -6,121 +6,13 @@
         WindowStartupLocation="CenterScreen" WindowState="Maximized" MinHeight="600" MinWidth="950">
 
     <Grid Background="Gainsboro">
-       <Grid.RowDefinitions>
-           <RowDefinition Height="45"></RowDefinition>
-           <RowDefinition Height="5*"></RowDefinition>
-       </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="35"></ColumnDefinition>
-            <ColumnDefinition Width="115"></ColumnDefinition>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
-            <ColumnDefinition Width="6*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        
-        <Image Source="Pictures/Settings.png" HorizontalAlignment="Left" Grid.Column="0"/>
-        <Label Content="SETTINGS" HorizontalAlignment="Left" Grid.Column="1" FontWeight="Bold" FontSize="20"/>
-        <TextBox Grid.Column="3" Margin="5" FontWeight="Bold" FontSize="15" Background="WhiteSmoke"></TextBox>
-        <Image Source="Pictures/Search.png" Grid.Column="3" HorizontalAlignment="Right" Margin="5"></Image>
-        <Grid Grid.Row="1" Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-            </Grid.RowDefinitions>
-           <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Row="2" Grid.Column="1" Cursor="Hand">
-                <Grid.Style>
-                    <Style>
-                        <Style.Triggers>
-                            <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                <Setter Property="Grid.Margin" Value="5"></Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="Pictures/System.png"></Image>
-                <Label Grid.Row="1" Content="System"  Style="{StaticResource lbl-header}"></Label>
-                <Label Grid.Row="2" Content="Display, power" Style="{StaticResource lbl-description}"></Label>
-            </Grid>
-
-            <Grid Grid.Row="2" Grid.Column="2" Cursor="Hand">
-                <Grid.Style>
-                    <Style>
-                        <Style.Triggers>
-                            <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                <Setter Property="Grid.Margin" Value="5"></Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="Pictures/Devices.png"></Image>
-                <Label Grid.Row="1" Content="Devices" Style="{StaticResource lbl-header}"/>
-                <Label Grid.Row="2" Content="Printer" Style="{StaticResource lbl-description}"/>
-            </Grid>
-
-            <Grid Grid.Row="2" Grid.Column="3" Cursor="Hand">
-                <Grid.Style>
-                    <Style>
-                        <Style.Triggers>
-                            <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                <Setter Property="Grid.Margin" Value="5"></Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="Pictures/Account.png"></Image>
-                <Label Grid.Row="1" Content="Accounts" Style="{StaticResource lbl-header}"/>
-                <Label Grid.Row="2" Content="Your account" Style="{StaticResource lbl-description}"/>
-            </Grid>
-
-            <Grid Grid.Row="2" Grid.Column="4" Cursor="Hand">
-                <Grid.Style>
-                    <Style>
-                        <Style.Triggers>
-                            <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                <Setter Property="Grid.Margin" Value="5"></Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="Pictures/Privacy.png"></Image>
-                <Label Grid.Row="1" Content="Accounts" Style="{StaticResource lbl-header}"     ></Label>
-                <Label Grid.Row="2" Content="Your account" Style="{StaticResource lbl-description}"></Label>
-            </Grid>
-        </Grid>
+        <DataGrid Name="dataGrid1" ItemsSource="{Binding Products}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Cost" Binding="{Binding Cost}" />
+                <DataGridTextColumn Header="Units" Binding="{Binding Units}" />
+                <DataGridTextColumn Header="Product of Type" Binding="{Binding ProductType.Name}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{64D6B7B9-F5BF-436B-91FC-00C8D4EBC6F6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MngrPaycheck.Administrator</RootNamespace>
+    <AssemblyName>MngrPaycheck.Administrator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MVVMCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MVVMCommon.1.0.0\lib\MVVMCommon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Content\Style\AStyleResourcedictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product\MainWindowProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product\Pages\AddParameter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product\Pages\AddType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product\Pages\AddValueToParameter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product\Pages\LSidebar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product\Pages\Top.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product\Pages\Editing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service References\ProductParameterValueServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductParametrServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductTypeServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services Logics\MediatorServices\ManagerServiceMediator.cs" />
+    <Compile Include="Services Logics\ProductParametrServiceLogics.cs" />
+    <Compile Include="Services Logics\ProductParametrValueServiceLogics.cs" />
+    <Compile Include="Services Logics\ProductServiceLogics.cs" />
+    <Compile Include="Services Logics\ProductTypeServiceLogics.cs" />
+    <Compile Include="Services Logics\MediatorServices\Service.cs" />
+    <Compile Include="Services Logics\MediatorServices\ServiceMediator.cs" />
+    <Compile Include="Services Logics\Wrapper\WrapperProduct.cs" />
+    <Compile Include="Services Logics\Wrapper\WrapperProductParameterValue.cs" />
+    <Compile Include="Services Logics\Wrapper\WrapperProductParametr.cs" />
+    <Compile Include="Services Logics\Wrapper\WrapperProductType.cs" />
+    <Compile Include="ViewModel\Commands\ViewModelBase.cs" />
+    <Compile Include="ViewModel\Product\VMPages\LeftSidebarVM.cs" />
+    <Compile Include="ViewModel\Product\VMPages\TopVM.cs" />
+    <Compile Include="ViewModel\Product\VMProducts\AddProductParametrVM.cs" />
+    <Compile Include="ViewModel\Product\VMProducts\AddTypeVM.cs" />
+    <Compile Include="ViewModel\Product\VMProducts\AddValueToParametrVM.cs" />
+    <Compile Include="ViewModel\Product\VMProducts\EditiingProductVM.cs" />
+    <Compile Include="ViewModel\MainWindowVM.cs" />
+    <Compile Include="ViewModel\Commands\RelayCommand.cs" />
+    <Compile Include="View\Product\MainWindowProduct.xaml.cs">
+      <DependentUpon>MainWindowProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\Pages\AddParameter.xaml.cs">
+      <DependentUpon>AddParameter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\Pages\AddType.xaml.cs">
+      <DependentUpon>AddType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\Pages\AddValueToParameter.xaml.cs">
+      <DependentUpon>AddValueToParameter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\Pages\LSidebar.xaml.cs">
+      <DependentUpon>LSidebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\Pages\Top.xaml.cs">
+      <DependentUpon>Top.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product\Pages\Editing.xaml.cs">
+      <DependentUpon>Editing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\ProductParameterValueServiceReference\ProductParameterValueRepositoryService.wsdl" />
+    <None Include="Service References\ProductParameterValueServiceReference\ProductParameterValueRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductParameterValueServiceReference\ProductParameterValueRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.wsdl" />
+    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductServiceRef\ProductRepositoryService.wsdl" />
+    <None Include="Service References\ProductServiceRef\ProductRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductServiceRef\ProductRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService.wsdl" />
+    <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\Account.png" />
+    <Resource Include="Content\Images\Devices.png" />
+    <Resource Include="Content\Images\Privacy.png" />
+    <Resource Include="Content\Images\Search.png" />
+    <Resource Include="Content\Images\Settings.png" />
+    <Resource Include="Content\Images\System.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ProductParameterValueServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ProductParametrServiceRef\" />
+    <WCFMetadataStorage Include="Service References\ProductServiceRef\" />
+    <WCFMetadataStorage Include="Service References\ProductTypeServiceRef\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceRef\ProductRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Cashier\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MngrPaycheck.Entity\MngrPaycheck.Entity.csproj">
+      <Project>{3feac9d1-fd99-4b63-9b35-0f04b6ba70d8}</Project>
+      <Name>MngrPaycheck.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\About.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\Update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductTypeServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductTypeServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductTypeServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\forwardG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\backF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParametrServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParametrServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParametrServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterValueServiceReference\ProductParameterValueRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterValueServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterValueServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterValueServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

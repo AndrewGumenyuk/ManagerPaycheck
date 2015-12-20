@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bea8646a-92da-471e-8372-05c41caccd69" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:23010/ProductParameterRepositoryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProductParameterRepositoryService.disco" MetadataType="Disco" ID="b57d6896-5b08-4b58-a78a-1002102e1034" SourceId="1" SourceUrl="http://localhost:23010/ProductParameterRepositoryService.svc?disco" />
+    <MetadataFile FileName="ProductParameterRepositoryService.xsd" MetadataType="Schema" ID="76356bbe-7e8e-4124-804f-8dbd7c97d3e5" SourceId="1" SourceUrl="http://localhost:23010/ProductParameterRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductParameterRepositoryService1.xsd" MetadataType="Schema" ID="f3fe889d-b55e-4f67-8c9d-e93f64bdbfae" SourceId="1" SourceUrl="http://localhost:23010/ProductParameterRepositoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductParameterRepositoryService.wsdl" MetadataType="Wsdl" ID="2d5af1f8-4172-46bf-98d0-935c7cbb3923" SourceId="1" SourceUrl="http://localhost:23010/ProductParameterRepositoryService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

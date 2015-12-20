@@ -1,0 +1,77 @@
+﻿<Page x:Class="MngrPaycheck.Administrator.View.Product.Pages.AddValueToParameter"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="700"
+	Title="AddParameter">
+
+    <Grid Style="{StaticResource GridPage}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="1*"/>
+       
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TopSign}">Add type to products</Label>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Border}">
+            <ToolBar Style="{StaticResource ToolBar}">
+                <Menu Style="{StaticResource TopMenu}">
+                    <MenuItem Width="25" Command="{Binding AddProductValueCommand}" >
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/Add.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Width="25" Command="{Binding Path=UpdateProductValueCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/Update.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Width="25" Command="{Binding DeleteProductValueCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/Delete.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </Menu>
+            </ToolBar>
+        </Border>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="3,3,3,3"  Background="#EEf5f9" FontSize="10" VerticalAlignment="Center" Text="{Binding SelectedProductParameter.ProductParametrValue.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border  Style="{StaticResource BorderListView}" Grid.Column="1">
+                <ListView Name="UserGrid2" ItemsSource="{Binding ProductParametrs}" SelectedItem="{Binding SelectedProductParameter}" Style="{StaticResource ListViewAll}">
+                    <ListView.View>
+                        <GridView x:Name="grdTest2">
+                            <GridViewColumn Header="Parameter" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100" />
+                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding ProductParametrValue.Value, Mode=TwoWay}"  Width="100" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+            <Border  Style="{StaticResource BorderListView}" Grid.Column="0">
+            <ListView Name="UserGrid" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" Style="{StaticResource ListViewAll}">
+                <ListView.View>
+                    <GridView x:Name="grdTest">
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost, Mode=TwoWay}"  Width="100" />
+                        <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units, Mode=TwoWay}" Width="100" />
+                        <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType.Name}" Width="140" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+        </Grid>
+        
+    </Grid>
+</Page>

@@ -1,0 +1,88 @@
+﻿<Page x:Class="MngrPaycheck.Administrator.View.FrmEditing"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="700"
+	Title="Editing">
+
+    <Grid Style="{StaticResource GridPage}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="3.3*"></RowDefinition>
+            <RowDefinition Height="7.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TopSign}">Add type to products</Label>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Border}">
+            <ToolBar Style="{StaticResource ToolBar}">
+                <Menu Style="{StaticResource TopMenu}">
+                    <MenuItem Width="25" Command="{Binding AddProductCommand}" >
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/Add.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Width="25" Command="{Binding Path=UpdateProductCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/Update.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Width="25" Command="{Binding DeleteProductCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="../../../Content/Images/Delete.png"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </Menu>
+            </ToolBar>
+        </Border>
+
+        <Border Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource BorderListView}">
+            <ListView Name="UserGrid" ItemsSource="{Binding Products, Mode=TwoWay}" SelectedItem="{Binding SelectedProduct}" Style="{StaticResource ListViewAll}">
+                <ListView.View>
+                    <GridView x:Name="grdTest">
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost, Mode=TwoWay}"  Width="100" />
+                        <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units, Mode=TwoWay}" Width="100" />
+                        <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType.Name}" Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource TopGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition Width="2.7*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="1.2*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Name: " Style="{StaticResource SidebarLblEditing}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Cost: " Style="{StaticResource SidebarLblEditing}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Units: " Style="{StaticResource SidebarLblEditing}"/>
+            <Label Grid.Row="1" Grid.Column="2" Content="Description: " Style="{StaticResource SidebarLblEditingAll}"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Chs: " Style="{StaticResource SidebarLblEditing}"/>
+
+            <TextBox   Name="txtName"  Text="{Binding Product.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="0" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtCost" Text="{Binding Product.Cost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtUnits" Text="{Binding Product.Units, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Style="{StaticResource SidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtDescription" Text="{Binding Product.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="3" Grid.Column="3" Style="{StaticResource FullSidebarTxtBoxEditing}"/>
+            <TextBox   Name="txtCharacteristicks" Text="{Binding Product.Characteristicks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource SidebarTxtBoxEditing}" />
+        </Grid>
+    </Grid>
+</Page>

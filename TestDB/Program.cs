@@ -22,105 +22,12 @@ namespace TestDB
         {
             Program pr = new Program();
 
-            PurchaseRepository _purchaseRepository = new PurchaseRepository(MngPaycheckContext.Instance);
-            pr.Mem(_purchaseRepository);
-           
+            pr.FillDB();
+            //pr.testState();
+            Console.WriteLine("OK !");
             Console.ReadKey();
-        }
-       
-        public void Mem(PurchaseRepository pr)
-        {
-            PurchaseOffice purchaseOffice = new PurchaseOffice();
-
-            foreach (var item in pr.GetAll())
-            {
-                if (item.SumPurchase == 1213)
-                {
-                    item.Favorite = true;
-                }
-            }
-            purchaseOffice.State = pr;
-
-            // Store internal state
-            PurchasesHistory c = new PurchasesHistory();
-            c.Memento = purchaseOffice.CreateMemento();
-
-            foreach (var item in pr.GetAll())
-            {
-                if (item.SumPurchase==1214)
-                {
-                    item.Favorite = true;
-                }
-            }
-            
-            // Restore saved state
-            purchaseOffice.SetMemento(c.Memento);
-
-            Console.WriteLine("STATE !!!");
-            //purchaseOffice.SetMemento(c.Memento);
-
-            foreach (var item in c.Memento.StateList)
-            {
-                Console.WriteLine(item.Favorite);
-            }
-        }
-
-
-        public void FillPiurchasesTable()
-        {
-            Product product = new Product()
-            {
-                Name = "Asus",
-                Characteristicks = "Super laptop",
-                Cost = 1012,
-                Description = "It`s a super",
-            };
-
-            Product product2 = new Product()
-            {
-                Name = "Lanovo",
-                Characteristicks = "Super laptop",
-                Cost = 1012,
-                Description = "It`s a super",
-            };
-
-            List<Product> products = new List<Product>()
-            {
-                product,
-                product2
-            };
-
-            PaymentType paymentType = new PaymentType()
-            {
-                Name = "Cash"
-            };
-            Purchase purchase = new Purchase()
-            {
-                Favorite = false,
-                PurchaseAdress = "Moldavskaya 3",
-                PurchaseDate = DateTime.Today.Date,
-                SumPurchase = 1213,
-                Products = products,
-                PaymentType = paymentType
-            };
-
-
-            using (MngPaycheckContext db = new MngPaycheckContext())
-            {
-                db.Purchases.Add(purchase);
-                db.SaveChanges();
-
-           }
-
-            PurchaseRepository purRepos = new PurchaseRepository(new MngPaycheckContext());
-            foreach (var item in purRepos.GetAll())
-            {
-                foreach (var item2 in item.Products)
-                {
-                    Console.WriteLine(item2.Name);
-                }
-            }
-        }
+            //IProductRepository _purchaseRepository = new IProductRepository(new MngPaycheckContext());
+        
 
         public void testState()
         {
@@ -145,22 +52,22 @@ namespace TestDB
             logicsState.AddProduct(product);
             logicsState.AddProductType(productType);
 
-            ProductParametrValue productParametrValue = new ProductParametrValue()
-            {
-                Value = "value",
-                Product = product
-            };
+            //ProductParametrValue productParametrValue = new ProductParametrValue()
+            //{
+            //    Value = "value",
+            //    Product = product
+            //};
 
-            ProductParametr productParametr = new ProductParametr()
-            {
-                Name = "RAM",
-                ProductParametrValue = productParametrValue
-            };
+            //ProductParametr productParametr = new ProductParametr()
+            //{
+            //    Name = "RAM",
+            //    ProductParametrValue = productParametrValue
+            //};
 
-            logicsState.AddProductParametrValue(productParametr, productParametrValue);
-            List<ProductParametr> ListOfProductParametr = new List<ProductParametr>() { productParametr };
-            logicsState.AddProductParametr(ListOfProductParametr);
-            logicsState.AddProductParametrValue(productParametr, productParametrValue);
+            //logicsState.AddProductParametrValue(productParametr, productParametrValue);
+            //List<ProductParametr> ListOfProductParametr = new List<ProductParametr>() { productParametr };
+            //logicsState.AddProductParametr(ListOfProductParametr);
+            //logicsState.AddProductParametrValue(productParametr, productParametrValue);
         }
 
         public void FillDB()
@@ -182,14 +89,23 @@ namespace TestDB
                     Name = "Laptop",
                 };
 
+                ProductParametrValue productParametrValue = new ProductParametrValue(prod, "5 gb");
+                ProductParametr productParametr = new ProductParametr()
+                {
+                    Name = "Ram",
+                    ProductType = prodType,
+                    ProductParametrValue = productParametrValue
+                };
+
                 prod.ProductType = prodType;
 
                 db.Products.Add(prod);
                 db.ProductTypes.Add(prodType);
+                db.ProductParametrs.Add(productParametr);
+   
+                db.ProductParametrValues.Add(productParametrValue);
+
                 db.SaveChanges();
-
-
-
 
                 //WORK WITH PURCHASES
                 Purchase purchase = new Purchase()
