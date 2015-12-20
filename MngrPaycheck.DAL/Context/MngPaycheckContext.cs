@@ -45,5 +45,9 @@ namespace MngrPaycheck.DAL.Context
         {
             get { return _instance.Value; }
         }
+        public MngPaycheckContext ShallowCopy()
+        {
+            return (MngPaycheckContext) MemberwiseClone();
+        }
     }
 }

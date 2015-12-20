@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using MngrPaycheck.Common.DAL.Infrastructure;
 using MngrPaycheck.DAL.Context;
+using MngrPaycheck.DAL.Repositories;
 using MngrPaycheck.DAL.Repositories.Abstract;
 using MngrPaycheck.Entity;
 using MngrPaycheck.Logics;
 using MngrPaycheck.Logics.State;
 using MngrPaycheck.Logics.State.Concrete;
 using MngrPaycheck.Logics.Strategy.Concrete;
+using MngrPaycheck.Logics.WorkingPurchases;
 
 namespace TestDB
 {
@@ -19,13 +21,13 @@ namespace TestDB
         static void Main(string[] args)
         {
             Program pr = new Program();
+
             pr.FillDB();
             //pr.testState();
             Console.WriteLine("OK !");
             Console.ReadKey();
             //IProductRepository _purchaseRepository = new IProductRepository(new MngPaycheckContext());
-
-        }
+        
 
         public void testState()
         {
@@ -104,8 +106,6 @@ namespace TestDB
                 db.ProductParametrValues.Add(productParametrValue);
 
                 db.SaveChanges();
-
-
 
                 //WORK WITH PURCHASES
                 Purchase purchase = new Purchase()

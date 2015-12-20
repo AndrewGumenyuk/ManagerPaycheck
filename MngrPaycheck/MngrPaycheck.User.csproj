@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1159F62-0814-4C31-82FC-598A83852119}</ProjectGuid>
+    <ProjectGuid>{85D4DF52-0CFC-4014-94F7-19E19D8CDF26}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MngrPaycheck</RootNamespace>

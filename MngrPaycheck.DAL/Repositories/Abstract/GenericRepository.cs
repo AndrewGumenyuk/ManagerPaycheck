@@ -41,6 +41,11 @@ namespace MngrPaycheck.DAL.Repositories.Abstract
             return Context.Set<T>().Add(entity);
         }
 
+        public virtual void Update(T entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
+        }
+
         public virtual T Delete(T entity)
         {
             return Context.Set<T>().Remove(entity);
@@ -49,11 +54,6 @@ namespace MngrPaycheck.DAL.Repositories.Abstract
         public virtual void Save()
         {
             Context.SaveChanges();
-        }
-
-        public virtual void Update(T entity)
-        {
-            Context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -39,7 +40,6 @@ namespace MngrPaycheck.Entity
         [DataMember]
         public Guid PaymentTypeID { get; set; }
 
-
         #region properties
         [DataMember]
         public virtual PaymentType PaymentType { get; set; }
@@ -50,5 +50,15 @@ namespace MngrPaycheck.Entity
         [DataMember]
         public virtual ICollection<Product> Products { get; set; } 
         #endregion
+
+        public Purchase DeepCopy()
+        {
+            //var purchase = ShallowCopy();
+            var purchase = new Purchase()
+            {
+                Favorite = Favorite
+            };
+            return purchase;
+        }
     }
 }
