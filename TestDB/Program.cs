@@ -18,7 +18,7 @@ namespace TestDB
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Program pr = new Program();
 
@@ -27,7 +27,8 @@ namespace TestDB
             Console.WriteLine("OK !");
             Console.ReadKey();
             //IProductRepository _purchaseRepository = new IProductRepository(new MngPaycheckContext());
-        
+
+        }
 
         public void testState()
         {
