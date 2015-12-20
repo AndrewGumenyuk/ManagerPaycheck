@@ -90,6 +90,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         
         public void DeleteProductType(object arg)
         {
+            ProductType.ProductParametrs = null;
             productTypeService.Delete(productTypeService.Serialize(ProductType));
             Products.Where(prod => prod.Id == SelectedProduct.Id)
                 .Single().ProductType = null;

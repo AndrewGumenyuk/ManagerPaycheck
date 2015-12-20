@@ -70,7 +70,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
                     _selectedProductParameter.Id = value.Id;
                     _selectedProductParameter.Name = value.Name;
                     _selectedProductParameter.ProductType = SelectedProduct.ProductType;
-                    _selectedProductParameter.ProductTypeID = (Guid)SelectedProduct.ProductTypeID;
+                    //_selectedProductParameter.ProductTypeID = (Guid)SelectedProduct.ProductTypeID;
                 }
                 catch (Exception) {}
                 NotifyPropertyChanged("SelectedProductParameter");
@@ -95,9 +95,14 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 
         private void DeleteProductParameter()
         {
-            productParameterService.Delete(productParameterService.Serialize(SelectedProductParameter));
-            DeleteProductParameterToProducts(SelectedProductParameter);
-            MessageBox.Show("Parameter was deleted", "Access token", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBoxResult result = MessageBox.Show("Do you want delete parametr and parametr's value", "Confirmation",
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                productParameterService.Delete(productParameterService.Serialize(SelectedProductParameter));
+                DeleteProductParameterToProducts(SelectedProductParameter);
+                MessageBox.Show("Parameter was deleted", "Access token", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void UpdateProductParameter()
@@ -113,7 +118,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         private void SelectedProductTypeInProductParametr()
         {
             SelectedProductParameter.ProductType = SelectedProduct.ProductType;
-            SelectedProductParameter.ProductTypeID = (Guid)SelectedProduct.ProductTypeID;
+            //SelectedProductParameter.ProductTypeID = (Guid)SelectedProduct.ProductTypeID;
         }
 
         /// <summary>
@@ -124,7 +129,8 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             ProductParametrs.Add(productParametr);
             foreach (var it in Products)
             {
-                if (it.ProductTypeID == productParametr.ProductTypeID)
+                if (productParametr.ProductType == null) { productParametr.ProductType = new ProductType(); }
+                if (it.ProductTypeID == productParametr.ProductType.Id)
                 {
                     productParametr.ProductType = null;
                     it.ProductType.ProductParametrs.Add(productParametr);
@@ -134,7 +140,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 
         private void DeleteProductParameterToProducts(ProductParametr dpr)
         {
-            foreach (var it in Products.Where(it => it.ProductTypeID == dpr.ProductTypeID))
+            foreach (var it in Products.Where(it => it.ProductTypeID == dpr.ProductType.Id))
             {
                 it.ProductType.ProductParametrs.Remove(it.ProductType.ProductParametrs.ToList()
                     .Where(a => a.Id == dpr.Id)

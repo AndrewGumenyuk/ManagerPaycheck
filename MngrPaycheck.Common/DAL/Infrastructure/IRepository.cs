@@ -16,7 +16,7 @@ namespace MngrPaycheck.Common.DAL.Infrastructure
 
         T Delete(T entity);
 
-
+        void Update(T entity);
         void Save();
     }
 }

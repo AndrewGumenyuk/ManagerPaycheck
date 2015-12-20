@@ -58,7 +58,7 @@ namespace ProductTypeService
                 }
             }
 
-            DeleteEmptyProductType();
+            //DeleteEmptyProductType();
             _productTypeRepository.Save();
             _productRepository.Save();
         }
@@ -81,8 +81,10 @@ namespace ProductTypeService
         public void DeleteProductType(string json)
         {
             ProductType productType = wrapperTypeProduct.DeserializeProduct(json);
-           _productRepository.GetAll().Where(prod => prod.ProductType.Id == productType.Id)
-               .Single().ProductType=null;
+           foreach (var item in _productRepository.GetAll().Where(item => item.ProductTypeID == productType.Id))
+           {
+               item.ProductType = null;
+           }
 
             DeleteEmptyProductType();
             _productTypeRepository.Save();

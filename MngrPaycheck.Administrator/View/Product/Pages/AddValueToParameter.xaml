@@ -24,17 +24,17 @@
         <Border Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Border}">
             <ToolBar Style="{StaticResource ToolBar}">
                 <Menu Style="{StaticResource TopMenu}">
-                    <MenuItem Width="25" Command="{Binding AddProductParameterCommand}" >
+                    <MenuItem Width="25" Command="{Binding AddProductValueCommand}" >
                         <MenuItem.Icon>
                             <Image Source="../../../Content/Images/Add.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Width="25" Command="{Binding Path=UpdateProductParameterCommand}">
+                    <MenuItem Width="25" Command="{Binding Path=UpdateProductValueCommand}">
                         <MenuItem.Icon>
                             <Image Source="../../../Content/Images/Update.png"></Image>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Width="25" Command="{Binding DeleteProductParameterCommand}">
+                    <MenuItem Width="25" Command="{Binding DeleteProductValueCommand}">
                         <MenuItem.Icon>
                             <Image Source="../../../Content/Images/Delete.png"></Image>
                         </MenuItem.Icon>
@@ -42,7 +42,7 @@
                 </Menu>
             </ToolBar>
         </Border>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="3,3,3,3"  Background="#EEf5f9" FontSize="10" VerticalAlignment="Center" Text="{Binding SelectedProductParameterValue.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="3,3,3,3"  Background="#EEf5f9" FontSize="10" VerticalAlignment="Center" Text="{Binding SelectedProductParameter.ProductParametrValue.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -50,11 +50,11 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Border  Style="{StaticResource BorderListView}" Grid.Column="1">
-                <ListView Name="UserGrid2" ItemsSource="{Binding ProductParametrValues}" SelectedItem="{Binding SelectedProductParameterValue}" Style="{StaticResource ListViewAll}">
+                <ListView Name="UserGrid2" ItemsSource="{Binding ProductParametrs}" SelectedItem="{Binding SelectedProductParameter}" Style="{StaticResource ListViewAll}">
                     <ListView.View>
                         <GridView x:Name="grdTest2">
-                            <GridViewColumn Header="Parameter" DisplayMemberBinding="{Binding ProductParametr.Name, Mode=TwoWay}"  Width="100" />
-                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value, Mode=TwoWay}"  Width="100" />
+                            <GridViewColumn Header="Parameter" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100" />
+                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding ProductParametrValue.Value, Mode=TwoWay}"  Width="100" />
                         </GridView>
                     </ListView.View>
                 </ListView>

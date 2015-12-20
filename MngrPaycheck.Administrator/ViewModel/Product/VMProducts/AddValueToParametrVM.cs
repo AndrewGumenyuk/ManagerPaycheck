@@ -44,7 +44,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             set
             {
                 _Products = value;
-                OnPropertyChanged("Products");
+                NotifyPropertyChanged("Products");
             }
         }
 
@@ -55,71 +55,123 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             set
             {
                 _selectedProduct = value;
-                if (value.ProductParametrValues != null)
+                if (value.ProductType.ProductParametrs != null)
                 {
-                    ProductParametrValues = new ObservableCollection<ProductParametrValue>(value.ProductParametrValues);
+                    ProductParametrs = new ObservableCollection<ProductParametr>(value.ProductType.ProductParametrs);
                 }
             }
         }
 
-        public ObservableCollection<ProductParametrValue> _ProductParametrValues;
-        public ObservableCollection<ProductParametrValue> ProductParametrValues
+        public ObservableCollection<ProductParametr> _productParametrs;
+        public ObservableCollection<ProductParametr> ProductParametrs
         {
-            get { return _ProductParametrValues; }
+            get { return _productParametrs; }
             set
             {
-                _ProductParametrValues = value;
-                NotifyPropertyChanged("ProductParametrValues");
+                _productParametrs = value;
+                NotifyPropertyChanged("ProductParametrs");
             }
         }
 
-        public ProductParametrValue _selectedProductParameterValue;
-        public ProductParametrValue SelectedProductParameterValue
+        public ProductParametr _selectedProductParameter;
+        public ProductParametr SelectedProductParameter
         {
-            get { return _selectedProductParameterValue; }
+            get { return _selectedProductParameter; }
             set
             {
-                _selectedProductParameterValue = value;
+                _selectedProductParameter = value;
+
                 try
                 {
-                    _selectedProductParameterValue = new ProductParametrValue();
-                    _selectedProductParameterValue.Product = value.Product;
-                    _selectedProductParameterValue.ProductID = value.ProductID;
-                    _selectedProductParameterValue.ProductParameterID = value.ProductParameterID;
-                    _selectedProductParameterValue.ProductParametr = value.ProductParametr;
-                    _selectedProductParameterValue.Value = value.Value;
+                    _selectedProductParameter = new ProductParametr();
+                    _selectedProductParameter.Id = value.Id;
+                    _selectedProductParameter.Name = value.Name;
+                    _selectedProductParameter.ProductType = value.ProductType;
+                    _selectedProductParameter.ProductParametrValue = new ProductParametrValue();
+                   
+                    if (_selectedProductParameter.ProductParametrValue == null)
+                    {
+                        _selectedProductParameter.ProductParametrValue = new ProductParametrValue();
+                    }
+                    _selectedProductParameter.ProductParametrValue.Value = value.ProductParametrValue.Value;
                 }
-                catch (Exception) { }
-                NotifyPropertyChanged("SelectedProductParameterValue");
+                catch (Exception) { Console.WriteLine("Wow");}
+                NotifyPropertyChanged("SelectedProductParameter");
             }
         }
-        
+       
         private void AddProductParameter()
-        {
-            ProductParametrValues.Add(SelectedProductParameterValue);
-            foreach (var item in Products)
-            {
-                if (item.Id == SelectedProductParameterValue.ProductID )
-                {
-                    SelectedProductParameterValue.Product = null;
-                    item.ProductParametrValues.Add(SelectedProductParameterValue);                   
-                }
-            }
-
-            
-
-            MessageBox.Show("Parameter was added to product of type", "Access token", MessageBoxButton.OK, MessageBoxImage.Information);
+        {            
+            productParameterValueService.Add(productParameterValueService.Serialize(GetProductParametrValue()));
+            InsteadProductParametrWithValue();
         }
 
-        public ICommand AddProductParameterCommand
+        private void DeleteProductValue()
+        {
+            productParameterValueService.Delete(productParameterValueService.Serialize(GetProductParametrValue()));
+            ProductParametr pr = SelectedProductParameter;
+            pr.ProductParametrValue = null;
+            SelectedProductParameter.ProductType.ProductParametrs.Where(param => param.Id == SelectedProductParameter.Id)
+                        .Single()
+                        .ProductParametrValue = null;
+            ProductParametrs.Remove(
+                ProductParametrs.Where(prm => prm.Id == SelectedProductParameter.Id).ToList().FirstOrDefault());
+            ProductParametrs.Add(pr);
+            }
+
+        #region helper methods
+        private void UpdateProductParameter()
+        {
+            productParameterValueService.Update(productParameterValueService.Serialize(GetProductParametrValue()));
+            InsteadProductParametrWithValue();
+        }
+
+        public ProductParametrValue GetProductParametrValue()
+        {
+            ProductParametrValue pr = SelectedProductParameter.ProductParametrValue;
+            pr.Value = SelectedProductParameter.ProductParametrValue.Value;
+            pr.ProductParametr = SelectedProductParameter;
+            pr.ProductParameterID = SelectedProductParameter.Id;
+            pr.ProductID = SelectedProduct.Id;
+            pr.Product = SelectedProduct;
+            return pr;
+        }
+
+        public void InsteadProductParametrWithValue()
+        {
+            ProductParametr prParam = SelectedProductParameter;
+            prParam.ProductParametrValue = GetProductParametrValue();
+
+            SelectedProductParameter.ProductType.ProductParametrs
+                .Where(par => par.Id == GetProductParametrValue().ProductParameterID)
+                .Single()
+                .ProductParametrValue = GetProductParametrValue();
+
+            ProductParametrs.Remove(ProductParametrs.Where(prm => prm.Id == SelectedProductParameter.Id)
+                .ToList()
+                .FirstOrDefault());
+
+            ProductParametrs.Add(prParam);
+        }
+        #endregion
+        #region Commands
+        public ICommand AddProductValueCommand
         {
             get { return new RelayCommand(c => AddProductParameter()); }
         }
+        public ICommand DeleteProductValueCommand
+        {
+            get { return new RelayCommand(c => DeleteProductValue()); }
+        }
 
+        public ICommand UpdateProductValueCommand
+        {
+            get { return new RelayCommand(c => UpdateProductParameter()); }
+        }
+        #endregion
         #region Events
         public event PropertyChangedEventHandler ProductPropertyChanged;
         #endregion
-
         #region Private Methods
         private void OnPropertyChanged(string propertyChanged)
         {

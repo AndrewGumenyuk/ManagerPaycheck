@@ -17,8 +17,8 @@ namespace MngrPaycheck.Entity
     {
         private Guid id;
         private string name;
-        private Guid productTypeID;
         private ProductType productType;
+        private ProductParametrValue productParametrValue;
 
         public ProductParametr()
         {
@@ -38,14 +38,6 @@ namespace MngrPaycheck.Entity
             set { name = value;
                 OnPropertyChanged("Name");}}
 
-        [DataMember]
-        public Guid ProductTypeID {
-            get { return productTypeID; }
-            set { productTypeID = value;
-                OnPropertyChanged("ProductTypeID");} }
-
-
-
         #region properties
         [DataMember]
         public virtual ProductType ProductType {
@@ -53,8 +45,13 @@ namespace MngrPaycheck.Entity
             set { productType = value;
                 OnPropertyChanged("ProductType"); } }
 
-        #endregion
+        [DataMember]
+        public virtual ProductParametrValue ProductParametrValue {
+            get { return productParametrValue; }
+            set { productParametrValue = value;
+                OnPropertyChanged("ProductParametrValue"); } }
 
+        #endregion
 
         #region INotifyPropertyChanged Members
 

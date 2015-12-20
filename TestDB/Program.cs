@@ -87,15 +87,13 @@ namespace TestDB
                     Name = "Laptop",
                 };
 
-
+                ProductParametrValue productParametrValue = new ProductParametrValue(prod, "5 gb");
                 ProductParametr productParametr = new ProductParametr()
                 {
                     Name = "Ram",
-                    ProductType = prodType
+                    ProductType = prodType,
+                    ProductParametrValue = productParametrValue
                 };
-
-                ProductParametrValue productParametrValue = new ProductParametrValue(productParametr, prod, "5 GB");//productParametr, "5Gb");
-                
 
                 prod.ProductType = prodType;
 
@@ -106,7 +104,6 @@ namespace TestDB
                 db.ProductParametrValues.Add(productParametrValue);
 
                 db.SaveChanges();
-
 
 
 

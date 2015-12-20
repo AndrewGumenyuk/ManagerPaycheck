@@ -9,7 +9,7 @@ using System.Text;
 namespace ProductParameterValueService
 {
     [ServiceContract]
-    public interface IProductParameterValueRepository
+    public interface IProductParameterValueRepositoryService
     {
         [OperationContract]
         string GetParameterValues();

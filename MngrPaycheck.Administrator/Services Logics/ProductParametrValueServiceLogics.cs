@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MngrPaycheck.Administrator.ProductParameterValueServiceRef;
+using MngrPaycheck.Administrator.ProductParameterValueServiceReference;
 using MngrPaycheck.Administrator.Services_Logics.Wrapper;
 using MngrPaycheck.Entity;
 using Newtonsoft.Json;
@@ -13,12 +13,12 @@ namespace MngrPaycheck.Administrator.Services_Logics
 {
     public class ProductParametrValueServiceLogics : Service
     {
-        private ProductParameterValueRepositoryClient _service1Client;
+        private ProductParameterValueRepositoryServiceClient _service1Client;
         private WrapperProductParameterValue obj;
 
         public ProductParametrValueServiceLogics(ServiceMediator serviceMediator) : base(serviceMediator)
         {
-            this._service1Client = new ProductParameterValueRepositoryClient();
+            this._service1Client = new ProductParameterValueRepositoryServiceClient();
             obj = JsonConvert.DeserializeObject<WrapperProductParameterValue>(_service1Client.GetParameterValues());
         }
 

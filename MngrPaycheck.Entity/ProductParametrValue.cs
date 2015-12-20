@@ -21,13 +21,15 @@ namespace MngrPaycheck.Entity
         private Product product;
         private ProductParametr productParametr;
 
-        [Key, Column(Order = 0), ForeignKey("Product"), Required] [DataMember]
+        [Key, ForeignKey("Product"), Required] 
+        [DataMember]
         public Guid ProductID {
             get { return productId; }
             set { productId = value;
                 OnPropertyChanged("ProductID"); } }
 
-        [Key, Column(Order = 1), ForeignKey("ProductParametr"), Required] [DataMember]
+        [Key, ForeignKey("ProductParametr"), Required]
+        [DataMember]
         public Guid ProductParameterID { 
             get { return productParameterId; }
             set { productParameterId = value;
@@ -41,10 +43,15 @@ namespace MngrPaycheck.Entity
                 OnPropertyChanged("Product");} }
 
         [DataMember]
-        public virtual ProductParametr ProductParametr { 
+        public virtual ProductParametr ProductParametr
+        {
             get { return productParametr; }
-            set { productParametr = value;
-                OnPropertyChanged("ProductParametr");} }
+            set
+            {
+                productParametr = value;
+                OnPropertyChanged("ProductParametr");
+            }
+        }
 
         [DataMember]
         public string Value { 
@@ -53,26 +60,16 @@ namespace MngrPaycheck.Entity
                 OnPropertyChanged("Value");} }
         #endregion
 
-        public ProductParametrValue(){}
+        public ProductParametrValue() { }
 
-        protected ProductParametrValue(ProductParametr parameter)
-        {
-            ProductParametr = parameter;
-        }
-
-        public ProductParametrValue(ProductParametr parameter, Product product) : this(parameter)
+        protected ProductParametrValue(Product product)
         {
             Product = product;
         }
 
-        public ProductParametrValue(ProductParametr parameter, string value)
-            : this(parameter)
-        {
-            Value = value;
-        }
 
-        public ProductParametrValue(ProductParametr parameter, Product product, string value)
-            : this(parameter, product)
+        public ProductParametrValue(Product product, string value)
+            : this(product)
         {
             Value = value;
         }

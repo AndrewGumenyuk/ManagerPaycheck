@@ -17,11 +17,13 @@ namespace ProductParameterService
         private ProductParametrRepository _productParametrRepository;
         private ProductTypeRepository _productTypeRepository;
         private WrapperProductParameter wrapperProductParametr;
+        private ProductParametrValueRepository _productParametrValueRepository;
 
         public ProductParameterRepositoryService()
         {
             _productParametrRepository = new ProductParametrRepository(new MngPaycheckContext());
             _productTypeRepository = new ProductTypeRepository(new MngPaycheckContext());
+            _productParametrValueRepository = new ProductParametrValueRepository(new MngPaycheckContext());
             wrapperProductParametr = new WrapperProductParameter();
         }
 
@@ -48,8 +50,21 @@ namespace ProductParameterService
 
         public void DeleteProductParameter(string json)
         {
+            ProductParametr pr = wrapperProductParametr.DeserializeProductParameter(json);
+            //If this parameter have a parametr we delete this parametr
+            if (_productParametrValueRepository.GetAll().Where(a=>a.ProductParameterID == pr.Id).ToList().FirstOrDefault()!=null)
+            {
+                _productParametrValueRepository.Delete(
+                       _productParametrValueRepository.GetAll()
+                           .Where(prod => prod.ProductParameterID == prod.ProductParameterID)
+                           .ToList()
+                           .FirstOrDefault());
+            }
+
+           _productParametrValueRepository.Save();
+
             _productParametrRepository.Delete(_productParametrRepository.GetAll()
-                .Where(param => param.Id == wrapperProductParametr.DeserializeProductParameter(json).Id)
+                .Where(param => param.Id == pr.Id)
                 .ToList()
                 .First());
             _productParametrRepository.Save();

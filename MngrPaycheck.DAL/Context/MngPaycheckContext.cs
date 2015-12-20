@@ -13,7 +13,7 @@ namespace MngrPaycheck.DAL.Context
     public class MngPaycheckContext: DbContext, IMngPaycheckContext, IDisposable
     {
         public MngPaycheckContext()
-            : base("MngrPaycheckTestFillTestDB50"){}
+            : base("MngrPaycheckTestFillTestDB58"){}
 
         public static readonly Lazy<MngPaycheckContext> _instance = new Lazy<MngPaycheckContext>(() => new MngPaycheckContext());
 
@@ -29,6 +29,11 @@ namespace MngrPaycheck.DAL.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<ProductParametrValue>().HasKey(e => e.ProductParameterID);
+            modelBuilder.Entity<ProductParametr>()
+                .HasOptional(s => s.ProductParametrValue)
+                .WithRequired(ad => ad.ProductParametr);
+
         }
 
         public IDbSet<TEntity> Set<TEntity>() where TEntity : class
