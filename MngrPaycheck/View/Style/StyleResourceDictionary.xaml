@@ -12,4 +12,18 @@
         <Setter Property="Label.FontWeight" Value="Normal"/>
         <Setter Property="Label.Margin" Value="-15"></Setter>
     </Style>
+
+    <Style TargetType="Button" x:Key="TabButtonFirst">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="3,0,0,0" Background="White" BorderBrush="#ccc" BorderThickness="0,1,1,0" >
+                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

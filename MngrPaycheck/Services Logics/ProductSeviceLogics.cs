@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace MngrPaycheck.Services_Logics
             obj = JsonConvert.DeserializeObject<WrapperProductUser>(_service1Client.GetProducts());
         }
 
-        public List<Product> Products()
+        public ObservableCollection<Product> Products()
         {
             return obj.CollectionProducts;
         }
