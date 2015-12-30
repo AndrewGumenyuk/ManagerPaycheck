@@ -15,37 +15,29 @@ namespace MngrPaycheck.Administrator.ProductParameterValueServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductParameterValueServiceReference.IProductParameterValueRepositoryService")]
     public interface IProductParameterValueRepositoryService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/GetParameterValues", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/GetParameterValuesResp" +
-            "onse")]
-        string GetParameterValues();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/GetAll", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/GetAllResponse")]
+        string GetAll();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/GetParameterValues", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/GetParameterValuesResp" +
-            "onse")]
-        System.Threading.Tasks.Task<string> GetParameterValuesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/GetAll", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/GetAllResponse")]
+        System.Threading.Tasks.Task<string> GetAllAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/AddParameterValue", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/AddParameterValueRespo" +
-            "nse")]
-        void AddParameterValue(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/Add", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/AddResponse")]
+        void Add(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/AddParameterValue", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/AddParameterValueRespo" +
-            "nse")]
-        System.Threading.Tasks.Task AddParameterValueAsync(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/Add", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/AddResponse")]
+        System.Threading.Tasks.Task AddAsync(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/DeleteParameterValue", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/DeleteParameterValueRe" +
-            "sponse")]
-        void DeleteParameterValue(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/Delete", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/DeleteResponse")]
+        void Delete(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/DeleteParameterValue", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/DeleteParameterValueRe" +
-            "sponse")]
-        System.Threading.Tasks.Task DeleteParameterValueAsync(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/Delete", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/DeleteResponse")]
+        System.Threading.Tasks.Task DeleteAsync(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/UpdateParameterValue", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/UpdateParameterValueRe" +
-            "sponse")]
-        void UpdateParameterValue(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/Update", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/UpdateResponse")]
+        void Update(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/UpdateParameterValue", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/UpdateParameterValueRe" +
-            "sponse")]
-        System.Threading.Tasks.Task UpdateParameterValueAsync(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductParameterValueRepositoryService/Update", ReplyAction="http://tempuri.org/IProductParameterValueRepositoryService/UpdateResponse")]
+        System.Threading.Tasks.Task UpdateAsync(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -75,36 +67,36 @@ namespace MngrPaycheck.Administrator.ProductParameterValueServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string GetParameterValues() {
-            return base.Channel.GetParameterValues();
+        public string GetAll() {
+            return base.Channel.GetAll();
         }
         
-        public System.Threading.Tasks.Task<string> GetParameterValuesAsync() {
-            return base.Channel.GetParameterValuesAsync();
+        public System.Threading.Tasks.Task<string> GetAllAsync() {
+            return base.Channel.GetAllAsync();
         }
         
-        public void AddParameterValue(string json) {
-            base.Channel.AddParameterValue(json);
+        public void Add(string json) {
+            base.Channel.Add(json);
         }
         
-        public System.Threading.Tasks.Task AddParameterValueAsync(string json) {
-            return base.Channel.AddParameterValueAsync(json);
+        public System.Threading.Tasks.Task AddAsync(string json) {
+            return base.Channel.AddAsync(json);
         }
         
-        public void DeleteParameterValue(string json) {
-            base.Channel.DeleteParameterValue(json);
+        public void Delete(string json) {
+            base.Channel.Delete(json);
         }
         
-        public System.Threading.Tasks.Task DeleteParameterValueAsync(string json) {
-            return base.Channel.DeleteParameterValueAsync(json);
+        public System.Threading.Tasks.Task DeleteAsync(string json) {
+            return base.Channel.DeleteAsync(json);
         }
         
-        public void UpdateParameterValue(string json) {
-            base.Channel.UpdateParameterValue(json);
+        public void Update(string json) {
+            base.Channel.Update(json);
         }
         
-        public System.Threading.Tasks.Task UpdateParameterValueAsync(string json) {
-            return base.Channel.UpdateParameterValueAsync(json);
+        public System.Threading.Tasks.Task UpdateAsync(string json) {
+            return base.Channel.UpdateAsync(json);
         }
     }
 }

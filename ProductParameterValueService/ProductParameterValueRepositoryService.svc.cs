@@ -24,14 +24,14 @@ namespace ProductParameterValueService
             _wrapperProductParameterValue = new WrapperProductParameterValue();
             _productParameterValueRepository = new ProductParametrValueRepository(new MngPaycheckContext());
         }
-        public string GetParameterValues()
+        public string GetAll()
         {
             var settings = new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.Objects, };
             string json = JsonConvert.SerializeObject(_wrapperProductParameterValue, settings);
             return json;
         }
 
-        public void AddParameterValue(string json)
+        public void Add(string json)
         {
             ProductParametrValue pr = _wrapperProductParameterValue.DeserializeProductParameterValue(json);
             pr.Product = null;
@@ -40,7 +40,7 @@ namespace ProductParameterValueService
             _productParameterValueRepository.Save();
         }
 
-        public void DeleteParameterValue(string json)
+        public void Delete(string json)
         {
             ProductParametrValue pr = _wrapperProductParameterValue.DeserializeProductParameterValue(json);
             _productParameterValueRepository.Delete(
@@ -51,10 +51,10 @@ namespace ProductParameterValueService
             _productParameterValueRepository.Save();
         }
 
-        public void UpdateParameterValue(string json)
+        public void Update(string json)
         {
-            DeleteParameterValue(json);
-            AddParameterValue(json);
+            Delete(json);
+            Add(json);
         }
     }
 }

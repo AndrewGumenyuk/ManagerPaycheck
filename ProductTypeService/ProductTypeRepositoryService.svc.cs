@@ -18,7 +18,7 @@ namespace ProductTypeService
 
         WrapperProductType wrapperTypeProduct = new WrapperProductType();
 
-        public string GetProductTypes()
+        public string GetAll()
         {
             var settings = new JsonSerializerSettings()
             {
@@ -34,7 +34,7 @@ namespace ProductTypeService
         /// In this method i can add product type to product
         /// </summary>
         /// <param name="json"></param>
-        public void AddProductType(string json)
+        public void Add(string json)
         {
             ProductType productType = wrapperTypeProduct.DeserializeProduct(json);
             ICollection<Product> prTypesProduct = productType.Products;// because productType`ve child elements
@@ -78,7 +78,7 @@ namespace ProductTypeService
             }
         }
 
-        public void DeleteProductType(string json)
+        public void Delete(string json)
         {
             ProductType productType = wrapperTypeProduct.DeserializeProduct(json);
            foreach (var item in _productRepository.GetAll().Where(item => item.ProductTypeID == productType.Id))
@@ -90,7 +90,7 @@ namespace ProductTypeService
             _productTypeRepository.Save();
         }
 
-        public void UpdateProductTypes(string json)
+        public void Update(string json)
         {
             ProductType prType = wrapperTypeProduct.DeserializeProduct(json);
 

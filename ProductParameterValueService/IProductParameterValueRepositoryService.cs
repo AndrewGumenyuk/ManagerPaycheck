@@ -12,15 +12,15 @@ namespace ProductParameterValueService
     public interface IProductParameterValueRepositoryService
     {
         [OperationContract]
-        string GetParameterValues();
+        string GetAll();
 
         [OperationContract]
-        void AddParameterValue(string json);
+        void Add(string json);
 
         [OperationContract]
-        void DeleteParameterValue(string json);
+        void Delete(string json);
 
         [OperationContract]
-        void UpdateParameterValue(string json);
+        void Update(string json);
     }
 }

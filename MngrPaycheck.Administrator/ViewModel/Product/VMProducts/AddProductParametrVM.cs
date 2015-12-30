@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using MngrPaycheck.Administrator.Services_Logics;
+using MngrPaycheck.CommunicationCommon.Abstract;
+using MngrPaycheck.CommunicationCommon.Concrete;
+using MngrPaycheck.CommunicationCommon.Concrete.Proxies;
 using MngrPaycheck.Entity;
 using MVVMCommon;
 
@@ -16,9 +14,10 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 {
     public class AddProductParametrVM : ViewModelBase
     {
-        private ProductServiceLogics _productSeviceLogics;
         private ObservableCollection<Entity.Product> _products;
-        private Service productParameterService;
+
+        private IGeneralService<Entity.Product> surrogateProduct;
+        private IGeneralService<ProductParametr> surrogateProductParameter;
 
         public AddProductParametrVM()
         {
@@ -26,12 +25,12 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             SelectedProduct.ProductType = new ProductType();
             SelectedProductParameter = new ProductParametr();
 
-            ManagerServiceMediator mediator = new ManagerServiceMediator();
-            productParameterService = new ProductParametrServiceLogics(mediator);
-            mediator.ProductParametr = productParameterService;
+            surrogateProduct = new Surrogate<Entity.Product>(new ProductServiceProxy());
+            Products = surrogateProduct.Deserialize(surrogateProduct.GetAll());
 
-            _productSeviceLogics = new ProductServiceLogics(mediator);
-            Products = _productSeviceLogics.Products();    
+            surrogateProductParameter = new Surrogate<ProductParametr>(new ProductParameterServiceProxy());
+            Products = surrogateProduct.Deserialize(surrogateProductParameter.GetAll());
+
             ProductParametrs = new ObservableCollection<ProductParametr>(Products.Select(a => a.ProductType).ToList().FirstOrDefault().ProductParametrs.ToList());
         }
 
@@ -39,8 +38,12 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         public ObservableCollection<Entity.Product> Products
         {
             get { return _Products; }
-            set { _Products = value;
-                OnPropertyChanged("Products"); }}
+            set
+            {
+                _Products = value;
+                OnPropertyChanged("Products");
+            }
+        }
 
         public Entity.Product _selectedProduct;
         public Entity.Product SelectedProduct // It Is selected product in listview
@@ -70,9 +73,8 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
                     _selectedProductParameter.Id = value.Id;
                     _selectedProductParameter.Name = value.Name;
                     _selectedProductParameter.ProductType = SelectedProduct.ProductType;
-                    //_selectedProductParameter.ProductTypeID = (Guid)SelectedProduct.ProductTypeID;
                 }
-                catch (Exception) {}
+                catch (Exception) { }
                 NotifyPropertyChanged("SelectedProductParameter");
             }
         }
@@ -82,13 +84,17 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         public ObservableCollection<ProductParametr> ProductParametrs
         {
             get { return _ProductParametrs; }
-            set { _ProductParametrs = value;
-                NotifyPropertyChanged("ProductParametrs"); }}
+            set
+            {
+                _ProductParametrs = value;
+                NotifyPropertyChanged("ProductParametrs");
+            }
+        }
 
         private void AddProductParameter()
         {
             SelectedProductTypeInProductParametr();
-            productParameterService.Add(productParameterService.Serialize(SelectedProductParameter));
+            surrogateProductParameter.Add(surrogateProductParameter.Serialize(SelectedProductParameter));
             AddSelectedProductParametrToProducts(SelectedProductParameter);
             MessageBox.Show("Parameter was added to product of type", "Access token", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -99,7 +105,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                productParameterService.Delete(productParameterService.Serialize(SelectedProductParameter));
+                surrogateProductParameter.Delete(surrogateProductParameter.Serialize(SelectedProductParameter));
                 DeleteProductParameterToProducts(SelectedProductParameter);
                 MessageBox.Show("Parameter was deleted", "Access token", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -108,7 +114,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         private void UpdateProductParameter()
         {
             SelectedProductTypeInProductParametr();
-            productParameterService.Update(productParameterService.Serialize(SelectedProductParameter));
+            surrogateProductParameter.Update(surrogateProductParameter.Serialize(SelectedProductParameter));
             ProductParametr pr = SelectedProductParameter;
             DeleteProductParameterToProducts(SelectedProductParameter);
             AddSelectedProductParametrToProducts(pr);
@@ -118,9 +124,9 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         private void SelectedProductTypeInProductParametr()
         {
             SelectedProductParameter.ProductType = SelectedProduct.ProductType;
-            //SelectedProductParameter.ProductTypeID = (Guid)SelectedProduct.ProductTypeID;
         }
 
+        #region helper methods
         /// <summary>
         /// // Two rows for adding productparametr to list in the view
         /// </summary>
@@ -150,7 +156,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
               .Where(param => param.Id == SelectedProductParameter.Id)
               .ToList().First());
         }
-        
+        #endregion
         #region Commands
         public ICommand AddProductParameterCommand
         {
@@ -167,11 +173,9 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             get { return new RelayCommand(c => DeleteProductParameter()); }
         }
         #endregion
-
         #region Events
         public event PropertyChangedEventHandler ProductPropertyChanged;
         #endregion
-
         #region Private Methods
         private void OnPropertyChanged(string propertyChanged)
         {

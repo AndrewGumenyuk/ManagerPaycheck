@@ -13,15 +13,15 @@ namespace ProductService
     public interface IProductRepositoryService
     {
         [OperationContract]
-        string GetProducts();
+        string GetAll();
 
         [OperationContract]
-        void AddProduct(string json);
+        void Add(string json);
 
         [OperationContract]
-        void DeleteProduct(string json);
+        void Delete(string json);
 
         [OperationContract]
-        void UpdateProducts(string json);
+        void Update(string json);
     }
 }

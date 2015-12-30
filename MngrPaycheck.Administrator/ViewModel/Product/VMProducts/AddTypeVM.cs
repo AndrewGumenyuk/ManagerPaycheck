@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using MngrPaycheck.Administrator.Services_Logics;
-using MngrPaycheck.Administrator.ViewModel.Commands;
+using MngrPaycheck.CommunicationCommon.Abstract;
+using MngrPaycheck.CommunicationCommon.Concrete;
+using MngrPaycheck.CommunicationCommon.Concrete.Proxies;
 using MngrPaycheck.Entity;
-using Newtonsoft.Json;
 using ViewModelBase = MngrPaycheck.Administrator.ViewModel.Commands.ViewModelBase;
 
 
@@ -17,26 +13,18 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 {
     public class AddTypeVM:  ViewModelBase
     {
-        private ProductServiceLogics _productSeviceLogics;
-
-        private Service productTypeService;
-        private Service prodService;
+        private IGeneralService<Entity.Product> surrogate;
+        private IGeneralService<ProductType> surrogateProductType;
 
         public AddTypeVM()
         {
             SelectedProduct = new Entity.Product();
             SelectedProduct.ProductType = new ProductType();
 
-            ManagerServiceMediator mediator = new ManagerServiceMediator();
-            productTypeService = new ProductTypeServiceLogics(mediator);
-            prodService = new ProductServiceLogics(mediator);
+            surrogate = new Surrogate<Entity.Product>(new ProductServiceProxy());
+            Products = surrogate.Deserialize(surrogate.GetAll());
 
-            mediator.ProductType = productTypeService;
-            mediator.Product = prodService;
-
-
-            _productSeviceLogics = new ProductServiceLogics(mediator);
-            Products = _productSeviceLogics.Products();
+            surrogateProductType = new Surrogate<ProductType>(new ProductTypeServiceProxy());
         }
 
         public ProductType _productType;
@@ -84,14 +72,14 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
                    Products.Where(prod => prod.Id == SelectedProduct.Id)
                         .Single().ProductType = ProductType;
                    ProductType.Products.Add(SelectedProduct);//Is selected product in listview
-                   productTypeService.Add(productTypeService.Serialize(ProductType));
+                   surrogateProductType.Add(surrogateProductType.Serialize(ProductType));
             }
        }
         
         public void DeleteProductType(object arg)
         {
             ProductType.ProductParametrs = null;
-            productTypeService.Delete(productTypeService.Serialize(ProductType));
+            surrogateProductType.Delete(surrogateProductType.Serialize(ProductType));
             Products.Where(prod => prod.Id == SelectedProduct.Id)
                 .Single().ProductType = null;
         }
@@ -100,12 +88,10 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         {
             Products.Where(prod => prod.Id == SelectedProduct.Id)
                 .Single().ProductType = ProductType;
-
-            productTypeService.Update(productTypeService.Serialize(ProductType));
-
+            surrogateProductType.Update(surrogateProductType.Serialize(ProductType));
         }
 
-
+        #region Commands
         private RelayCommand _addProductTypeCommand;
         public RelayCommand AddProductTypeCommand
         {
@@ -123,13 +109,11 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
         {
             get { return _updateProductTypeCommand ?? (_updateProductTypeCommand = new RelayCommand(UpdateProductType)); }
         }
-
-
-       #region Events
-       public event PropertyChangedEventHandler ProductPropertyChanged;
+        #endregion
+        #region Events
+        public event PropertyChangedEventHandler ProductPropertyChanged;
        #endregion
-
-       #region Private Methods
+        #region Private Methods
        private void OnPropertyChanged(string propertyChanged)
        {
            if (ProductPropertyChanged != null)

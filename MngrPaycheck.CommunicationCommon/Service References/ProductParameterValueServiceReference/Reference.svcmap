@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1a33bae3-3ee1-4d78-b006-ead9f6c5273e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:25643/ProductParameterValueRepositoryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProductParameterValueRepositoryService.xsd" MetadataType="Schema" ID="00f5b31f-e648-4589-ae77-a1de92ef3d9a" SourceId="1" SourceUrl="http://localhost:25643/ProductParameterValueRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductParameterValueRepositoryService.wsdl" MetadataType="Wsdl" ID="70d84419-f6f3-4f4c-9673-ba22631a9d6e" SourceId="1" SourceUrl="http://localhost:25643/ProductParameterValueRepositoryService.svc?wsdl" />
+    <MetadataFile FileName="ProductParameterValueRepositoryService.disco" MetadataType="Disco" ID="a8fc85c2-5bcc-4ea8-9ce2-b1125ec8a904" SourceId="1" SourceUrl="http://localhost:25643/ProductParameterValueRepositoryService.svc?disco" />
+    <MetadataFile FileName="ProductParameterValueRepositoryService1.xsd" MetadataType="Schema" ID="8c273441-d5a1-4d31-8d8d-1086a6a780b7" SourceId="1" SourceUrl="http://localhost:25643/ProductParameterValueRepositoryService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

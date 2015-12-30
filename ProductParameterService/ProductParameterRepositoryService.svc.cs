@@ -27,14 +27,14 @@ namespace ProductParameterService
             wrapperProductParametr = new WrapperProductParameter();
         }
 
-        public string GetProductParameters()
+        public string GetAll()
         {
             var settings = new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.Objects, };
             string json = JsonConvert.SerializeObject(wrapperProductParametr, settings);
             return json;
         }
 
-        public void AddProductParameter(string json)
+        public void Add(string json)
         {
             ProductParametr pr = wrapperProductParametr.DeserializeProductParameter(json);
             foreach (var item in _productTypeRepository.GetAll())
@@ -48,7 +48,7 @@ namespace ProductParameterService
             }
         }
 
-        public void DeleteProductParameter(string json)
+        public void Delete(string json)
         {
             ProductParametr pr = wrapperProductParametr.DeserializeProductParameter(json);
             //If this parameter have a parametr we delete this parametr
@@ -62,7 +62,6 @@ namespace ProductParameterService
             }
 
            _productParametrValueRepository.Save();
-
             _productParametrRepository.Delete(_productParametrRepository.GetAll()
                 .Where(param => param.Id == pr.Id)
                 .ToList()
@@ -70,7 +69,7 @@ namespace ProductParameterService
             _productParametrRepository.Save();
         }
 
-        public void UpdateProductParameter(string json)
+        public void Update(string json)
         {
             ProductParametr pr = wrapperProductParametr.DeserializeProductParameter(json);
 

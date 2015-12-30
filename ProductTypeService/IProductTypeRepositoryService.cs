@@ -11,15 +11,15 @@ namespace ProductTypeService
     public interface IProductTypeRepositoryService
     {
         [OperationContract]
-        string GetProductTypes();
+        string GetAll();
 
         [OperationContract]
-        void AddProductType(string json);
+        void Add(string json);
 
         [OperationContract]
-        void DeleteProductType(string json);
+        void Delete(string json);
 
         [OperationContract]
-        void UpdateProductTypes(string json);
+        void Update(string json);
     }
 }

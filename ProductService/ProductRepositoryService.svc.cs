@@ -30,7 +30,7 @@ namespace ProductService
         }
 
         WrapperProduct wrapperProduct = new WrapperProduct();
-        public string GetProducts()
+        public string GetAll()
         {
             var settings = new JsonSerializerSettings()
             {
@@ -42,19 +42,19 @@ namespace ProductService
             return json;
         }
 
-        public void AddProduct(string json)
+        public void Add(string json)
         {
             _productRepository.Add(wrapperProduct.DeserializeProduct(json));
             _productRepository.Save();
         }
 
-        public void DeleteProduct(string json)
+        public void Delete(string json)
         {
             _productRepository.Delete(_productRepository.GetById(wrapperProduct.DeserializeProduct(json).Id));
             _productRepository.Save();
         }
 
-        public void UpdateProducts(string json)
+        public void Update(string json)
         {
             _productRepository.Delete(_productRepository.GetById(wrapperProduct.DeserializeProduct(json).Id));
             _productRepository.Add(wrapperProduct.DeserializeProduct(json));

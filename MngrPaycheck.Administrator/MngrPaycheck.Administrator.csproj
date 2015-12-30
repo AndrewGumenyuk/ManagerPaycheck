@@ -104,12 +104,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Service References\ProductParameterValueServiceReference\Reference.cs">
+    <Compile Include="Service References\ProductParameterServiceRefer\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ProductParametrServiceRef\Reference.cs">
+    <Compile Include="Service References\ProductParameterValueServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -125,16 +125,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Services Logics\MediatorServices\ManagerServiceMediator.cs" />
-    <Compile Include="Services Logics\ProductParametrServiceLogics.cs" />
-    <Compile Include="Services Logics\ProductParametrValueServiceLogics.cs" />
-    <Compile Include="Services Logics\ProductServiceLogics.cs" />
-    <Compile Include="Services Logics\ProductTypeServiceLogics.cs" />
     <Compile Include="Services Logics\MediatorServices\Service.cs" />
     <Compile Include="Services Logics\MediatorServices\ServiceMediator.cs" />
-    <Compile Include="Services Logics\Wrapper\WrapperProduct.cs" />
-    <Compile Include="Services Logics\Wrapper\WrapperProductParameterValue.cs" />
-    <Compile Include="Services Logics\Wrapper\WrapperProductParametr.cs" />
-    <Compile Include="Services Logics\Wrapper\WrapperProductType.cs" />
     <Compile Include="ViewModel\Commands\ViewModelBase.cs" />
     <Compile Include="ViewModel\Product\VMPages\LeftSidebarVM.cs" />
     <Compile Include="ViewModel\Product\VMPages\TopVM.cs" />
@@ -194,18 +186,18 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ProductParameterServiceRefer\ProductParameterRepositoryService.wsdl" />
+    <None Include="Service References\ProductParameterServiceRefer\ProductParameterRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductParameterServiceRefer\ProductParameterRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductParameterValueServiceReference\ProductParameterValueRepositoryService.wsdl" />
     <None Include="Service References\ProductParameterValueServiceReference\ProductParameterValueRepositoryService.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ProductParameterValueServiceReference\ProductParameterValueRepositoryService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.wsdl" />
-    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ProductServiceRef\ProductRepositoryService.wsdl" />
@@ -240,8 +232,8 @@
     <Resource Include="Content\Images\System.png" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ProductParameterServiceRefer\" />
     <WCFMetadataStorage Include="Service References\ProductParameterValueServiceReference\" />
-    <WCFMetadataStorage Include="Service References\ProductParametrServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductTypeServiceRef\" />
   </ItemGroup>
@@ -264,6 +256,10 @@
     <Folder Include="View\Cashier\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MngrPaycheck.CommunicationCommon\MngrPaycheck.CommunicationCommon.csproj">
+      <Project>{88904B5B-D314-419D-9A37-48616B11E4E9}</Project>
+      <Name>MngrPaycheck.CommunicationCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MngrPaycheck.Entity\MngrPaycheck.Entity.csproj">
       <Project>{3feac9d1-fd99-4b63-9b35-0f04b6ba70d8}</Project>
       <Name>MngrPaycheck.Entity</Name>
@@ -309,21 +305,6 @@
     <Resource Include="Content\Images\backF.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProductParametrServiceRef\ProductParameterRepositoryService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductParametrServiceRef\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductParametrServiceRef\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductParametrServiceRef\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\ProductParameterValueServiceReference\ProductParameterValueRepositoryService.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -334,6 +315,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ProductParameterValueServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterServiceRefer\ProductParameterRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterServiceRefer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterServiceRefer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductParameterServiceRefer\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
