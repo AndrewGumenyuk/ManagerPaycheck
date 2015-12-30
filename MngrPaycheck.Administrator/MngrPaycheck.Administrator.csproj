@@ -124,9 +124,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services Logics\MediatorServices\ManagerServiceMediator.cs" />
-    <Compile Include="Services Logics\MediatorServices\Service.cs" />
-    <Compile Include="Services Logics\MediatorServices\ServiceMediator.cs" />
     <Compile Include="ViewModel\Commands\ViewModelBase.cs" />
     <Compile Include="ViewModel\Product\VMPages\LeftSidebarVM.cs" />
     <Compile Include="ViewModel\Product\VMPages\TopVM.cs" />
