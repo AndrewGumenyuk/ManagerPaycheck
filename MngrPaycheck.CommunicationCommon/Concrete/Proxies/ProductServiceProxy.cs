@@ -39,8 +39,6 @@ namespace MngrPaycheck.CommunicationCommon.Concrete.Proxies
             throw new NotImplementedException();
         }
 
-        private ProductWrapper obj;
-
         public ObservableCollection<Product> Deserialize(string json)
         {
              return JsonConvert.DeserializeObject<ProductWrapper>

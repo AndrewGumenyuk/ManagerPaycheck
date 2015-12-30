@@ -253,9 +253,9 @@
     <Folder Include="View\Cashier\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MngrPaycheck.CommunicationCommon\MngrPaycheck.CommunicationCommon.csproj">
+    <ProjectReference Include="..\MngrPaycheck.CommunicationCommon\MngrPaycheck.Communication.Common.csproj">
       <Project>{88904B5B-D314-419D-9A37-48616B11E4E9}</Project>
-      <Name>MngrPaycheck.CommunicationCommon</Name>
+      <Name>MngrPaycheck.Communication.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\MngrPaycheck.Entity\MngrPaycheck.Entity.csproj">
       <Project>{3feac9d1-fd99-4b63-9b35-0f04b6ba70d8}</Project>

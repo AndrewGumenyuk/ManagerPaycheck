@@ -52,8 +52,5 @@ namespace MngrPaycheck.Administrator.ViewModel
         {
             obj.NavigationService.Navigate(new Uri("View/Product/Pages/AddValueToParameter.xaml", UriKind.Relative));
         }
-
-
-
     }
 }

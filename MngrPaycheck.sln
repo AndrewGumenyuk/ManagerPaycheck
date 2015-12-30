@@ -30,9 +30,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheckServicesHost", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductParameterValueService", "ProductParameterValueService\ProductParameterValueService.csproj", "{914E0325-8985-4F27-9219-586D27A3920C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.User", "MngrPaycheck\MngrPaycheck.User.csproj", "{85D4DF52-0CFC-4014-94F7-19E19D8CDF26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Cashier", "MngrPaycheck\MngrPaycheck.Cashier.csproj", "{85D4DF52-0CFC-4014-94F7-19E19D8CDF26}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D557C6AB-C89F-47C6-9098-3A3357D6C277} = {D557C6AB-C89F-47C6-9098-3A3357D6C277}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.CommunicationCommon", "MngrPaycheck.CommunicationCommon\MngrPaycheck.CommunicationCommon.csproj", "{88904B5B-D314-419D-9A37-48616B11E4E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Communication.Common", "MngrPaycheck.CommunicationCommon\MngrPaycheck.Communication.Common.csproj", "{88904B5B-D314-419D-9A37-48616B11E4E9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{914E0325-8985-4F27-9219-586D27A3920C} = {914E0325-8985-4F27-9219-586D27A3920C}
 		{FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D} = {FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D}

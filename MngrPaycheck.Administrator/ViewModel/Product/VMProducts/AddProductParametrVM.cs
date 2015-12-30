@@ -14,8 +14,6 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 {
     public class AddProductParametrVM : ViewModelBase
     {
-        private ObservableCollection<Entity.Product> _products;
-
         private IGeneralService<Entity.Product> surrogateProduct;
         private IGeneralService<ProductParametr> surrogateProductParameter;
 
@@ -34,13 +32,13 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             ProductParametrs = new ObservableCollection<ProductParametr>(Products.Select(a => a.ProductType).ToList().FirstOrDefault().ProductParametrs.ToList());
         }
 
-        ObservableCollection<Entity.Product> _Products;
+        ObservableCollection<Entity.Product> _products;
         public ObservableCollection<Entity.Product> Products
         {
-            get { return _Products; }
+            get { return _products; }
             set
             {
-                _Products = value;
+                _products = value;
                 OnPropertyChanged("Products");
             }
         }

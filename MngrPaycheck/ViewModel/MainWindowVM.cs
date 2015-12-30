@@ -6,24 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MngrPaycheck.CommunicationCommon.Abstract;
+using MngrPaycheck.CommunicationCommon.Concrete;
+using MngrPaycheck.CommunicationCommon.Concrete.Proxies;
 using MngrPaycheck.Entity;
 using MngrPaycheck.Interpreter;
 using MngrPaycheck.Interpreter.Abstract;
 using MngrPaycheck.Interpreter.Expressions;
-using MngrPaycheck.ProductServiceReference;
-using MngrPaycheck.Services_Logics;
 using MVVMCommon;
 
 namespace MngrPaycheck.ViewModel
 {
     public class MainWindowVM : ViewModelBase
     {
-        private ProductSeviceLogics _productSeviceLogics;
+        private IGeneralService<Product> surrogate;
 
         public MainWindowVM()
         {
-            _productSeviceLogics = new ProductSeviceLogics();
-            Products = _productSeviceLogics.Products();
+            surrogate = new Surrogate<Product>(new ProductServiceProxy());
+            Products = surrogate.Deserialize(surrogate.GetAll());
             ProductsInCheck = new ObservableCollection<Product>();
         }
 

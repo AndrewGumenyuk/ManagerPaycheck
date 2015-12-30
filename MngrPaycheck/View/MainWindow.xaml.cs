@@ -15,8 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MngrPaycheck.Entity;
-using MngrPaycheck.ProductServiceReference;
-using MngrPaycheck.Services_Logics;
 using MngrPaycheck.ViewModel;
 
 

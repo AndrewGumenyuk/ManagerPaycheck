@@ -13,7 +13,6 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
 {
     public class AddValueToParametrVM : ViewModelBase
     {
-        private ObservableCollection<Entity.Product> _products;
         private IGeneralService<Entity.Product> surrogateProduct;
         private IGeneralService<Entity.ProductParametrValue> surrogateProductParametrValue;
 
@@ -24,13 +23,13 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             Products = surrogateProduct.Deserialize(surrogateProduct.GetAll());
         }
 
-        ObservableCollection<Entity.Product> _Products;
+        ObservableCollection<Entity.Product> _products;
         public ObservableCollection<Entity.Product> Products
         {
-            get { return _Products; }
+            get { return _products; }
             set
             {
-                _Products = value;
+                _products = value;
                 NotifyPropertyChanged("Products");
             }
         }
