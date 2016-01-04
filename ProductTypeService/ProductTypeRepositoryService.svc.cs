@@ -1,22 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web.Mvc;
+using MngrPaycheck.Common.DAL.Infrastructure;
 using MngrPaycheck.DAL.Context;
 using MngrPaycheck.DAL.Repositories;
 using MngrPaycheck.DAL.Repositories.Abstract;
 using MngrPaycheck.Entity;
+using MngrPaycheck.IoCManager;
 using Newtonsoft.Json;
+using Ninject;
 
 namespace ProductTypeService
-{    public class ProductTypeRepositoryService : IProductTypeRepositoryService
+{    
+    public class ProductTypeRepositoryService : IProductTypeRepositoryService
     {
-        private ProductTypeRepository _productTypeRepository = new ProductTypeRepository(MngPaycheckContext.Instance);
-        private ProductRepository _productRepository = new ProductRepository(MngPaycheckContext.Instance);
+        private IProductTypeRepository _productTypeRepository;
+        private IProductRepository _productRepository;
+        private WrapperProductType wrapperTypeProduct;
 
-        WrapperProductType wrapperTypeProduct = new WrapperProductType();
+        public ProductTypeRepositoryService()
+        {
+             IoCManagerCore.Start();
+             wrapperTypeProduct = new WrapperProductType();           
+            _productRepository = IoCManagerCore.Kernel.Get<IProductRepository>();
+            _productTypeRepository = IoCManagerCore.Kernel.Get<IProductTypeRepository>();
+        }
 
         public string GetAll()
         {
@@ -24,9 +37,7 @@ namespace ProductTypeService
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects,
             };
-
             string json = JsonConvert.SerializeObject(wrapperTypeProduct, settings);
-
             return json;
         }
 

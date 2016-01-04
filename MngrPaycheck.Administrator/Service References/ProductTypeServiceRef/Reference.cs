@@ -15,29 +15,17 @@ namespace MngrPaycheck.Administrator.ProductTypeServiceRef {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductTypeServiceRef.IProductTypeRepositoryService")]
     public interface IProductTypeRepositoryService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/GetProductTypes", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/GetProductTypesResponse")]
-        string GetProductTypes();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/GetAll", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/GetAllResponse")]
+        string GetAll();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/GetProductTypes", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/GetProductTypesResponse")]
-        System.Threading.Tasks.Task<string> GetProductTypesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/Add", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/AddResponse")]
+        void Add(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/AddProductType", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/AddProductTypeResponse")]
-        void AddProductType(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/Delete", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/DeleteResponse")]
+        void Delete(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/AddProductType", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/AddProductTypeResponse")]
-        System.Threading.Tasks.Task AddProductTypeAsync(string json);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/DeleteProductType", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/DeleteProductTypeResponse")]
-        void DeleteProductType(string json);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/DeleteProductType", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/DeleteProductTypeResponse")]
-        System.Threading.Tasks.Task DeleteProductTypeAsync(string json);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/UpdateProductTypes", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/UpdateProductTypesResponse")]
-        void UpdateProductTypes(string json);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/UpdateProductTypes", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/UpdateProductTypesResponse")]
-        System.Threading.Tasks.Task UpdateProductTypesAsync(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductTypeRepositoryService/Update", ReplyAction="http://tempuri.org/IProductTypeRepositoryService/UpdateResponse")]
+        void Update(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -67,36 +55,20 @@ namespace MngrPaycheck.Administrator.ProductTypeServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public string GetProductTypes() {
-            return base.Channel.GetProductTypes();
+        public string GetAll() {
+            return base.Channel.GetAll();
         }
         
-        public System.Threading.Tasks.Task<string> GetProductTypesAsync() {
-            return base.Channel.GetProductTypesAsync();
+        public void Add(string json) {
+            base.Channel.Add(json);
         }
         
-        public void AddProductType(string json) {
-            base.Channel.AddProductType(json);
+        public void Delete(string json) {
+            base.Channel.Delete(json);
         }
         
-        public System.Threading.Tasks.Task AddProductTypeAsync(string json) {
-            return base.Channel.AddProductTypeAsync(json);
-        }
-        
-        public void DeleteProductType(string json) {
-            base.Channel.DeleteProductType(json);
-        }
-        
-        public System.Threading.Tasks.Task DeleteProductTypeAsync(string json) {
-            return base.Channel.DeleteProductTypeAsync(json);
-        }
-        
-        public void UpdateProductTypes(string json) {
-            base.Channel.UpdateProductTypes(json);
-        }
-        
-        public System.Threading.Tasks.Task UpdateProductTypesAsync(string json) {
-            return base.Channel.UpdateProductTypesAsync(json);
+        public void Update(string json) {
+            base.Channel.Update(json);
         }
     }
 }

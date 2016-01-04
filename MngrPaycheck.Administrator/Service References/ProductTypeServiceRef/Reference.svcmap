@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e60fdbdc-dda3-40f4-9206-ccb4889aa2be" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ab05603-b584-40e3-ae6e-a41f17ca6c38" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
-    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -22,10 +21,10 @@
     <MetadataSource Address="http://localhost:3595/ProductTypeRepositoryService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ProductTypeRepositoryService.disco" MetadataType="Disco" ID="fdc10c92-dfc5-42c0-9505-411ee217f77b" SourceId="1" SourceUrl="http://localhost:3595/ProductTypeRepositoryService.svc?disco" />
-    <MetadataFile FileName="ProductTypeRepositoryService.xsd" MetadataType="Schema" ID="b770a4cf-9526-45da-b4b9-3797bf077842" SourceId="1" SourceUrl="http://localhost:3595/ProductTypeRepositoryService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ProductTypeRepositoryService1.xsd" MetadataType="Schema" ID="f8fdc0d2-593c-4cd9-97f4-7f19faa35363" SourceId="1" SourceUrl="http://localhost:3595/ProductTypeRepositoryService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ProductTypeRepositoryService.wsdl" MetadataType="Wsdl" ID="39483c76-9fc9-40d6-bbd9-f3b25a90ee76" SourceId="1" SourceUrl="http://localhost:3595/ProductTypeRepositoryService.svc?wsdl" />
+    <MetadataFile FileName="ProductTypeRepositoryService.disco" MetadataType="Disco" ID="06fb8d83-a4f3-4241-94fe-3e2c6f1edd91" SourceId="1" SourceUrl="http://localhost:3595/ProductTypeRepositoryService.svc?disco" />
+    <MetadataFile FileName="ProductTypeRepositoryService.xsd" MetadataType="Schema" ID="3cf2a692-d295-4c21-ae99-acdb90d94e6d" SourceId="1" SourceUrl="http://localhost:3595/ProductTypeRepositoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductTypeRepositoryService1.xsd" MetadataType="Schema" ID="aac6ae44-d943-4205-8312-7f3d8d02eed6" SourceId="1" SourceUrl="http://localhost:3595/ProductTypeRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductTypeRepositoryService.wsdl" MetadataType="Wsdl" ID="307a70a3-9485-44fe-a44c-1e07465f6b43" SourceId="1" SourceUrl="http://localhost:3595/ProductTypeRepositoryService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -5,11 +5,14 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web.Mvc;
 using MngrPaycheck.Common.DAL.Infrastructure;
 using MngrPaycheck.DAL.Context;
 using MngrPaycheck.DAL.Repositories;
 using MngrPaycheck.Entity;
+using MngrPaycheck.IoCManager;
 using Newtonsoft.Json;
+using Ninject;
 using ProductParameterValueService;
 
 namespace ProductParameterValueService
@@ -21,8 +24,10 @@ namespace ProductParameterValueService
 
         public ProductParameterValueRepositoryService()
         {
+            IoCManagerCore.Start();
+            _productParameterValueRepository = IoCManagerCore.Kernel.Get<IProductParametrValueRepository>();
+
             _wrapperProductParameterValue = new WrapperProductParameterValue();
-            _productParameterValueRepository = new ProductParametrValueRepository(new MngPaycheckContext());
         }
         public string GetAll()
         {

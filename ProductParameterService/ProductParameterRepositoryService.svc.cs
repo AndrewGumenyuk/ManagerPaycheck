@@ -5,25 +5,30 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web.Mvc;
+using MngrPaycheck.Common.DAL.Infrastructure;
 using MngrPaycheck.DAL.Context;
 using MngrPaycheck.DAL.Repositories;
 using MngrPaycheck.Entity;
+using MngrPaycheck.IoCManager;
 using Newtonsoft.Json;
+using Ninject;
 
 namespace ProductParameterService
 {
     public class ProductParameterRepositoryService : IProductParameterRepositoryService
     {
-        private ProductParametrRepository _productParametrRepository;
-        private ProductTypeRepository _productTypeRepository;
+        private IProductParametrRepository _productParametrRepository;
+        private IProductTypeRepository _productTypeRepository;
+        private IProductParametrValueRepository _productParametrValueRepository;
         private WrapperProductParameter wrapperProductParametr;
-        private ProductParametrValueRepository _productParametrValueRepository;
 
         public ProductParameterRepositoryService()
         {
-            _productParametrRepository = new ProductParametrRepository(new MngPaycheckContext());
-            _productTypeRepository = new ProductTypeRepository(new MngPaycheckContext());
-            _productParametrValueRepository = new ProductParametrValueRepository(new MngPaycheckContext());
+            IoCManagerCore.Start();
+            _productTypeRepository = IoCManagerCore.Kernel.Get<IProductTypeRepository>();
+            _productParametrRepository = IoCManagerCore.Kernel.Get<IProductParametrRepository>();
+            _productParametrValueRepository = IoCManagerCore.Kernel.Get<IProductParametrValueRepository>();
             wrapperProductParametr = new WrapperProductParameter();
         }
 
