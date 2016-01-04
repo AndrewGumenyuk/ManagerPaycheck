@@ -2,30 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="700" Width="1200"
-        
         WindowStartupLocation="CenterScreen" MinHeight="400" MinWidth="400">
-
-    <Grid Background="#FFD3D8DA" >
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="62"></ColumnDefinition>
-            <ColumnDefinition Width="563*"></ColumnDefinition>
-            <ColumnDefinition Width="200*"></ColumnDefinition>
+            <ColumnDefinition Width="395*"></ColumnDefinition>
+            <ColumnDefinition Width="201*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0" >       
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.35*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            
             <Grid Background="#F0F0F0" Grid.Row="0">
                 <StackPanel VerticalAlignment="Top">
-                    <Menu Width="Auto" Height="23" VerticalAlignment="Center" FontSize="13">
+                    <Menu Style="{StaticResource StyleOfMenu}">
                         <MenuItem Header="_File">
                             <MenuItem x:Name="AppExit" Header="E_xit" HorizontalAlignment="Left" Width="140">
                                 <MenuItem.Icon>
@@ -50,159 +40,137 @@
                     </Menu>
                 </StackPanel>
             </Grid>
-            <Grid Grid.Row="1" Background="#FFF0E4E4" Margin="2,2,2,2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="5*"/>
-
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
-                    <StackPanel.Style>
-                        <Style>
-                            <Style.Triggers>
-                                <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                    <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                    <Setter Property="Grid.Margin" Value="3"></Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </StackPanel.Style>
-                    <Image Source="../Content/Images/verification.png" Height="30"></Image>
-                    <Label Content="All checks" FontSize="11" Margin="0,-6,0,0" HorizontalAlignment="Center" FontFamily="Kristen ITC"></Label>
-                </StackPanel>
-                <Line Stroke="Black" StrokeThickness="1" X1="0" Y1="5" X2="0" Y2="40" HorizontalAlignment="Right"></Line>
-
-                <StackPanel Grid.Column="1">
-                    <StackPanel.Style>
-                        <Style>
-                            <Style.Triggers>
-                                <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                    <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                    <Setter Property="Grid.Margin" Value="3"></Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </StackPanel.Style>
-                    <Image Source="../Content/Images/Reports.png" Height="30"></Image>
-                    <Label Content="Reports" FontSize="11" Margin="0,-6,0,0" HorizontalAlignment="Center" FontFamily="Kristen ITC"></Label>
-                </StackPanel>
-                <Line Stroke="Black" StrokeThickness="1" X1="0" Y1="5" X2="0" Y2="40" HorizontalAlignment="Right" Grid.Column="1"></Line>
-                
-                <StackPanel Grid.Column="4" HorizontalAlignment="Right">
-                    <StackPanel.Style>
-                        <Style>
-                            <Style.Triggers>
-                                <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                    <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                    <Setter Property="Grid.Margin" Value="3"></Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </StackPanel.Style>
-                    <Image Source="../Content/Images/question.png" Height="30"></Image>
-                    <Label Content="Help" FontSize="11" Margin="0,-6,0,0" HorizontalAlignment="Center" FontFamily="Kristen ITC"></Label>
-                </StackPanel>
-            </Grid>
-        </Grid>
-
-
-        <Grid Grid.Row="1" Grid.Column="1" Background="#FFBFBABA">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="20*"/>
-            </Grid.RowDefinitions>
-            <Border CornerRadius="5" BorderThickness="1" BorderBrush="WhiteSmoke" Grid.Column="0" Margin="20,10,20,0">
-                <TextBox FontSize="13" Background="WhiteSmoke" FontFamily="Arial" Text="{Binding ProductIntroduction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
-            </Border>
-            <ListView  ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Grid.Row="1" 
-                       FontSize="13" Margin="10,10" FontFamily="Arial" SelectedItem="{Binding SelectedProduct}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
-                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"  Width="100" />
-                        <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}" Width="100" />
-                        <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType.Name}" Width="100" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
-
-        <Grid Grid.Row="1" Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.17*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
             
-            <Border Grid.Row="1"  BorderBrush="#FF000000" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8" Margin="10,1,10,1">
-            <Grid>
-                    <Image  Source="../Content/Images/user.png" HorizontalAlignment="Right" Margin="0,0,10,0"></Image>
-                    <Label  Content="Andrew" HorizontalAlignment="Right" Margin="0,0,40,0" FontFamily="SimSun" FontSize="16"></Label>
-                    <Label  Content="{Binding SummingCheck, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="0,0,40,0" FontFamily="SimSun" FontSize="16"></Label>
-                </Grid>
-            </Border>
-            <ListView  ItemsSource="{Binding ProductsInCheck}" SelectedItem="{Binding SelectedProductInCheck}" Grid.Row="2" FontFamily="SimSun" FontSize="16" FontWeight="Bold" Margin="10,10,10,0">
-                <ListView.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="10" BorderThickness="5" BorderBrush="#009688">
-                            <ItemsPresenter></ItemsPresenter>
-                        </Border>
-                    </ControlTemplate>
-                </ListView.Template>
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="60"/>
-                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost, Mode=TwoWay}"  Width="60" />
-                        <GridViewColumn Header="Units" Width="80">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox Text="{Binding Units, Mode=TwoWay}" Width="60"></TextBox>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-           
-            <Grid Row="3" Margin="10,10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="5*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                
-                
-                <Image Grid.Column="0" Source="../Content/Images/cancel.png">
-                    <Image.Style>
-                        <Style>
-                            <Style.Triggers>
-                                <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                    <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                    <Setter Property="Grid.Margin" Value="-5"></Setter>
-                                </Trigger>
-                            </Style.Triggers>
+            <Grid Grid.Row="1" Background="#FFC3DCF5" >
+                <TabControl Style="{StaticResource StyleOfTabControl}" >
+                    <TabControl.Resources>
+                        <Style TargetType="TabItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TabItem">
+                                        <Border Name="Border" Style="{StaticResource BorderControlTemplate}">
+                                            <ContentPresenter x:Name="ContentSite" ContentSource="Header" Style="{StaticResource ContentPresenterTemplate}"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
                         </Style>
-                    </Image.Style>
-                </Image>
-                <Image Grid.Column="1" Source="../Content/Images/checked.png">
-                    <Image.Style>
-                        <Style>
-                            <Style.Triggers>
-                                <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                    <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                    <Setter Property="Grid.Margin" Value="-5"></Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                </Image>
+                    </TabControl.Resources>
+                    <TabItem Header="Check out" Foreground="#FF6A6A6A">
+                        <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="20*"/>
+                                </Grid.RowDefinitions>
+                                <TextBox Grid.Row="0" Style="{StaticResource TextBoxTabOfCheckOut}" Text="{Binding ProductIntroduction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
+                                <ListView  Grid.Row="1" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Style="{StaticResource ListViewTabOfCheckOut}" SelectedItem="{Binding SelectedProduct}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
+                                            <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"  Width="100" />
+                                            <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}" Width="100" />
+                                            <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType.Name}" Width="100" />
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                           <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.2*"/>
+                                    <RowDefinition Height="0.18*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="0.2*"/>
+                                    <RowDefinition Height="0.2*"/>
+                                    <RowDefinition Height="0.6*"/>
+                                </Grid.RowDefinitions>
+                               <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Style="{StaticResource LabelCheck}">Buyer:</Label>
+                                    <TextBox Grid.Column="1" Style="{StaticResource TextBoxCheck}" ></TextBox>
+                                </Grid>
+
+                                <ListView  Grid.Row="2" ItemsSource="{Binding ProductsInCheck}" SelectedItem="{Binding SelectedProductInCheck}" Margin="20,10,20,0" FontSize="13" FontFamily="Arial">   
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100">
+                                             
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost, Mode=TwoWay}"  Width="100" />
+                                            <GridViewColumn Header="Units" Width="80">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding Units, Mode=TwoWay}" Width="60"></TextBox>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                               <Grid Grid.Row="3" Margin="2,2,2,2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="0.06*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Margin="12,0,0,0" FontWeight="Bold">Total:</Label>
+                                    <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" >100 $</Label>   
+                                </Grid>
+                               <Grid Grid.Row="4">
+                                   <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="0.1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="1" Source="../Content/Images/erase.png" HorizontalAlignment="Left">
+                                        <Image.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <Trigger Property="TextBlock.IsMouseOver" Value="True">
+                                                        <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
+                                                        <Setter Property="Grid.Margin" Value="-5"></Setter>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                    <Image Source="../Content/Images/correct.png" HorizontalAlignment="Right" Grid.Column="2">
+                                        <Image.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <Trigger Property="TextBlock.IsMouseOver" Value="True">
+                                                        <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
+                                                        <Setter Property="Grid.Margin" Value="-5"></Setter>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                </Grid>
+                               
+                            </Grid>
+                          </Grid>    
+                    </TabItem>
+                    <TabItem Header="All checks" />
+                    <TabItem Header="Seen work"/>
+                </TabControl>
+
             </Grid>
         </Grid>
     </Grid>

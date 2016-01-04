@@ -6,7 +6,6 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using MngrPaycheck.Common.DAL.Infrastructure;
-using System.Data.Entity;
 
 namespace MngrPaycheck.DAL.Repositories.Abstract
 {

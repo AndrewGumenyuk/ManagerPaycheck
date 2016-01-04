@@ -123,7 +123,6 @@ namespace MngrPaycheck.ViewModel
             set
             {
                 _summingCheck = value;
-                float sum = 0;
                 foreach (var it in ProductsInCheck)
                 {
                     _summingCheck += it.Cost*it.Units;

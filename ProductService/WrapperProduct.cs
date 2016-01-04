@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
 using MngrPaycheck.Common.DAL.Infrastructure;
 using MngrPaycheck.DAL.Context;
-using MngrPaycheck.DAL.Repositories;
 using MngrPaycheck.DAL.Repositories.Abstract;
 using MngrPaycheck.Entity;
 using Newtonsoft.Json;

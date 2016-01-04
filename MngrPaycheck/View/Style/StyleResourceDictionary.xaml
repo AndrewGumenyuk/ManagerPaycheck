@@ -26,4 +26,59 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style TargetType="Menu" x:Key="StyleOfMenu">
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+    
+    <Style TargetType="TabControl" x:Key="StyleOfTabControl">
+        <Setter Property="BorderBrush" Value="Gainsboro"/>
+        <Setter Property="Foreground" Value="#FF979494"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    
+    <Style TargetType="Border" x:Key="BorderControlTemplate">
+        <Setter Property="BorderThickness" Value="1,1,1,0"/>
+        <Setter Property="BorderBrush" Value="Gainsboro"/>
+        <Setter Property="CornerRadius" Value="4,4,0,0"/>
+        <Setter Property="Margin" Value="2,0"/>
+    </Style>
+    
+    <Style TargetType="ContentPresenter" x:Key="ContentPresenterTemplate">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10,2"/>
+    </Style>
+    
+    <Style TargetType="TextBox" x:Key="TextBoxTabOfCheckOut">
+        <Setter Property="Margin" Value="5,5,5,5"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Background" Value="WhiteSmoke"/>
+        <Setter  Property="FontFamily" Value="Arial"/>
+    </Style>
+
+    <Style TargetType="ListView" x:Key="ListViewTabOfCheckOut">
+        <Setter Property="Margin" Value="10,10"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter  Property="FontFamily" Value="Arial"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LabelCheck">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="15,0,0,0"/>
+        <Setter  Property="FontFamily" Value="Arial"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TextBoxCheck">
+        <Setter Property="Background" Value="AliceBlue"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter  Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Margin" Value="0,0,20,0"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
 </ResourceDictionary>
