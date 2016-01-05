@@ -13,6 +13,7 @@ using MngrPaycheck.Entity;
 using MngrPaycheck.Interpreter;
 using MngrPaycheck.Interpreter.Abstract;
 using MngrPaycheck.Interpreter.Expressions;
+using MngrPaycheck.Logics.SearchProducts;
 using MVVMCommon;
 
 namespace MngrPaycheck.ViewModel
@@ -20,11 +21,18 @@ namespace MngrPaycheck.ViewModel
     public class MainWindowVM : ViewModelBase
     {
         private IGeneralService<Product> surrogate;
+        private OriginatorSearching originator;
+        private ProductsHistory history;
 
         public MainWindowVM()
         {
             surrogate = new Surrogate<Product>(new ProductServiceProxy());
             Products = surrogate.Deserialize(surrogate.GetAll());
+            
+            originator = new OriginatorSearching();
+            history = new ProductsHistory();
+            history.History.Push(originator.SaveState(new List<Product>(Products)));
+
             ProductsInCheck = new ObservableCollection<Product>();
         }
 
@@ -45,18 +53,29 @@ namespace MngrPaycheck.ViewModel
                 OnPropertyChanged("ProductIntroduction"); }
         }
 
-        public void Sorting(string str)
+        public void Sorting(string productIntrod)
         {
-            ObservableCollection<Product> prods = new ObservableCollection<Product>();
-            foreach (var it in Products)
+            List<Product> converList = originator.RestoreState(history.History.Peek());
+            List<Product> prods = new List<Product>(Products);
+            
+            Products.Clear();
+            foreach (var pr in converList) { Products.Add(pr); }
+            
+            char[] charsIntrod =  productIntrod.ToCharArray();
+            int count = charsIntrod.Count();
+            prods = new List<Product>();
+            foreach (var product in Products)
             {
-                if (it.Name[0]==str[0])
+                int hitCount = 0;
+                char[] productChars = product.Name.ToCharArray();
+                for (int a = 0; a < count; a++)
                 {
-                    prods.Add(it);
+                    if (charsIntrod[a] == productChars[a]) { hitCount++; }
                 }
+                if (hitCount != count) { prods.Add(product); }
             }
-            Products = prods;
-            //return prods;
+            foreach (var p in prods) 
+                Products.Remove(p);
         }
 
         public Product _selectedProduct;

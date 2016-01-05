@@ -49,6 +49,9 @@
     </Compile>
     <Compile Include="AbstractFactory\Class1.cs" />
     <Compile Include="LogicsType.cs" />
+    <Compile Include="SearchProducts\MementoProducts.cs" />
+    <Compile Include="SearchProducts\ProductsHistory.cs" />
+    <Compile Include="SearchProducts\OriginatorSearching.cs" />
     <Compile Include="State\Abstract\IState.cs" />
     <Compile Include="State\Concrete\AddedProductState.cs" />
     <Compile Include="State\Concrete\AddedProductParametrState.cs" />

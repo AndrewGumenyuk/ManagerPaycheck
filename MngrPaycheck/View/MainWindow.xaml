@@ -99,10 +99,24 @@
                                <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.3*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.12*"/>
+                                        <ColumnDefinition Width="0.06*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Style="{StaticResource LabelCheck}">Buyer:</Label>
                                     <TextBox Grid.Column="1" Style="{StaticResource TextBoxCheck}" ></TextBox>
+                                   <Image Grid.Column="2" Source="Pictures/arrow.png" >
+                                        <Image.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <Trigger Property="TextBlock.IsMouseOver" Value="True">
+                                                        <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
+                                                        <Setter Property="Grid.Margin" Value="-5"></Setter>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
                                 </Grid>
 
                                 <ListView  Grid.Row="2" ItemsSource="{Binding ProductsInCheck}" SelectedItem="{Binding SelectedProductInCheck}" Margin="20,10,20,0" FontSize="13" FontFamily="Arial">   
