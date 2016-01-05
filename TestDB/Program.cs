@@ -83,7 +83,14 @@ namespace TestDB
                     Cost = 1012,
                     Description = "It`s a super"
                 };
-
+                
+                Product prod2 = new Product()
+                {
+                    Name = "Acer",
+                    Characteristicks = "Super laptop",
+                    Cost = 2016,
+                    Description = "It`s a super"
+                };
 
                 ProductType prodType = new ProductType()
                 {
@@ -103,61 +110,87 @@ namespace TestDB
                 db.Products.Add(prod);
                 db.ProductTypes.Add(prodType);
                 db.ProductParametrs.Add(productParametr);
-   
                 db.ProductParametrValues.Add(productParametrValue);
+                db.SaveChanges();
+           
 
+                /////////WORK WITH PURCHASES
+                ///////Create one purchase and added two products in this purchase
+                /// 
+                ///
+                /// 
+                /// 
+                //Create Buyer and add to Buyer purchase
+                Buyer buyer = new Buyer()
+                {
+                    Name = "Andrew",
+                    Login = "Andrew@login",
+                    Password = "1210",
+                };
+                db.Buyers.Add(buyer);
                 db.SaveChanges();
 
-                //WORK WITH PURCHASES
                 Purchase purchase = new Purchase()
                 {
                     Favorite = false,
                     PurchaseAdress = "123123213",
                     PurchaseDate = DateTime.Now,
-                    SumPurchase = 100213
+                    SumPurchase = 100213,
+                    PaymentType = new PaymentType() { Name = "Cash"},
+                    Buyer = buyer
                 };
 
-                Purchase purchase2 = new Purchase()
+                PurchaseProduct purchaseProduct = new PurchaseProduct()
                 {
-                    Favorite = false,
-                    PurchaseAdress = "this adress",
-                    PurchaseDate = DateTime.Now,
-                    SumPurchase = 100213
+                    Cost = prod.Cost,
+                    Units = 12,
+                    Product = prod,
+                    Purchase = purchase
                 };
+                
+                PurchaseProduct purchaseProduct2 = new PurchaseProduct()
+                {
+                    Cost = prod2.Cost,
+                    Product = prod2,
+                    Purchase = purchase
+                };
+
+                db.PurchaseProducts.Add(purchaseProduct);
+                db.PurchaseProducts.Add(purchaseProduct2);
+                db.SaveChanges();
+                //////////////////////
 
                 PaymentType paytype = new PaymentType()
                 {
                     Name = "Creditka"
                 };
 
-
-                PaymentType paytype2 = new PaymentType()
-                {
-                    Name = "Cash"
-                };
-
                 purchase.PaymentType = paytype;
-                purchase2.PaymentType = paytype2;
 
-                db.Purchases.Add(purchase);
-                db.Purchases.Add(purchase2);
                 db.PaymentTypes.Add(paytype);
                 db.SaveChanges();
 
-
-                LogicsType<Purchase> payType = new LogicsType<Purchase>(new PaymentTypeStrategy());
-                foreach (var item in payType.Execute(paytype))//получаю список всех елементов, у которых тип == paytype
+                foreach (var item in db.Buyers.Select(a=>a.Purchases).ToList())
                 {
-                    Console.WriteLine(item.PurchaseAdress);
+                    foreach (var it in item.Select(a=>a.Favorite))
+                    {
+                       Console.WriteLine(it.ToString());
+                    }
                 }
 
-                Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                //LogicsType<Purchase> payType = new LogicsType<Purchase>(new PaymentTypeStrategy());
+                //foreach (var item in payType.Execute(paytype))//получаю список всех елементов, у которых тип == paytype
+                //{
+                //    Console.WriteLine(item.PurchaseAdress);
+                //}
 
-                LogicsType<Product> productType = new LogicsType<Product>(new ProductTypeStrategy());
-                foreach (var item in productType.Execute(prodType))
-                {
-                    Console.WriteLine(item.Name);
-                }
+                //Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+                //LogicsType<Product> productType = new LogicsType<Product>(new ProductTypeStrategy());
+                //foreach (var item in productType.Execute(prodType))
+                //{
+                //    Console.WriteLine(item.Name);
+                //}
             }
             Console.WriteLine("OK!");
         }

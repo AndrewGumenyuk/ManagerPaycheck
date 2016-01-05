@@ -9,18 +9,26 @@ using System.Threading.Tasks;
 
 namespace MngrPaycheck.Entity
 {
-    [DataContract(IsReference = true)]
+    [DataContract]
+    [KnownType(typeof(Purchase))]
+    [Serializable]
     public class Purchase
     {
         public Purchase()
         {
             this.Id = Guid.NewGuid();
-            this.Products = new HashSet<Product>();
+            this.PurchaseProducts = new HashSet<PurchaseProduct>();
         }
         
         [Required] [Key]
         [DataMember]
         public Guid Id { get; set; }
+
+        [DataMember]
+        public Guid BuyerID { get; set; }
+
+        [DataMember]
+        public virtual Buyer Buyer { get; set; }
 
         [DataMember]
         public float SumPurchase { get; set; }
@@ -48,7 +56,7 @@ namespace MngrPaycheck.Entity
         public virtual Supermarket Supermarket { get; set; }
 
         [DataMember]
-        public virtual ICollection<Product> Products { get; set; } 
+        public virtual ICollection<PurchaseProduct> PurchaseProducts { get; set; } 
         #endregion
 
         public Purchase DeepCopy()

@@ -22,6 +22,7 @@ namespace MngrPaycheck.Entity
         private int units;
         private string description;
         private string characteristicks;
+        private Boolean isDelete;
         private Guid? productTypeID;
         private ProductType productType;
         private ICollection<ProductParametrValue> productParametrValues;
@@ -34,7 +35,8 @@ namespace MngrPaycheck.Entity
             this.Id = Guid.NewGuid();
             this.ProductParametrValues = new HashSet<ProductParametrValue>();
             this.Supermarkets = new HashSet<Supermarket>();
-            this.Purchases = new HashSet<Purchase>();
+            this.PurchaseProducts = new HashSet<PurchaseProduct>();
+            PurchaseProducts = new HashSet<PurchaseProduct>();
         }
 
         [Required]
@@ -92,6 +94,14 @@ namespace MngrPaycheck.Entity
         }
 
         [DataMember]
+        public Boolean IsDelete//For product that was delete but this product is in the buyers in checks
+        {
+            get { return isDelete; }
+            set { this.isDelete = value;
+                OnPropertyChanged("IsDelete"); }
+        }
+
+        [DataMember]
         public Guid? ProductTypeID
         {
             get { return productTypeID; }
@@ -124,13 +134,15 @@ namespace MngrPaycheck.Entity
                 OnPropertyChanged("Supermarkets"); }
         }
 
-        [DataMember]
-        public virtual ICollection<Purchase> Purchases
-        {
-            get { return purchases; }
-            set { this.purchases = value;
-                OnPropertyChanged("Purchases"); }
-        } 
+        //[DataMember]
+        //public virtual ICollection<Purchase> Purchases
+        //{
+        //    get { return purchases; }
+        //    set { this.purchases = value;
+        //        OnPropertyChanged("Purchases"); }
+        //}
+
+        public virtual ICollection<PurchaseProduct> PurchaseProducts { get; set; } 
         #endregion
 
         #region INotifyPropertyChanged Members

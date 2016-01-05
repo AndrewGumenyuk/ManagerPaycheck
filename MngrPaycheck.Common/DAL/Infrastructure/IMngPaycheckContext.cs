@@ -19,6 +19,8 @@ namespace MngrPaycheck.Common.DAL.Infrastructure
         IDbSet<ProductType> ProductTypes { get; set; }
         IDbSet<Purchase> Purchases { get; set; }
         IDbSet<Supermarket> Supermarkets { get; set; }
+        IDbSet<PurchaseProduct> PurchaseProducts { get; set; }
+        IDbSet<Buyer> Buyers { get; set; }
         IDbSet<TEntity> Set<TEntity>() where TEntity : class;      // It's done, because native implementation returns DbSet
         DbEntityEntry Entry(object entity);
         int SaveChanges();

@@ -13,7 +13,7 @@ namespace MngrPaycheck.DAL.Context
     public class MngPaycheckContext: DbContext, IMngPaycheckContext, IDisposable
     {
         public MngPaycheckContext()
-            : base("MngrPaycheckTestFillTestDB58"){}
+            : base("MngrPaycheckTestFillTestDB90"){}
 
         public static readonly Lazy<MngPaycheckContext> _instance = new Lazy<MngPaycheckContext>(() => new MngPaycheckContext());
 
@@ -25,6 +25,9 @@ namespace MngrPaycheck.DAL.Context
         public IDbSet<ProductType> ProductTypes { get; set; }
         public IDbSet<Purchase> Purchases { get; set; }
         public IDbSet<Supermarket> Supermarkets { get; set; }
+        public IDbSet<PurchaseProduct> PurchaseProducts { get; set; }
+        public IDbSet<Buyer> Buyers { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,6 +37,9 @@ namespace MngrPaycheck.DAL.Context
                 .HasOptional(s => s.ProductParametrValue)
                 .WithRequired(ad => ad.ProductParametr);
 
+            //For many to many table (PurchaseProduct), with additional fields in association table
+            modelBuilder.Entity<PurchaseProduct>()
+                .HasKey(c => new {c.ProductID, c.PurchaseID});
         }
 
         public IDbSet<TEntity> Set<TEntity>() where TEntity : class

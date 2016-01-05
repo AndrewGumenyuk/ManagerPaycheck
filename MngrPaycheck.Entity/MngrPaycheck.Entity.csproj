@@ -64,7 +64,9 @@
     <Compile Include="ProductType.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Purchase.cs" />
+    <Compile Include="PurchaseProduct.cs" />
     <Compile Include="Supermarket.cs" />
+    <Compile Include="Buyer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

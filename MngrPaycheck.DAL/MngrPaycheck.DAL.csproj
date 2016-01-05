@@ -57,12 +57,14 @@
     </Compile>
     <Compile Include="Context\MngPaycheckContext.cs" />
     <Compile Include="Repositories\Abstract\GenericRepository.cs" />
+    <Compile Include="Repositories\BuyerRepository.cs" />
     <Compile Include="Repositories\ProductParametrRepository.cs" />
     <Compile Include="Repositories\ProductParametrValueRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\CashierRepository.cs" />
     <Compile Include="Repositories\PaymentTypeRepository.cs" />
     <Compile Include="Repositories\ProductTypeRepository.cs" />
+    <Compile Include="Repositories\PurchaseProductRepository.cs" />
     <Compile Include="Repositories\PurchaseRepository.cs" />
     <Compile Include="Repositories\SupermarketRepository.cs" />
   </ItemGroup>

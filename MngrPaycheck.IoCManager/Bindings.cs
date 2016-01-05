@@ -19,6 +19,11 @@ namespace MngrPaycheck.IoCManager
             Bind<IProductTypeRepository>().To<ProductTypeRepository>();
             Bind<IProductParametrRepository>().To<ProductParametrRepository>();
             Bind<IProductParametrValueRepository>().To<ProductParametrValueRepository>();
+            Bind<IPaymentTypeRepository>().To<PaymentTypeRepository>();
+            Bind<IPurchaseProductRepository>().To<PurchaseProductRepository>();
+            Bind<IPurchaseRepository>().To<PurchaseRepository>();
+            Bind<ICashierRepository>().To<CashierRepository>();
+            Bind<IBuyerRepository>().To<BuyerRepository>();
 
             Bind<IMngPaycheckContext>().To<MngPaycheckContext>();
         }
