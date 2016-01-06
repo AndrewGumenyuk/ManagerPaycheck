@@ -96,6 +96,11 @@
     <Compile Include="Interpreter\Expressions\AddExpression.cs" />
     <Compile Include="Interpreter\Expressions\NumberExpression.cs" />
     <Compile Include="Interpreter\Expressions\SubtractExpression.cs" />
+    <Compile Include="Service References\BuyerServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ProductServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,6 +139,13 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Rules.ruleset" />
+    <None Include="Service References\BuyerServiceRef\BuyerRepositoryService.wsdl" />
+    <None Include="Service References\BuyerServiceRef\BuyerRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BuyerServiceRef\BuyerRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductServiceRef\ProductRepositoryService.wsdl" />
     <None Include="Service References\ProductServiceRef\ProductRepositoryService.xsd">
       <SubType>Designer</SubType>
@@ -201,6 +213,7 @@
     <Resource Include="Content\Images\user.png" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BuyerServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductServiceRef\" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +239,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Pictures\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BuyerServiceRef\BuyerRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BuyerServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BuyerServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BuyerServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />

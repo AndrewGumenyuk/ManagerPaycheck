@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using MngrPaycheck.CommunicationCommon.Abstract;
 using MngrPaycheck.CommunicationCommon.Concrete;
@@ -20,14 +22,18 @@ namespace MngrPaycheck.ViewModel
 {
     public class MainWindowVM : ViewModelBase
     {
-        private IGeneralService<Product> surrogate;
+        private IGeneralService<Product> _surrogateProduct;
+        private IGeneralService<Buyer> _surrogateBuyer; 
+
         private OriginatorSearching originator;
         private ProductsHistory history;
 
         public MainWindowVM()
         {
-            surrogate = new Surrogate<Product>(new ProductServiceProxy());
-            Products = surrogate.Deserialize(surrogate.GetAll());
+            _surrogateProduct = new Surrogate<Product>(new ProductServiceProxy());
+            Products = _surrogateProduct.Deserialize(_surrogateProduct.GetAll());
+            _surrogateBuyer = new Surrogate<Buyer>(new BuyerServiceProxy());
+            Buyers = _surrogateBuyer.Deserialize(_surrogateBuyer.GetAll());
             
             originator = new OriginatorSearching();
             history = new ProductsHistory();
@@ -121,11 +127,6 @@ namespace MngrPaycheck.ViewModel
 
         public float SumInCheck()
         {
-            //float sum=0;
-            //foreach (var it in ProductsInCheck)
-            //{
-            //    sum += it.Cost;
-            //}
             Context context = new Context();
             context.SetVariable("CountOfProducts",10);
             context.SetVariable("Price", 100);
@@ -151,7 +152,6 @@ namespace MngrPaycheck.ViewModel
         }
 
         public Product _selectedProductInCheck;
-
         public Product SelectedProductInCheck
         {
             get { return _selectedProductInCheck; }
@@ -188,19 +188,114 @@ namespace MngrPaycheck.ViewModel
             }
         }
 
-        private void AddProductParameter()
-        {
+        private ObservableCollection<Buyer> _buyers;
 
+        public ObservableCollection<Buyer> Buyers
+        {
+            get { return _buyers; }
+            set
+            {
+                _buyers = value;
+                OnPropertyChanged("Buyers");
+            }
+        }
+
+        private string buyerName;
+        public string SearchBuyerName
+        {
+            get { return buyerName; }
+            set
+            {
+                buyerName = value;
+                OnPropertyChanged("BuyerName");
+            }
+        }
+
+        public string newBuyerName;
+        public string NewBuyerName
+        {
+            get { return newBuyerName; }
+            set
+            {
+                newBuyerName = value;
+                OnPropertyChanged("NewBuyerName");
+            }
+        }
+
+        public string newBuyerLogin;
+        public string NewBuyerLogin
+        {
+            get { return newBuyerLogin; }
+            set
+            {
+                newBuyerLogin = value;
+                OnPropertyChanged("NewBuyerLogin");
+            }
+        }
+
+        private string newBuyerPassword;
+        public string NewBuyerPassword
+        {
+            get { return newBuyerPassword; }
+            set
+            {
+                newBuyerPassword = value;
+                OnPropertyChanged("NewBuyerPassword");
+            }
+        }
+
+        private void HiddenCheckList(ListView btn)
+        {
+            bool IsCheckIn=false;
+            foreach (var buyer in Buyers)
+            {
+                if (buyer.Name == buyerName)
+                {
+                    MessageBox.Show("Buyer was found \nName: " + buyer.Name + "\nLogin: " + buyer.Login + "\nDo you want create check for " + buyer.Name + " ?",
+                        "Access token",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Information);
+                    IsCheckIn = true;
+                }
+            }
+            if (!IsCheckIn)
+            {
+                MessageBoxResult result = MessageBox.Show("Buyer was not found. Do you want create new Buyer ?", "Access token", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)//Create new buyer
+                {
+                    btn.Visibility = Visibility.Hidden;
+                }
+                if (result == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Please, writing Buyer's name", "Access token", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
+
+        private Buyer RegisteredBuyer;
+        private void VisibleCheckList(ListView listview)
+        {
+            listview.Visibility = Visibility.Visible;
+            RegisteredBuyer = new Buyer()
+            {
+                Name = NewBuyerName,
+                Login = NewBuyerLogin,
+                Password = NewBuyerPassword
+            };
+            //_surrogateBuyer.Add(_surrogateBuyer.Serialize(newbuyer));it will be sent to client while creating purchase
         }
 
         #region Commands
-        public ICommand AddProductParameterCommand
+        public ICommand HiddenCheckListCommand
         {
-            get { return new RelayCommand(c => AddProductParameter()); }
+            get { return new RelayCommand<ListView>(HiddenCheckList); }
+        }
+
+        public ICommand VisibleCheckListCommand
+        {
+            get { return new RelayCommand<ListView>(VisibleCheckList); }
         }
         #endregion
-
-
         #region Events
         public event PropertyChangedEventHandler ProductPropertyChanged;
         #endregion

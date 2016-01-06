@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IGeneralService.cs" />
+    <Compile Include="Concrete\Proxies\BuyerServiceProxy.cs" />
     <Compile Include="Concrete\Proxies\ProductParameterServiceProxy.cs" />
     <Compile Include="Concrete\Proxies\ProductParameterValueServiceProxy.cs" />
     <Compile Include="Concrete\Proxies\ProductServiceProxy.cs" />
@@ -58,6 +59,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BuyerServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\ProductParameterServiceRefer\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -79,6 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Wrappers\BuyerWrapper.cs" />
     <Compile Include="Wrappers\ProductParameterValueWrapper.cs" />
     <Compile Include="Wrappers\ProductParameterWrapper.cs" />
     <Compile Include="Wrappers\ProductTypeWrapper.cs" />
@@ -89,6 +96,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Service References\BuyerServiceRef\BuyerRepositoryService.wsdl" />
+    <None Include="Service References\BuyerServiceRef\BuyerRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BuyerServiceRef\BuyerRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductParameterServiceRefer\ProductParameterRepositoryService.wsdl" />
     <None Include="Service References\ProductParameterServiceRefer\ProductParameterRepositoryService.xsd">
       <SubType>Designer</SubType>
@@ -119,6 +133,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BuyerServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductParameterServiceRefer\" />
     <WCFMetadataStorage Include="Service References\ProductParameterValueServiceReference\" />
     <WCFMetadataStorage Include="Service References\ProductServiceRef\" />
@@ -192,6 +207,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ProductTypeServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BuyerServiceRef\BuyerRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BuyerServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BuyerServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BuyerServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

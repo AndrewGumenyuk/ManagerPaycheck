@@ -40,7 +40,6 @@
                     </Menu>
                 </StackPanel>
             </Grid>
-            
             <Grid Grid.Row="1" Background="#FFC3DCF5" >
                 <TabControl Style="{StaticResource StyleOfTabControl}" >
                     <TabControl.Resources>
@@ -66,10 +65,10 @@
                     </TabControl.Resources>
                     <TabItem Header="Check out" Foreground="#FF6A6A6A">
                         <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*"/>
@@ -87,7 +86,7 @@
                                     </ListView.View>
                                 </ListView>
                             </Grid>
-                           <Grid Grid.Column="1">
+                            <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="0.2*"/>
                                     <RowDefinition Height="0.18*"/>
@@ -96,7 +95,7 @@
                                     <RowDefinition Height="0.2*"/>
                                     <RowDefinition Height="0.6*"/>
                                 </Grid.RowDefinitions>
-                               <Grid Grid.Row="1">
+                                <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.3*"/>
                                         <ColumnDefinition Width="0.8*"/>
@@ -104,26 +103,53 @@
                                         <ColumnDefinition Width="0.06*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Style="{StaticResource LabelCheck}">Buyer:</Label>
-                                    <TextBox Grid.Column="1" Style="{StaticResource TextBoxCheck}" ></TextBox>
-                                   <Image Grid.Column="2" Source="Pictures/arrow.png" >
-                                        <Image.Style>
-                                            <Style>
-                                                <Style.Triggers>
-                                                    <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                                        <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                                        <Setter Property="Grid.Margin" Value="-5"></Setter>
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Image.Style>
-                                    </Image>
+                                    <TextBox Grid.Column="1" Style="{StaticResource TextBoxCheck}" Text="{Binding SearchBuyerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                                    <Button x:Name="BtnSearch" Grid.Column="2" Margin="5,0,5,5" Command="{Binding HiddenCheckListCommand}" CommandParameter="{Binding ElementName=ListProductsInCheck}" Height="22" VerticalAlignment="Bottom">
+                                        <Image Grid.Column="2" Source="Pictures/arrow.png">
+                                            <Image.Style>
+                                                <Style>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="TextBlock.IsMouseOver" Value="True">
+                                                            <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
+                                                            <Setter Property="Grid.Margin" Value="-5"></Setter>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Image.Style>
+                                        </Image>
+                                    </Button>
                                 </Grid>
-
-                                <ListView  Grid.Row="2" ItemsSource="{Binding ProductsInCheck}" SelectedItem="{Binding SelectedProductInCheck}" Margin="20,10,20,0" FontSize="13" FontFamily="Arial">   
+                                <Grid Grid.Row="2" x:Name="GridBuyersInformation" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1.5*"/>
+                                        <RowDefinition Height="0.5*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1.3*"/>
+                                        <RowDefinition Height="6*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource GeneralGridCheckIn}">
+                                        <Label Style="{StaticResource GeneralLblNewBuyer}">Check in</Label>
+                                    </Grid>
+                                    <Label Grid.Column="1" Grid.Row="2"   Style="{StaticResource LblNewBuyer}"> Name</Label>
+                                    <TextBox Grid.Column="2" Grid.Row="2" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                                    <Label Grid.Column="1" Grid.Row="3"   Style="{StaticResource LblNewBuyer}">Login</Label>
+                                    <TextBox Grid.Column="2" Grid.Row="3" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerLogin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                                    <Label Grid.Column="1" Grid.Row="4"   Style="{StaticResource LblNewBuyer}">Password</Label>
+                                    <TextBox Grid.Column="2" Grid.Row="4" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                                    <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5"  Style="{StaticResource MainButtonCheckIn}" Command="{Binding VisibleCheckListCommand}" CommandParameter="{Binding ElementName=ListProductsInCheck}">Sign up</Button>
+                                </Grid>
+                                <ListView x:Name="ListProductsInCheck" Grid.Row="2" ItemsSource="{Binding ProductsInCheck}" SelectedItem="{Binding SelectedProductInCheck}" Margin="20,10,20,0" FontSize="13" FontFamily="Arial">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100">
-                                             
                                             </GridViewColumn>
                                             <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost, Mode=TwoWay}"  Width="100" />
                                             <GridViewColumn Header="Units" Width="80">
@@ -136,17 +162,17 @@
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
-                               <Grid Grid.Row="3" Margin="2,2,2,2">
+                                <Grid Grid.Row="3" Margin="2,2,2,2">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.3*"/>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="0.06*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="12,0,0,0" FontWeight="Bold">Total:</Label>
-                                    <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" >100 $</Label>   
+                                    <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" >100 $</Label>
                                 </Grid>
-                               <Grid Grid.Row="4">
-                                   <Grid.ColumnDefinitions>
+                                <Grid Grid.Row="4">
+                                    <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.1*"/>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="1*"/>
@@ -177,9 +203,8 @@
                                         </Image.Style>
                                     </Image>
                                 </Grid>
-                               
                             </Grid>
-                          </Grid>    
+                        </Grid>
                     </TabItem>
                     <TabItem Header="All checks" />
                     <TabItem Header="Seen work"/>

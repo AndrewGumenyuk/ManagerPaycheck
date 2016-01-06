@@ -31,6 +31,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Cashier", "MngrPaycheck\MngrPaycheck.Cashier.csproj", "{85D4DF52-0CFC-4014-94F7-19E19D8CDF26}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D557C6AB-C89F-47C6-9098-3A3357D6C277} = {D557C6AB-C89F-47C6-9098-3A3357D6C277}
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928} = {1E33DACD-CE87-4A4A-9D60-77154FC0D928}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Communication.Common", "MngrPaycheck.CommunicationCommon\MngrPaycheck.Communication.Common.csproj", "{88904B5B-D314-419D-9A37-48616B11E4E9}"
@@ -39,6 +40,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Communication.
 		{FFE42747-89D0-468A-B886-5FBC6459B4E7} = {FFE42747-89D0-468A-B886-5FBC6459B4E7}
 		{FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D} = {FBD18D7E-37EB-4A5B-9B8C-571041B3CF8D}
 		{D557C6AB-C89F-47C6-9098-3A3357D6C277} = {D557C6AB-C89F-47C6-9098-3A3357D6C277}
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928} = {1E33DACD-CE87-4A4A-9D60-77154FC0D928}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Administrator", "MngrPaycheck.Administrator\MngrPaycheck.Administrator.csproj", "{64D6B7B9-F5BF-436B-91FC-00C8D4EBC6F6}"
@@ -50,6 +52,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.IoCManager", "MngrPaycheck.IoCManager\MngrPaycheck.IoCManager.csproj", "{5B41D5AF-CEDE-45EF-934F-3AFB92B8812B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MngrPaycheck.Logics", "MngrPaycheck.Logics\MngrPaycheck.Logics.csproj", "{91BBDB86-FF70-4F1F-9801-586986232DA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyerService", "BuyerService\BuyerService.csproj", "{1E33DACD-CE87-4A4A-9D60-77154FC0D928}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -211,6 +215,16 @@ Global
 		{91BBDB86-FF70-4F1F-9801-586986232DA0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{91BBDB86-FF70-4F1F-9801-586986232DA0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{91BBDB86-FF70-4F1F-9801-586986232DA0}.Release|x86.ActiveCfg = Release|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1E33DACD-CE87-4A4A-9D60-77154FC0D928}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
