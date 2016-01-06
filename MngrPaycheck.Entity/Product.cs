@@ -27,7 +27,7 @@ namespace MngrPaycheck.Entity
         private ProductType productType;
         private ICollection<ProductParametrValue> productParametrValues;
         private ICollection<Supermarket> supermarkets;
-        private ICollection<Purchase> purchases;
+        private ICollection<PurchaseProduct> purchaseProducts;
 
 
         public Product()
@@ -134,15 +134,14 @@ namespace MngrPaycheck.Entity
                 OnPropertyChanged("Supermarkets"); }
         }
 
-        //[DataMember]
-        //public virtual ICollection<Purchase> Purchases
-        //{
-        //    get { return purchases; }
-        //    set { this.purchases = value;
-        //        OnPropertyChanged("Purchases"); }
-        //}
-
-        public virtual ICollection<PurchaseProduct> PurchaseProducts { get; set; } 
+        [DataMember]
+        public virtual ICollection<PurchaseProduct> PurchaseProducts {
+            get { return purchaseProducts; }
+            set
+            {
+                this.purchaseProducts = value;
+                OnPropertyChanged("Supermarkets");} 
+        } 
         #endregion
 
         #region INotifyPropertyChanged Members

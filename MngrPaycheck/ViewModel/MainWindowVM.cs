@@ -12,9 +12,6 @@ using MngrPaycheck.CommunicationCommon.Abstract;
 using MngrPaycheck.CommunicationCommon.Concrete;
 using MngrPaycheck.CommunicationCommon.Concrete.Proxies;
 using MngrPaycheck.Entity;
-using MngrPaycheck.Interpreter;
-using MngrPaycheck.Interpreter.Abstract;
-using MngrPaycheck.Interpreter.Expressions;
 using MngrPaycheck.Logics.SearchProducts;
 using MVVMCommon;
 
@@ -23,10 +20,15 @@ namespace MngrPaycheck.ViewModel
     public class MainWindowVM : ViewModelBase
     {
         private IGeneralService<Product> _surrogateProduct;
-        private IGeneralService<Buyer> _surrogateBuyer; 
+        private IGeneralService<Buyer> _surrogateBuyer;
+        private IGeneralService<Purchase> _surrogatePurchase;
+        private IGeneralService<PurchaseProduct> _surrogatePurchaseProduct; 
 
         private OriginatorSearching originator;
         private ProductsHistory history;
+
+        private Purchase purch;
+        private PaymentType payType;
 
         public MainWindowVM()
         {
@@ -34,12 +36,14 @@ namespace MngrPaycheck.ViewModel
             Products = _surrogateProduct.Deserialize(_surrogateProduct.GetAll());
             _surrogateBuyer = new Surrogate<Buyer>(new BuyerServiceProxy());
             Buyers = _surrogateBuyer.Deserialize(_surrogateBuyer.GetAll());
-            
+            _surrogatePurchase = new Surrogate<Purchase>(new PurchaseServiceProxy());
+            _surrogatePurchaseProduct = new Surrogate<PurchaseProduct>(new PurchaseProductServiceProxy());
+
             originator = new OriginatorSearching();
             history = new ProductsHistory();
             history.History.Push(originator.SaveState(new List<Product>(Products)));
 
-            ProductsInCheck = new ObservableCollection<Product>();
+            ProductPurchasesInCheck = new ObservableCollection<PurchaseProduct>();
         }
 
         private ObservableCollection<Product> _products;
@@ -91,79 +95,74 @@ namespace MngrPaycheck.ViewModel
             set
             {
                 _selectedProduct = value;
-                if (value.ProductType != null)
-                {
-                    ProductParametrs = new ObservableCollection<ProductParametr>(value.ProductType.ProductParametrs);
-                }
+                if (ProductPurchasesInCheck.Count == 0 && SearchBuyerName != "") { Checkout(); }
+                if (value.ProductType != null) { ProductParametrs = new ObservableCollection<ProductParametr>(value.ProductType.ProductParametrs);}
 
+                PurchaseProduct ppr = new PurchaseProduct();
                 bool ProductWasAdded = false;
-                foreach (var item in ProductsInCheck)
+                
+                foreach (var item in ProductPurchasesInCheck.Where(item => item.Product.Name == _selectedProduct.Name))
                 {
-                    if (item.Name == _selectedProduct.Name)
-                    {
-                        item.Units += 1;
-                        ProductWasAdded = true;
-                    }
+                    item.Units += 1;
+                    ppr = item;
+                    ProductWasAdded = true;
+                }
+                if (ProductWasAdded)
+                {
+                    ProductPurchasesInCheck.Remove(ProductPurchasesInCheck.Where(a => a.Product.Name == ppr.Product.Name).ToList().FirstOrDefault());
+                    ProductPurchasesInCheck.Add(ppr);
                 }
 
                 if (ProductWasAdded==false)
                 {
-                    Product pr = _selectedProduct;
-                    pr.Units = 1;
-                    ProductsInCheck.Add(pr);
+                    PurchaseProduct prdPurch = new PurchaseProduct()
+                    {
+                        Product = _selectedProduct,
+                        ProductID = _selectedProduct.Id,
+                        Cost = _selectedProduct.Cost,
+                        Units = 1,
+                        Purchase = purch,
+                        PurchaseID = purch.Id,
+                    };
+                    ProductPurchasesInCheck.Add(prdPurch);                   
                 }
-
-                if (ProductsInCheck.Count==0)
-                {
-                    Product pr = _selectedProduct;
-                    pr.Units = 1;
-                    ProductsInCheck.Add(pr);
-                }
+                value.Units -= 1;
                 ProductWasAdded = false;
-                //SumInCheck();
+                SumInCheck = Summing();
                 NotifyPropertyChanged("SelectedProduct");
             }
         }
 
-        public float SumInCheck()
+        private float Summing()
         {
-            Context context = new Context();
-            context.SetVariable("CountOfProducts",10);
-            context.SetVariable("Price", 100);
-            context.SetVariable("Sum",200);
-
-            IExpression expression = new SubtractExpression(new AddExpression(new NumberExpression("CountOfProducts"), new NumberExpression("Price")), new NumberExpression("Sum"));
-            return expression.Interpret(context);
+            return ProductPurchasesInCheck.Sum(it => it.Product.Cost*it.Units);
         }
 
-        private float _summingCheck;
-        public float SummingCheck
+        private float sumInCheck;
+        public float SumInCheck 
         {
-            get { return _summingCheck; }
+            get { return sumInCheck; }
             set
             {
-                _summingCheck = value;
-                foreach (var it in ProductsInCheck)
-                {
-                    _summingCheck += it.Cost*it.Units;
-                }
-                NotifyPropertyChanged("SummingCheck");
+                sumInCheck = value;
+                NotifyPropertyChanged("SumInCheck");
             }
         }
 
-        public Product _selectedProductInCheck;
-        public Product SelectedProductInCheck
+        public PurchaseProduct _selectedProductInCheck;
+        public PurchaseProduct SelectedProductInCheck
         {
             get { return _selectedProductInCheck; }
             set
             {
                 _selectedProductInCheck = value;
-
-                ProductsInCheck.Remove(_selectedProductInCheck);
+                if (_selectedProductInCheck!=null)
+                {
+                     ProductPurchasesInCheck.Remove(ProductPurchasesInCheck.Where(a => a.Product.Name == _selectedProductInCheck.Product.Name).ToList().FirstOrDefault());
+                }
                 NotifyPropertyChanged("SelectedProductInCheck");
             }
         }
-
 
         public ObservableCollection<ProductParametr> _ProductParametrs;
         public ObservableCollection<ProductParametr> ProductParametrs
@@ -176,20 +175,19 @@ namespace MngrPaycheck.ViewModel
             }
         }
 
-        public ObservableCollection<Product> productsInCheck;
-
-        public ObservableCollection<Product> ProductsInCheck
+        public ObservableCollection<PurchaseProduct> productPurchasesInCheck;
+        public ObservableCollection<PurchaseProduct> ProductPurchasesInCheck
         {
-            get { return productsInCheck; }
+            get { return productPurchasesInCheck; }
             set
             {
-                productsInCheck = value;
+                productPurchasesInCheck = value;
                 NotifyPropertyChanged("ProductsInCheck");
             }
         }
 
-        private ObservableCollection<Buyer> _buyers;
 
+        private ObservableCollection<Buyer> _buyers;
         public ObservableCollection<Buyer> Buyers
         {
             get { return _buyers; }
@@ -200,17 +198,18 @@ namespace MngrPaycheck.ViewModel
             }
         }
 
-        private string buyerName;
+        private string searchbuyerName;
         public string SearchBuyerName
         {
-            get { return buyerName; }
+            get { return searchbuyerName; }
             set
             {
-                buyerName = value;
-                OnPropertyChanged("BuyerName");
+                searchbuyerName = value;
+                NotifyPropertyChanged("SearchBuyerName");
             }
         }
 
+        #region strings registration new byer
         public string newBuyerName;
         public string NewBuyerName
         {
@@ -243,13 +242,14 @@ namespace MngrPaycheck.ViewModel
                 OnPropertyChanged("NewBuyerPassword");
             }
         }
+        #endregion
 
         private void HiddenCheckList(ListView btn)
         {
             bool IsCheckIn=false;
             foreach (var buyer in Buyers)
             {
-                if (buyer.Name == buyerName)
+                if (buyer.Name == searchbuyerName)
                 {
                     MessageBox.Show("Buyer was found \nName: " + buyer.Name + "\nLogin: " + buyer.Login + "\nDo you want create check for " + buyer.Name + " ?",
                         "Access token",
@@ -282,7 +282,63 @@ namespace MngrPaycheck.ViewModel
                 Login = NewBuyerLogin,
                 Password = NewBuyerPassword
             };
-            //_surrogateBuyer.Add(_surrogateBuyer.Serialize(newbuyer));it will be sent to client while creating purchase
+            Buyers.Add(RegisteredBuyer);
+            MessageBox.Show("Buyer was create !!", "Access token", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Checkout()
+        {
+            payType = new PaymentType()
+            {
+                Name = "Cash"
+            };
+
+            if (RegisteredBuyer == null)
+            {
+                Buyer buyr = Buyers.Where(brs => brs.Name == SearchBuyerName).ToList().First();
+                purch = new Purchase()
+                {
+                    Favorite = false,
+                    PurchaseAdress = "123123213",
+                    PurchaseDate = DateTime.Now,
+                    SumPurchase = 100213,
+                    PaymentType = payType,
+                    PaymentTypeID = payType.Id,
+                    BuyerID = buyr.Id
+                };
+            }
+            else
+            {
+                purch = new Purchase()
+                {
+                    Favorite = false,
+                    PurchaseAdress = "123123213",
+                    PurchaseDate = DateTime.Now,
+                    SumPurchase = 100213,
+                    PaymentType = payType,
+                    PaymentTypeID = payType.Id,
+                    Buyer = RegisteredBuyer,
+                    BuyerID = RegisteredBuyer.Id
+                };
+            }
+        }
+        private void PrintCheck()
+        {
+            foreach (var it in ProductPurchasesInCheck)
+            {
+                it.Product = null;
+                it.Purchase.SumPurchase = SumInCheck;
+            }
+            _surrogatePurchaseProduct.Add(_surrogatePurchaseProduct.Serialize(ProductPurchasesInCheck));
+            Clear();
+            MessageBox.Show("The purchase was create !!","Access token", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Clear()
+        {
+            ProductPurchasesInCheck.Clear();
+            SearchBuyerName = string.Empty;
+            RegisteredBuyer = null;
         }
 
         #region Commands
@@ -294,6 +350,16 @@ namespace MngrPaycheck.ViewModel
         public ICommand VisibleCheckListCommand
         {
             get { return new RelayCommand<ListView>(VisibleCheckList); }
+        }
+
+        public ICommand CheckoutCommand
+        {
+            get { return new RelayCommand(c => PrintCheck()); }
+        }
+
+        public ICommand ClearCommand
+        {
+            get { return new RelayCommand(c => Clear()); }
         }
         #endregion
         #region Events

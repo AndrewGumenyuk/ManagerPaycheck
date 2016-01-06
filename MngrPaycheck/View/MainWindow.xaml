@@ -1,7 +1,7 @@
 ﻿<Window x:Class="MngrPaycheck.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="700" Width="1200"
+        Title="MainWindow" Height="660" Width="1200"
         WindowStartupLocation="CenterScreen" MinHeight="400" MinWidth="400">
     <Grid >
         <Grid.ColumnDefinitions>
@@ -67,26 +67,30 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.01*"></ColumnDefinition>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
+                            <Border Grid.Column="0"  BorderBrush="#FFA6A5A5"  BorderThickness="2,2,2,2">
+                            <Grid >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*"/>
                                     <RowDefinition Height="20*"/>
                                 </Grid.RowDefinitions>
                                 <TextBox Grid.Row="0" Style="{StaticResource TextBoxTabOfCheckOut}" Text="{Binding ProductIntroduction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
-                                <ListView  Grid.Row="1" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Style="{StaticResource ListViewTabOfCheckOut}" SelectedItem="{Binding SelectedProduct}">
-                                    <ListView.View>
-                                        <GridView>
-                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
-                                            <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"  Width="100" />
-                                            <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}" Width="100" />
-                                            <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType.Name}" Width="100" />
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Grid>
-                            <Grid Grid.Column="1">
+                                    <ListView  Grid.Row="1" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Style="{StaticResource ListViewTabOfCheckOut}" SelectedItem="{Binding SelectedProduct}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
+                                                <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"  Width="100" />
+                                                <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}" Width="100" />
+                                                <GridViewColumn Header="ProductType" DisplayMemberBinding="{Binding ProductType.Name}" Width="100" />
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Grid>
+                            </Border>
+                            <Border  Grid.Column="2"  BorderBrush="#FFA6A5A5"  BorderThickness="2,2,2,2">
+                                <Grid Grid.Column="2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="0.2*"/>
                                     <RowDefinition Height="0.18*"/>
@@ -130,26 +134,27 @@
                                         <RowDefinition Height="6*"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.2*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="0.2*"/>
+                                        <ColumnDefinition Width="23*"/>
+                                        <ColumnDefinition Width="115*"/>
+                                        <ColumnDefinition Width="169*"/>
+                                        <ColumnDefinition Width="63*"/>
+                                        <ColumnDefinition Width="23*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource GeneralGridCheckIn}">
+                                    <Grid Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource GeneralGridCheckIn}">
                                         <Label Style="{StaticResource GeneralLblNewBuyer}">Check in</Label>
                                     </Grid>
-                                    <Label Grid.Column="1" Grid.Row="2"   Style="{StaticResource LblNewBuyer}"> Name</Label>
-                                    <TextBox Grid.Column="2" Grid.Row="2" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                                    <Label Grid.Column="1" Grid.Row="3"   Style="{StaticResource LblNewBuyer}">Login</Label>
-                                    <TextBox Grid.Column="2" Grid.Row="3" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerLogin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                                    <Label Grid.Column="1" Grid.Row="4"   Style="{StaticResource LblNewBuyer}">Password</Label>
-                                    <TextBox Grid.Column="2" Grid.Row="4" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                                    <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5"  Style="{StaticResource MainButtonCheckIn}" Command="{Binding VisibleCheckListCommand}" CommandParameter="{Binding ElementName=ListProductsInCheck}">Sign up</Button>
+                                    <Label Grid.Column="1" Grid.Row="2"   Style="{StaticResource LblNewBuyer}" Margin="0,2,0,1">Name</Label>
+                                    <TextBox Grid.Column="2" Grid.Row="2" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="26,0,25,0"></TextBox>
+                                    <Label Grid.Column="1" Grid.Row="3"   Style="{StaticResource LblNewBuyer}" Margin="0,1,0,2">Login</Label>
+                                    <TextBox Grid.Column="2" Grid.Row="3" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerLogin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="26,0,25,0"></TextBox>
+                                    <Label Grid.Column="1" Grid.Row="4"   Style="{StaticResource LblNewBuyer}" Margin="0,2,0,1">Password</Label>
+                                    <TextBox Grid.Column="2" Grid.Row="4" Style="{StaticResource TxtBoxNewBuyer}" Text="{Binding NewBuyerPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="26,0,25,0"></TextBox>
+                                    <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="5"  Style="{StaticResource MainButtonCheckIn}" Command="{Binding VisibleCheckListCommand}" CommandParameter="{Binding ElementName=ListProductsInCheck}" Margin="20,5">Sign up</Button>
                                 </Grid>
-                                <ListView x:Name="ListProductsInCheck" Grid.Row="2" ItemsSource="{Binding ProductsInCheck}" SelectedItem="{Binding SelectedProductInCheck}" Margin="20,10,20,0" FontSize="13" FontFamily="Arial">
+                                <ListView  x:Name="ListProductsInCheck" Grid.Row="2" ItemsSource="{Binding ProductPurchasesInCheck}" SelectedItem="{Binding SelectedProductInCheck}" Margin="20,10,20,0" FontSize="13" FontFamily="Arial">
                                     <ListView.View>
                                         <GridView>
-                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name, Mode=TwoWay}"  Width="100">
+                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Product.Name, Mode=TwoWay}"  Width="100">
                                             </GridViewColumn>
                                             <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost, Mode=TwoWay}"  Width="100" />
                                             <GridViewColumn Header="Units" Width="80">
@@ -169,7 +174,7 @@
                                         <ColumnDefinition Width="0.06*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Margin="12,0,0,0" FontWeight="Bold">Total:</Label>
-                                    <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" >100 $</Label>
+                                    <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Content="{Binding SumInCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Label>
                                 </Grid>
                                 <Grid Grid.Row="4">
                                     <Grid.ColumnDefinitions>
@@ -178,7 +183,8 @@
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="0.1*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="1" Source="../Content/Images/erase.png" HorizontalAlignment="Left">
+                                        <Button Grid.Column="1" HorizontalAlignment="Left" Command="{Binding ClearCommand}">
+                                    <Image Source="../Content/Images/erase.png" HorizontalAlignment="Left">
                                         <Image.Style>
                                             <Style>
                                                 <Style.Triggers>
@@ -190,26 +196,29 @@
                                             </Style>
                                         </Image.Style>
                                     </Image>
-                                    <Image Source="../Content/Images/correct.png" HorizontalAlignment="Right" Grid.Column="2">
-                                        <Image.Style>
-                                            <Style>
-                                                <Style.Triggers>
-                                                    <Trigger Property="TextBlock.IsMouseOver" Value="True">
-                                                        <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
-                                                        <Setter Property="Grid.Margin" Value="-5"></Setter>
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Image.Style>
-                                    </Image>
+                                        </Button>
+                                    <Button Command="{Binding CheckoutCommand}" Grid.Column="2" HorizontalAlignment="Right">
+                                        <Image Source="../Content/Images/correct.png" HorizontalAlignment="Right" Grid.Column="2">
+                                            <Image.Style>
+                                                <Style>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="TextBlock.IsMouseOver" Value="True">
+                                                            <Setter Property="Grid.Background" Value="WhiteSmoke"></Setter>
+                                                            <Setter Property="Grid.Margin" Value="-5"></Setter>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Image.Style>
+                                        </Image>
+                                    </Button>
                                 </Grid>
                             </Grid>
+                            </Border>
                         </Grid>
                     </TabItem>
                     <TabItem Header="All checks" />
                     <TabItem Header="Seen work"/>
                 </TabControl>
-
             </Grid>
         </Grid>
     </Grid>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="PurchaseProductService.PurchaseProductRepositoryService" CodeBehind="PurchaseProductRepositoryService.svc.cs" %>

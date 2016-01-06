@@ -51,6 +51,8 @@
     <Compile Include="Concrete\Proxies\ProductParameterValueServiceProxy.cs" />
     <Compile Include="Concrete\Proxies\ProductServiceProxy.cs" />
     <Compile Include="Concrete\Proxies\ProductTypeServiceProxy.cs" />
+    <Compile Include="Concrete\Proxies\PurchaseProductServiceProxy.cs" />
+    <Compile Include="Concrete\Proxies\PurchaseServiceProxy.cs" />
     <Compile Include="Concrete\Surrogate\Surrogate.cs" />
     <Compile Include="MediatorService\ManagerServiceMediator.cs" />
     <Compile Include="MediatorService\Service.cs" />
@@ -85,11 +87,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\PurchaseProductServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PurchaseServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Wrappers\BuyerWrapper.cs" />
     <Compile Include="Wrappers\ProductParameterValueWrapper.cs" />
     <Compile Include="Wrappers\ProductParameterWrapper.cs" />
     <Compile Include="Wrappers\ProductTypeWrapper.cs" />
     <Compile Include="Wrappers\ProductWrapper.cs" />
+    <Compile Include="Wrappers\PurchaseProductWrapper.cs" />
+    <Compile Include="Wrappers\PurchaseWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -131,6 +145,20 @@
     <None Include="Service References\ProductTypeServiceRef\ProductTypeRepositoryService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\PurchaseProductServiceRef\PurchaseProductRepositoryService.wsdl" />
+    <None Include="Service References\PurchaseProductServiceRef\PurchaseProductRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PurchaseProductServiceRef\PurchaseProductRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PurchaseServiceRef\PurchaseRepositoryService.wsdl" />
+    <None Include="Service References\PurchaseServiceRef\PurchaseRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PurchaseServiceRef\PurchaseRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\BuyerServiceRef\" />
@@ -138,6 +166,8 @@
     <WCFMetadataStorage Include="Service References\ProductParameterValueServiceReference\" />
     <WCFMetadataStorage Include="Service References\ProductServiceRef\" />
     <WCFMetadataStorage Include="Service References\ProductTypeServiceRef\" />
+    <WCFMetadataStorage Include="Service References\PurchaseProductServiceRef\" />
+    <WCFMetadataStorage Include="Service References\PurchaseServiceRef\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MngrPaycheck.Entity\MngrPaycheck.Entity.csproj">
@@ -222,6 +252,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\BuyerServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PurchaseServiceRef\PurchaseRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PurchaseServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PurchaseServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PurchaseServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PurchaseProductServiceRef\PurchaseProductRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PurchaseProductServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PurchaseProductServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PurchaseProductServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
