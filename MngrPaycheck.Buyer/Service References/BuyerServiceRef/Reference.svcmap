@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="70e55561-e627-4638-86aa-0304ed5ca1c0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:12533/BuyerRepositoryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BuyerRepositoryService.xsd" MetadataType="Schema" ID="22eb722a-72e1-45f1-aae9-6860d751f99b" SourceId="1" SourceUrl="http://localhost:12533/BuyerRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BuyerRepositoryService.disco" MetadataType="Disco" ID="716e0c4c-d345-40e2-8982-55e91fc55dc4" SourceId="1" SourceUrl="http://localhost:12533/BuyerRepositoryService.svc?disco" />
+    <MetadataFile FileName="BuyerRepositoryService.wsdl" MetadataType="Wsdl" ID="9cd2d0ad-1545-4c7b-9eae-9853cfd136b1" SourceId="1" SourceUrl="http://localhost:12533/BuyerRepositoryService.svc?wsdl" />
+    <MetadataFile FileName="BuyerRepositoryService1.xsd" MetadataType="Schema" ID="2534f998-b6d0-44c7-8b42-cdba1df40e50" SourceId="1" SourceUrl="http://localhost:12533/BuyerRepositoryService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
