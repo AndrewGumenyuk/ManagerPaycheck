@@ -14,7 +14,6 @@ namespace BuyerService
     public class WrapperBuyer
     {
         public List<Buyer> CollectionBuyers { get; set; }
-        private IBuyerRepository _buyerRepository;
 
         public WrapperBuyer()
         {

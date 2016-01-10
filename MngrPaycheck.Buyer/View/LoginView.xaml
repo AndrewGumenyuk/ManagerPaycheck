@@ -9,10 +9,9 @@
             <RowDefinition Height="1.3*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="#3A3D36" CornerRadius="8,8,0,0">
-            <Label Foreground="White" Content="BUYER LOGIN" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" FontSize="15"></Label>
+        <Border Grid.Row="0" Style="{StaticResource TopBorder}">
+            <Label Content="BUYER LOGIN" Style="{StaticResource LabelToTopBorder}"/>
         </Border>
-
         <Border Grid.Row="1" Background="White" CornerRadius="0,0,8,8">
             <Grid>
                 <Grid.RowDefinitions>
@@ -28,35 +27,28 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="0.1*"/>
                 </Grid.ColumnDefinitions>
-
-                <TextBox BorderBrush="#D3ECF8" Grid.Row="1" Grid.Column="1" BorderThickness="2" VerticalContentAlignment="Center" Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxLogin}">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="4,4,0,0"/>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
-
-                <TextBox BorderBrush="#D3ECF8" Grid.Row="2" Grid.Column="1" BorderThickness="2" Margin="0,-2,0,0" VerticalContentAlignment="Center" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,-2,0,0" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxLogin}">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="0,0,4,4"/>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
-
-                <Button Grid.Row="4" Grid.Column="1" Content="SIGN IN" Foreground="White" Background="#0096DB" FontWeight="Bold" BorderThickness="0" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName = LoginWindow}">
+                <Button Grid.Row="4" Grid.Column="1" Content="SIGN IN" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName = LoginWindow}" Style="{StaticResource ButtonLogin}">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="4,4,4,4"></Setter>
                         </Style>
                     </Button.Resources>
                 </Button>
-
-
             </Grid>
-            
         </Border>
-        
     </Grid>
 </Window>

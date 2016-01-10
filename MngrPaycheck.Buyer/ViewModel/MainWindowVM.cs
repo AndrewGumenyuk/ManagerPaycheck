@@ -18,11 +18,7 @@ namespace MngrPaycheck.Buyer.ViewModel
     {
         private IGeneralService<Purchase> _surrogatePurchase;
         private ObservableCollection<Purchase> purchs;
-        public MainWindowVM()
-        {
-            Types = new ObservableCollection<ProductType>();
-        }
-        
+        public MainWindowVM() {}
 
         private void CheckLogin(Window window)
         {
@@ -36,15 +32,55 @@ namespace MngrPaycheck.Buyer.ViewModel
             set { selectedBuyer = value;}
         }
 
-        private void GetAllPurchases()
+        public void InitializationVariables()
         {
             Purchases = new ObservableCollection<Purchase>(selectedBuyer.Purchases);
-            //Types = Purchases.Select(a=>a.)
-            foreach (var it in Purchases.Select(a=>a.PurchaseProducts.Select(b=>b.Product.ProductType).ToList()).ToList())
+            Types = new ObservableCollection<ProductType>();
+            Supermarkets = new ObservableCollection<string>();
+        }
+
+        private void GetAllPurchases()
+        {
+            InitializationVariables();
+            GetAllSupermarkets();
+            foreach (var listTypes in Purchases.Select(a=>a.PurchaseProducts.Select(b=>b.Product.ProductType).ToList()).ToList())
             {
-                foreach (var i in it)
+                foreach (var type in listTypes)
                 {
-                    Types.Add(i);
+                    if (type != null)
+                    {
+                        bool elemntwas = false;
+                        foreach (var typ in Types)
+                        {
+                            if (typ.Name == type.Name)
+                            {
+                                elemntwas = true;
+                            }
+                        }
+
+                        if (elemntwas == false)
+                        {
+                            Types.Add(type);
+                        }
+                    }
+                }
+            }
+        }
+        private void GetAllSupermarkets()
+        {
+            foreach (var purchase in Purchases)
+            {
+                bool adressWasAdd = false;
+                foreach (var supermarket in Supermarkets)
+                {
+                    if (purchase.PurchaseAdress == supermarket)
+                    {
+                        adressWasAdd = true;
+                    }
+                }
+                if (adressWasAdd == false)
+                {
+                    Supermarkets.Add(purchase.PurchaseAdress);
                 }
             }
         }
@@ -53,26 +89,24 @@ namespace MngrPaycheck.Buyer.ViewModel
         public ObservableCollection<Purchase> Purchases
         {
             get { return purchases; }
-            set
-            {
-                purchases = value;
-                NotifyPropertyChanged("Purchases");
-            }
-        }
+            set { purchases = value;
+                NotifyPropertyChanged("Purchases"); } }
+
+       
 
         private ObservableCollection<ProductType> types;
-
         public ObservableCollection<ProductType> Types
         {
             get { return types; }
-            set
-            {
-                types = value;
-                NotifyPropertyChanged("Types");
-            }
+            set { types = value;
+                NotifyPropertyChanged("Types"); } }
 
-        }
-
+        private ObservableCollection<string> supermarkets;
+        public ObservableCollection<string> Supermarkets
+        {
+            get { return supermarkets; }
+            set { supermarkets = value;
+                NotifyPropertyChanged("Supermarkets"); } } 
 
         #region Commands
         public ICommand AllChecksCommand
