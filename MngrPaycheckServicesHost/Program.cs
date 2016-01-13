@@ -4,9 +4,12 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using BuyerService;
 using ProductParameterService;
 using ProductService;
 using ProductTypeService;
+using PurchaseProductService;
+using PurchaseService;
 
 namespace MngrPaycheckServicesHost
 {
@@ -32,6 +35,31 @@ namespace MngrPaycheckServicesHost
                 host.Open();
                 Console.WriteLine("Starting | " + host.Description.Name + " | " + DateTime.Now);
             }
+
+            using (ServiceHost host = new ServiceHost(typeof(ProductParameterRepositoryService)))
+            {
+                host.Open();
+                Console.WriteLine("Starting | " + host.Description.Name + " | " + DateTime.Now);
+            }
+
+            using (ServiceHost host = new ServiceHost(typeof(BuyerRepositoryService)))
+            {
+                host.Open();
+                Console.WriteLine("Starting | " + host.Description.Name + " | " + DateTime.Now);
+            }
+
+            using (ServiceHost host = new ServiceHost(typeof(PurchaseProductRepositoryService)))
+            {
+                host.Open();
+                Console.WriteLine("Starting | " + host.Description.Name + " | " + DateTime.Now);
+            }
+
+            using (ServiceHost host = new ServiceHost(typeof(PurchaseRepositoryService)))
+            {
+                host.Open();
+                Console.WriteLine("Starting | " + host.Description.Name + " | " + DateTime.Now);
+            }
+
             Console.ReadLine();
         }
     }

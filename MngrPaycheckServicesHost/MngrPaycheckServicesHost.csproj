@@ -51,6 +51,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BuyerService\BuyerService.csproj">
+      <Project>{1E33DACD-CE87-4A4A-9D60-77154FC0D928}</Project>
+      <Name>BuyerService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MngrPaycheck.DAL\MngrPaycheck.DAL.csproj">
       <Project>{81E08870-6071-4E68-8B12-5B295BC7FFAF}</Project>
       <Name>MngrPaycheck.DAL</Name>
@@ -66,6 +70,14 @@
     <ProjectReference Include="..\ProductTypeService\ProductTypeService.csproj">
       <Project>{FFE42747-89D0-468A-B886-5FBC6459B4E7}</Project>
       <Name>ProductTypeService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PurchaseProductService\PurchaseProductService.csproj">
+      <Project>{83D7F6A3-3FD3-4121-B5B7-9831810F1C2B}</Project>
+      <Name>PurchaseProductService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PurchaseService\PurchaseService.csproj">
+      <Project>{7A560071-9305-4AC6-9827-06538919CBFF}</Project>
+      <Name>PurchaseService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
