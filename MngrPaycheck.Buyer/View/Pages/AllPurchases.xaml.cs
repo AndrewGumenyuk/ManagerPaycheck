@@ -12,22 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MngrPaycheck.Buyer.ViewModel;
+using MngrPaycheck.Buyer.ViewModel.Pages;
 
-namespace MngrPaycheck.Buyer
+namespace MngrPaycheck.Buyer.View.Pages
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class AllPurchases : Page
     {
-        private MainWindowVM _vm;
-        public MainWindow(Entity.Buyer ch)
+        private AllPurchasesVM _vm;
+        public AllPurchases(Entity.Buyer buyer)
         {
             InitializeComponent();
-            _vm = new MainWindowVM();
-            _vm.SelectedBuyer = ch;
-            DataContext = _vm;
+            _vm = new AllPurchasesVM(buyer);
+            this.DataContext = _vm;
         }
     }
 }

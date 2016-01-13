@@ -48,12 +48,6 @@ namespace MngrPaycheck.Buyer.ViewModel
             }
         }
 
-        public CheckOutBuyer outBuyer;
-        public CheckOutBuyer OutBuyer
-        {
-            get { return outBuyer; }
-            set { outBuyer = value; }
-        }
         private void CheckLogin(Window window)
         {
             
@@ -72,11 +66,5 @@ namespace MngrPaycheck.Buyer.ViewModel
             get { return new RelayCommand<Window>(CheckLogin); }
         }
 
-    }
-
-    public class CheckOutBuyer
-    {         
-        public string Name { get; set; }
-        public string Login { get; set; }
     }
 }

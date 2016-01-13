@@ -18,7 +18,7 @@
         <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource TopBorder}">
             <Label Content="BUYER INFORMATION" Style="{StaticResource LabelToTopBorder}"/>
         </Border>
-        <Grid x:Name="MainGrid" Grid.Column="0" Grid.Row="1" Style="{StaticResource MainGrid}">
+        <Grid x:Name="MainGrid" Grid.Column="0" Grid.Row="1" Style="{StaticResource MainGrid}" >
             <Grid Grid.Column="0" Background="#0096DB">
                 <Grid.Triggers>
                     <EventTrigger RoutedEvent="Grid.MouseLeave">
@@ -47,7 +47,7 @@
                         </Grid.RowDefinitions>
                         <Rectangle Style="{StaticResource MainGridBorderRectangle}">
                             <Rectangle.Fill>
-                                <ImageBrush ImageSource="Content/Images/Photo.jpg"/>
+                                <ImageBrush ImageSource="../Content/Images/Photo.jpg"/>
                             </Rectangle.Fill>
                         </Rectangle>
                         <Label x:Name="LblBuyer" Grid.Row="1" Style="{StaticResource MainGridLabel}" Content="Andrew"></Label>
@@ -66,32 +66,32 @@
                     </Grid.RowDefinitions>
                     <Border BorderThickness="2" Grid.Row="0" >
                         <Grid>
-                            <Image Source="Content/Images/three.png" Margin="8"></Image>
+                            <Image Source="../Content/Images/three.png" Margin="8"></Image>
                         </Grid>
                     </Border>
                     <Border  Grid.Row="1" Style="{StaticResource MainGridBorderKinds}">
                         <Border.InputBindings>
-                            <MouseBinding MouseAction="LeftClick" Command="{Binding AllChecksCommand}"/>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding AllChecksCommand}" CommandParameter="{Binding ElementName=Pages}"/>
                         </Border.InputBindings>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Image Source="Content/Images/Checks.png" Margin="5"></Image>
-                            <Label Grid.Row="1" Content="Checks" Style="{StaticResource MainGridLabelKinds}"></Label>
+                            <Image Source="../Content/Images/Checks.png" Margin="5"></Image>
+                            <Label Grid.Row="1" Content="Checks" Style="{StaticResource MainGridLabelKinds}" ></Label>
                         </Grid>
                     </Border>
                     <Border  Grid.Row="2" Style="{StaticResource MainGridBorderFavourities}">
                         <Border.InputBindings>
-                            <MouseBinding MouseAction="LeftClick" />
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding AllFavouriteChecksCommand}" CommandParameter="{Binding ElementName=Pages}"/>
                         </Border.InputBindings>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Image Source="Content/Images/book.png" Margin="6"></Image>
+                            <Image Source="../Content/Images/book.png" Margin="6"></Image>
                             <Label Grid.Row="1" Content="Favourites" Style="{StaticResource MainGridLabelKinds}"></Label>
                         </Grid>
                     </Border>
@@ -104,87 +104,45 @@
                                 <RowDefinition Height="3*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Image Source="Content/Images/door.png" Margin="6"></Image>
+                            <Image Source="../Content/Images/door.png" Margin="6"></Image>
                             <Label Grid.Row="1" Content="Exit" Style="{StaticResource MainGridLabelKinds}"></Label>
                         </Grid>
                     </Border>
                 </Grid>
             </Grid>
         </Grid>
+
         <Grid Grid.Column="1" Grid.Row="1" Style="{StaticResource CenterGrid}">
-            <ListBox Name="lst" Margin="5" ItemsSource="{Binding Purchases}" Style="{StaticResource MainListBox}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.2*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
-                                <Expander Grid.Column="0" Name="expender">
-                                    <ItemsControl ItemsSource="{Binding PurchaseProducts}" Style="{StaticResource ItemsControl}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border Style="{StaticResource BorderInItemsControll}">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="60"/>
-                                                            <ColumnDefinition Width="50"/>
-                                                            <ColumnDefinition Width="100"/>
-                                                            <ColumnDefinition Width="100"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock Grid.Column="0" Text="{Binding Product.Name}" ToolTip="{Binding Product.Description}" Style="{StaticResource NameTextBlockInItemsControll}"/>
-                                                        <TextBlock Grid.Column="1" Text="{Binding Product.ProductType.Name}" Style="{StaticResource ProductTypeNameTextBlockInItemsControll}"/>
-                                                        <TextBlock Grid.Column="2" Text="{Binding Cost, StringFormat={}Cost: {0} $}" Style="{StaticResource CostTextBlockInItemsControll}"/>
-                                                        <TextBlock Grid.Column="3" Text="{Binding Units, StringFormat={}Units: {0}}" Style="{StaticResource UnitsTextBlockInItemsControll}"/>
-                                                    </Grid>
-                                                </Border>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </Expander>
-                                <TextBlock Grid.Column="1" Text="{Binding Path=PurchaseDate}" Style="{StaticResource GeneralPurchaseTextBlockInItemsControll}"/>
-                                <TextBlock Grid.Column="2" Text="{Binding Path=SumPurchase, StringFormat={}{0} $}" Style="{StaticResource SumPurchaseTextBlockInItemsControll}"></TextBlock>
-                                <TextBlock Grid.Column="3">
-                                    <Image Source="Content/Images/favourite.png"></Image>
-                                </TextBlock>
-                            </Grid>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListBoxItem">
-                                    <Border Background="{TemplateBinding Panel.Background}" Name="Bd">
-                                        <ContentPresenter ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
-                                            <Setter Property="Panel.Background" TargetName="Bd" Value="Wheat"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Setter Property="Focusable" Value="False"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="#FFAE0303"/>
-                                <Setter Property="BorderThickness" Value="3"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-            </ListBox>
+            <Frame Margin="5" Background="White" x:Name="Pages" >
+                <Frame.Template>
+                    <ControlTemplate TargetType="Frame">
+                        <DockPanel>
+                            <StackPanel Visibility="Visible" Orientation="Horizontal" DockPanel.Dock="Top">
+                                <Menu Background="#3A3D36">
+                                    <MenuItem Command="{x:Static NavigationCommands.BrowseBack}" IsEnabled="{TemplateBinding CanGoBack}" Height="18" Width="20" Cursor="Hand" FontFamily="Italic" FontWeight="Bold" Foreground="White" Header="" >
+                                        <MenuItem.Style>
+                                            <Style>
+                                                <Setter Property="MenuItem.Foreground" Value="White"></Setter>
+                                            </Style>
+                                        </MenuItem.Style>
+                                        <MenuItem.Icon>
+                                            <Image Source="../Content/Images/direction.png"></Image>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Command="{x:Static NavigationCommands.BrowseForward}" IsEnabled="{TemplateBinding CanGoForward}" Height="18" Width="24" Cursor="Hand" FontFamily="Italic" FontWeight="Bold" Header="">
+                                        <MenuItem.Icon>
+                                            <Image Source="../Content/Images/forward.png"></Image>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </Menu>
+                            </StackPanel>
+                            <Border >
+                                <ContentPresenter />
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Frame.Template>
+            </Frame>
         </Grid>
         <Grid Grid.Column="3" Grid.Row="1" x:Name="RightGridExpander">
             <Grid.RowDefinitions>
@@ -339,7 +297,7 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <Image Source="Content/Images/windows.png"  Grid.Column="0" Grid.Row="1" Style="{StaticResource ImageWindows}">
+        <Image Source="../Content/Images/windows.png"  Grid.Column="0" Grid.Row="1" Style="{StaticResource ImageWindows}">
             <Image.Triggers>
                 <EventTrigger RoutedEvent="Image.MouseEnter">
                     <BeginStoryboard>

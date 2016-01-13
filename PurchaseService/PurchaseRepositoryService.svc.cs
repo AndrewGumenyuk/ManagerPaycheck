@@ -41,9 +41,13 @@ namespace PurchaseService
             throw new NotImplementedException();
         }
 
-        public void Update(string json)
+        public void Update(string json)//Purchases in supermarket never don't be delete, so in method update we use only change favourite
         {
-            throw new NotImplementedException();
+            _purchaseRepository.GetAll()
+                .Where(purch => purch.Id == _wrapper.DeserializePurchase(json).Id)
+                .Single()
+                .Favorite = _wrapper.DeserializePurchase(json).Favorite;
+            _purchaseRepository.Save();
         }
     }
 }
