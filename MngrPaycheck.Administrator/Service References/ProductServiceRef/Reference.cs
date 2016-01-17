@@ -12,32 +12,63 @@ namespace MngrPaycheck.Administrator.ProductServiceRef {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceRef.IProductRepositoryService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceRef.IProductRepositoryService", CallbackContract=typeof(MngrPaycheck.Administrator.ProductServiceRef.IProductRepositoryServiceCallback))]
     public interface IProductRepositoryService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/GetProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/GetProductsResponse")]
-        string GetProducts();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/GetAll", ReplyAction="http://tempuri.org/IProductRepositoryService/GetAllResponse")]
+        string GetAll();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/GetProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/GetProductsResponse")]
-        System.Threading.Tasks.Task<string> GetProductsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/GetAll", ReplyAction="http://tempuri.org/IProductRepositoryService/GetAllResponse")]
+        System.Threading.Tasks.Task<string> GetAllAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/AddProduct", ReplyAction="http://tempuri.org/IProductRepositoryService/AddProductResponse")]
-        void AddProduct(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Add", ReplyAction="http://tempuri.org/IProductRepositoryService/AddResponse")]
+        void Add(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/AddProduct", ReplyAction="http://tempuri.org/IProductRepositoryService/AddProductResponse")]
-        System.Threading.Tasks.Task AddProductAsync(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Add", ReplyAction="http://tempuri.org/IProductRepositoryService/AddResponse")]
+        System.Threading.Tasks.Task AddAsync(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/DeleteProduct", ReplyAction="http://tempuri.org/IProductRepositoryService/DeleteProductResponse")]
-        void DeleteProduct(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Delete", ReplyAction="http://tempuri.org/IProductRepositoryService/DeleteResponse")]
+        void Delete(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/DeleteProduct", ReplyAction="http://tempuri.org/IProductRepositoryService/DeleteProductResponse")]
-        System.Threading.Tasks.Task DeleteProductAsync(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Delete", ReplyAction="http://tempuri.org/IProductRepositoryService/DeleteResponse")]
+        System.Threading.Tasks.Task DeleteAsync(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/UpdateProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/UpdateProductsResponse")]
-        void UpdateProducts(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Update", ReplyAction="http://tempuri.org/IProductRepositoryService/UpdateResponse")]
+        void Update(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/UpdateProducts", ReplyAction="http://tempuri.org/IProductRepositoryService/UpdateProductsResponse")]
-        System.Threading.Tasks.Task UpdateProductsAsync(string json);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Update", ReplyAction="http://tempuri.org/IProductRepositoryService/UpdateResponse")]
+        System.Threading.Tasks.Task UpdateAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Subscribe", ReplyAction="http://tempuri.org/IProductRepositoryService/SubscribeResponse")]
+        System.Guid Subscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Subscribe", ReplyAction="http://tempuri.org/IProductRepositoryService/SubscribeResponse")]
+        System.Threading.Tasks.Task<System.Guid> SubscribeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProductRepositoryService/Unsubscribe")]
+        void Unsubscribe(System.Guid clientId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProductRepositoryService/Unsubscribe")]
+        System.Threading.Tasks.Task UnsubscribeAsync(System.Guid clientId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProductRepositoryService/KeepConnection")]
+        void KeepConnection();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProductRepositoryService/KeepConnection")]
+        System.Threading.Tasks.Task KeepConnectionAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/SendMessage", ReplyAction="http://tempuri.org/IProductRepositoryService/SendMessageResponse")]
+        void SendMessage(System.Guid clientId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/SendMessage", ReplyAction="http://tempuri.org/IProductRepositoryService/SendMessageResponse")]
+        System.Threading.Tasks.Task SendMessageAsync(System.Guid clientId, string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IProductRepositoryServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProductRepositoryService/HandleMessage")]
+        void HandleMessage(string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -46,57 +77,90 @@ namespace MngrPaycheck.Administrator.ProductServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ProductRepositoryServiceClient : System.ServiceModel.ClientBase<MngrPaycheck.Administrator.ProductServiceRef.IProductRepositoryService>, MngrPaycheck.Administrator.ProductServiceRef.IProductRepositoryService {
+    public partial class ProductRepositoryServiceClient : System.ServiceModel.DuplexClientBase<MngrPaycheck.Administrator.ProductServiceRef.IProductRepositoryService>, MngrPaycheck.Administrator.ProductServiceRef.IProductRepositoryService {
         
-        public ProductRepositoryServiceClient() {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ProductRepositoryServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ProductRepositoryServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ProductRepositoryServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ProductRepositoryServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public string GetProducts() {
-            return base.Channel.GetProducts();
+        public string GetAll() {
+            return base.Channel.GetAll();
         }
         
-        public System.Threading.Tasks.Task<string> GetProductsAsync() {
-            return base.Channel.GetProductsAsync();
+        public System.Threading.Tasks.Task<string> GetAllAsync() {
+            return base.Channel.GetAllAsync();
         }
         
-        public void AddProduct(string json) {
-            base.Channel.AddProduct(json);
+        public void Add(string json) {
+            base.Channel.Add(json);
         }
         
-        public System.Threading.Tasks.Task AddProductAsync(string json) {
-            return base.Channel.AddProductAsync(json);
+        public System.Threading.Tasks.Task AddAsync(string json) {
+            return base.Channel.AddAsync(json);
         }
         
-        public void DeleteProduct(string json) {
-            base.Channel.DeleteProduct(json);
+        public void Delete(string json) {
+            base.Channel.Delete(json);
         }
         
-        public System.Threading.Tasks.Task DeleteProductAsync(string json) {
-            return base.Channel.DeleteProductAsync(json);
+        public System.Threading.Tasks.Task DeleteAsync(string json) {
+            return base.Channel.DeleteAsync(json);
         }
         
-        public void UpdateProducts(string json) {
-            base.Channel.UpdateProducts(json);
+        public void Update(string json) {
+            base.Channel.Update(json);
         }
         
-        public System.Threading.Tasks.Task UpdateProductsAsync(string json) {
-            return base.Channel.UpdateProductsAsync(json);
+        public System.Threading.Tasks.Task UpdateAsync(string json) {
+            return base.Channel.UpdateAsync(json);
+        }
+        
+        public System.Guid Subscribe() {
+            return base.Channel.Subscribe();
+        }
+        
+        public System.Threading.Tasks.Task<System.Guid> SubscribeAsync() {
+            return base.Channel.SubscribeAsync();
+        }
+        
+        public void Unsubscribe(System.Guid clientId) {
+            base.Channel.Unsubscribe(clientId);
+        }
+        
+        public System.Threading.Tasks.Task UnsubscribeAsync(System.Guid clientId) {
+            return base.Channel.UnsubscribeAsync(clientId);
+        }
+        
+        public void KeepConnection() {
+            base.Channel.KeepConnection();
+        }
+        
+        public System.Threading.Tasks.Task KeepConnectionAsync() {
+            return base.Channel.KeepConnectionAsync();
+        }
+        
+        public void SendMessage(System.Guid clientId, string message) {
+            base.Channel.SendMessage(clientId, message);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(System.Guid clientId, string message) {
+            return base.Channel.SendMessageAsync(clientId, message);
         }
     }
 }

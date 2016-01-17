@@ -83,16 +83,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract1\IProductRepositoryServiceCallback.cs" />
     <Compile Include="ProductRepositoryService.svc.cs">
       <DependentUpon>ProductRepositoryService.svc</DependentUpon>
     </Compile>
     <Compile Include="IProductRepositoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WrapperProduct.cs" />
+    <Compile Include="Concrete1\WrapperProduct.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\WebWcf.pubxml" />

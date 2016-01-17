@@ -104,6 +104,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Callbacks\ClientsEventArg\ClientNotifiedEventArgs.cs" />
+    <Compile Include="Callbacks\ProductRepositoryServiceCallback.cs" />
     <Compile Include="Service References\ProductParameterServiceRefer\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

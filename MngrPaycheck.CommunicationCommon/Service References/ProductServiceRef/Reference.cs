@@ -12,7 +12,7 @@ namespace MngrPaycheck.CommunicationCommon.ProductServiceRef {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceRef.IProductRepositoryService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductServiceRef.IProductRepositoryService", CallbackContract=typeof(MngrPaycheck.CommunicationCommon.ProductServiceRef.IProductRepositoryServiceCallback))]
     public interface IProductRepositoryService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/GetAll", ReplyAction="http://tempuri.org/IProductRepositoryService/GetAllResponse")]
@@ -26,6 +26,25 @@ namespace MngrPaycheck.CommunicationCommon.ProductServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Update", ReplyAction="http://tempuri.org/IProductRepositoryService/UpdateResponse")]
         void Update(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/Subscribe", ReplyAction="http://tempuri.org/IProductRepositoryService/SubscribeResponse")]
+        System.Guid Subscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProductRepositoryService/Unsubscribe")]
+        void Unsubscribe(System.Guid clientId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProductRepositoryService/KeepConnection")]
+        void KeepConnection();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductRepositoryService/SendMessage", ReplyAction="http://tempuri.org/IProductRepositoryService/SendMessageResponse")]
+        void SendMessage(System.Guid clientId, string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IProductRepositoryServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProductRepositoryService/HandleMessage")]
+        void HandleMessage(string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -34,25 +53,26 @@ namespace MngrPaycheck.CommunicationCommon.ProductServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ProductRepositoryServiceClient : System.ServiceModel.ClientBase<MngrPaycheck.CommunicationCommon.ProductServiceRef.IProductRepositoryService>, MngrPaycheck.CommunicationCommon.ProductServiceRef.IProductRepositoryService {
+    public partial class ProductRepositoryServiceClient : System.ServiceModel.DuplexClientBase<MngrPaycheck.CommunicationCommon.ProductServiceRef.IProductRepositoryService>, MngrPaycheck.CommunicationCommon.ProductServiceRef.IProductRepositoryService {
         
-        public ProductRepositoryServiceClient() {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ProductRepositoryServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ProductRepositoryServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ProductRepositoryServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ProductRepositoryServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public ProductRepositoryServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public string GetAll() {
@@ -69,6 +89,22 @@ namespace MngrPaycheck.CommunicationCommon.ProductServiceRef {
         
         public void Update(string json) {
             base.Channel.Update(json);
+        }
+        
+        public System.Guid Subscribe() {
+            return base.Channel.Subscribe();
+        }
+        
+        public void Unsubscribe(System.Guid clientId) {
+            base.Channel.Unsubscribe(clientId);
+        }
+        
+        public void KeepConnection() {
+            base.Channel.KeepConnection();
+        }
+        
+        public void SendMessage(System.Guid clientId, string message) {
+            base.Channel.SendMessage(clientId, message);
         }
     }
 }
