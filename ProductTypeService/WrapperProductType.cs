@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MngrPaycheck.Common.DAL.Infrastructure;
 using MngrPaycheck.DAL.Context;
 using MngrPaycheck.DAL.Repositories;
 using MngrPaycheck.DAL.Repositories.Abstract;
 using MngrPaycheck.Entity;
+using MngrPaycheck.IoCManager;
 using Newtonsoft.Json;
+using Ninject;
 
 namespace ProductTypeService
 {
@@ -19,7 +22,8 @@ namespace ProductTypeService
 
         public WrapperProductType()
         {
-            _productTypeRepository = new ProductTypeRepository(MngPaycheckContext.Instance);
+            IoCManagerCore.Start();
+            _productTypeRepository = (ProductTypeRepository) IoCManagerCore.Kernel.Get<IProductTypeRepository>();
             CollectionProductTypes = (List<ProductType>)_productTypeRepository.GetAll();
         }
 

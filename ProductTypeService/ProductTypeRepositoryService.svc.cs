@@ -41,6 +41,8 @@ namespace ProductTypeService
             ProductType productType = wrapperTypeProduct.DeserializeProduct(json);
             ICollection<Product> prTypesProduct = productType.Products;// because productType`ve child elements
             productType.Products = null;// after that productType don`t have child elements and we can this add to db
+            bool includeType = false;
+            Product dynamicProduct = new Product();
 
             foreach (var item in _productTypeRepository.GetAll())
             {
@@ -49,26 +51,27 @@ namespace ProductTypeService
                 {
                     foreach (var prTP in prTypesProduct)
                     {
-                        prTP.ProductType = item;
-                        prTP.ProductTypeID = item.Id;
                         ReplacementProduct(prTP);
+                        dynamicProduct = prTP;
+                        dynamicProduct.ProductType = null;
+                        dynamicProduct.ProductTypeID = item.Id;
                     }
-                }
-                else
-                {
-                    ReplacementProducts(prTypesProduct);
+                    includeType = true;
+                    _productRepository.Add(dynamicProduct);
                 }
             }
 
-            //DeleteEmptyProductType();
-            _productTypeRepository.Save();
+            if (!includeType)
+            {
+                ReplacementProducts(prTypesProduct);
+            }
             _productRepository.Save();
         }
 
         public void ReplacementProduct(Product ProductClient)
         {
-            _productRepository.Delete(_productRepository.GetById(ProductClient.Id));
-            _productRepository.Add(ProductClient);
+            _productRepository.Delete(_productRepository.GetAll().Where(pr => pr.Name == ProductClient.Name).ToList().FirstOrDefault());
+            _productRepository.Save();
         }
 
         public void ReplacementProducts(ICollection<Product> ProductsClient)
@@ -85,13 +88,15 @@ namespace ProductTypeService
             ProductType productType = wrapperTypeProduct.DeserializeProduct(json);
            foreach (var item in _productRepository.GetAll().Where(item => item.ProductTypeID == productType.Id))
            {
-               item.ProductType = null;
-           }
+               _productRepository.Delete(item);
+               _productRepository.Save();
 
-            DeleteEmptyProductType();
+               item.ProductType = null;
+               _productRepository.Add(item);
+           }
+            _productRepository.Save();
             _productTypeRepository.Save();
         }
-
         public void Update(string json)
         {
             ProductType prType = wrapperTypeProduct.DeserializeProduct(json);
