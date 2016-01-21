@@ -23,6 +23,7 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
             Products = surrogateProduct.Deserialize(surrogateProduct.GetAll());
         }
 
+       
         ObservableCollection<Entity.Product> _products;
         public ObservableCollection<Entity.Product> Products
         {
@@ -43,10 +44,29 @@ namespace MngrPaycheck.Administrator.ViewModel.Product.VMProducts
                 _selectedProduct = value;
                 if (value.ProductType.ProductParametrs != null)
                 {
-                    ProductParametrs = new ObservableCollection<ProductParametr>(value.ProductType.ProductParametrs);
+                    //ProductParametrs = new ObservableCollection<ProductParametr>(value.ProductType.ProductParametrs);
+                    ProductParametrs = new ObservableCollection<ProductParametr>();
+                    if (value.ProductParametrValues.Count != 0)
+                    {
+                        foreach (var item in value.ProductParametrValues)
+                        {
+                            item.ProductParametr.ProductParametrValue = item;
+                            ProductParametrs.Add(item.ProductParametr);
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in value.ProductType.ProductParametrs)
+                        {
+                            item.ProductParametrValue = null;
+                            ProductParametrs.Add(item);
+                        }
+                    }
                 }
             }
         }
+
+
 
         public ObservableCollection<ProductParametr> _productParametrs;
         public ObservableCollection<ProductParametr> ProductParametrs

@@ -21,14 +21,14 @@ namespace MngrPaycheck.Entity
         private Product product;
         private ProductParametr productParametr;
 
-        [Key, ForeignKey("Product"), Required] 
+        [ForeignKey("Product"), Required] 
         [DataMember]
         public Guid ProductID {
             get { return productId; }
             set { productId = value;
                 OnPropertyChanged("ProductID"); } }
 
-        [Key, ForeignKey("ProductParametr"), Required]
+        [ ForeignKey("ProductParametr"), Required]
         [DataMember]
         public Guid ProductParameterID { 
             get { return productParameterId; }

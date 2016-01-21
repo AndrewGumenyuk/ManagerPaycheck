@@ -54,8 +54,8 @@
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="Context\MngPaycheckContext.cs" />
+    </Compile>   
+	<Compile Include="Context\MngPaycheckContext.cs" />	
     <Compile Include="Repositories\Abstract\GenericRepository.cs" />
     <Compile Include="Repositories\BuyerRepository.cs" />
     <Compile Include="Repositories\ProductParametrRepository.cs" />
@@ -83,7 +83,7 @@
       <Project>{3FEAC9D1-FD99-4B63-9B35-0F04B6BA70D8}</Project>
       <Name>MngrPaycheck.Entity</Name>
     </ProjectReference>
-  </ItemGroup>
+  </ItemGroup> 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

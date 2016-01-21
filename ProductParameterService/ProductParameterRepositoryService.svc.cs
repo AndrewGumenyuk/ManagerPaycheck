@@ -48,7 +48,7 @@ namespace ProductParameterService
         {
             ProductParametr pr = wrapperProductParametr.DeserializeProductParameter(json);
             //If this parameter have a parametr we delete this parametr
-            if (_productParametrValueRepository.GetAll().Where(a=>a.ProductParameterID == pr.Id).ToList().FirstOrDefault()!=null)
+            if (_productParametrValueRepository.GetAll().Where(a => a.ProductParameterID == pr.Id).ToList().FirstOrDefault() != null)
             {
                 _productParametrValueRepository.Delete(
                        _productParametrValueRepository.GetAll()

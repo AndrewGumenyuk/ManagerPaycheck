@@ -13,8 +13,8 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1.4*"/>
+                            <RowDefinition Height="0.6*"/>
                         </Grid.RowDefinitions>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -30,10 +30,10 @@
                                             <Border Style="{StaticResource BorderInItemsControll}">
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="60"/>
-                                                        <ColumnDefinition Width="50"/>
                                                         <ColumnDefinition Width="100"/>
-                                                        <ColumnDefinition Width="100"/>
+                                                        <ColumnDefinition Width="40"/>
+                                                        <ColumnDefinition Width="90"/>
+                                                        <ColumnDefinition Width="90"/>
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock Grid.Column="0" Text="{Binding Product.Name}" ToolTip="{Binding Product.Description}" Style="{StaticResource NameTextBlockInItemsControll}"/>
                                                     <TextBlock Grid.Column="1" Text="{Binding Product.ProductType.Name}" Style="{StaticResource ProductTypeNameTextBlockInItemsControll}"/>
