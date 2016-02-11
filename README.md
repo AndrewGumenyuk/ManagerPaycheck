@@ -25,9 +25,9 @@ the purchase and keep track of expenses
 
 - [The first addition - Admin](https://github.com/AndrewGumenyuk/ManagerPaycheck/blob/master/AboutProject/Images/About_Administrator.md). With this addition, the store creates products and add items to the database, which houses the whole list of products - the price, name, size, manufacturer, etc.
 
-- [The second addition - Cashier](https://github.com/AndrewGumenyuk/ManagerPaycheck/blob/master/AboutProject/Images/About_Administrator.md). This addition creates purchase for customers. Also, the cashier have the ability to create a buye
+- [The second addition - Cashier](https://github.com/AndrewGumenyuk/ManagerPaycheck/blob/master/AboutProject/Images/About_Cashier.md). This addition creates purchase for customers. Also, the cashier have the ability to create a buye
 
-- [The third addition - Customer](https://github.com/AndrewGumenyuk/ManagerPaycheck/blob/master/AboutProject/Images/About_Administrator.md).  Displays a list of all purchases, the ability to sort and add checks to your favorite.
+- [The third addition - Buyer](https://github.com/AndrewGumenyuk/ManagerPaycheck/blob/master/AboutProject/Images/About_Buyer.md).  Displays a list of all purchases, the ability to sort and add checks to your favorite.
 
 ![alt tag](https://github.com/AndrewGumenyuk/ManagerPaycheck/blob/master/AboutProject/Images/Questions.png)
 ![alt tag](https://github.com/AndrewGumenyuk/ManagerPaycheck/blob/master/AboutProject/Images/ApplicationArchitecture.png)
